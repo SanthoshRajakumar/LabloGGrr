@@ -61,5 +61,5 @@ CREATE TABLE Location (
     CONSTRAINT FK_Rooms
         FOREIGN KEY (RoomID) 
         REFERENCES Rooms(ID)
-)
+);
 
