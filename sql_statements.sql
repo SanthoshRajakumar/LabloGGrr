@@ -1,5 +1,6 @@
 CREATE TABLE People(
-    Ssn VARCHAR(13) PRIMARY KEY,
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Ssn VARCHAR(13),
     FirstName VARCHAR(50),          
     LastName VARCHAR(50),           
     UserName VARCHAR(100),             
@@ -18,19 +19,13 @@ CREATE TABLE Rooms (
 );
 
 CREATE TABLE Access (
-    Ssn VARCHAR(13),
+    PeopleID INT,
     RoleID INT,                              
     RoomID INT,
-    CONSTRAINT PK_Access PRIMARY KEY (Ssn, RoleID, RoomID),                              
-    CONSTRAINT FK_People
-        FOREIGN KEY (Ssn) 
-        REFERENCES People(Ssn),
-    CONSTRAINT FK_Roles
-        FOREIGN KEY (RoleID) 
-        REFERENCES Roles(ID),
-    CONSTRAINT FK_Rooms
-        FOREIGN KEY (RoomID) 
-        REFERENCES Rooms(ID)
+    FOREIGN KEY (PeopleID) REFERENCES People(ID),
+    FOREIGN KEY (RoleID) REFERENCES Roles(ID),
+    FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
+    PRIMARY KEY (PeopleID, RoleID, RoomID)
 );
 
 CREATE TABLE ProductType (
@@ -45,21 +40,14 @@ CREATE TABLE Product (
     Mass INT,
     Pieces INT,
     ProductTypeID INT,
-    CONSTRAINT FK_ProductType
-        FOREIGN KEY (ProductTypeID) 
-        REFERENCES ProductType(ID)
+    FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ID)
 );
 
 CREATE TABLE Location (
     ProductID INT,
     RoomID INT,
     Quantity INT,
-    CONSTRAINT PK_Location PRIMARY KEY (ProductID, RoomID),
-    CONSTRAINT FK_Product
-        FOREIGN KEY (ProductID) 
-        REFERENCES Product(ID),
-    CONSTRAINT FK_Rooms
-        FOREIGN KEY (RoomID) 
-        REFERENCES Rooms(ID)
+    FOREIGN KEY (ProductID) REFERENCES Product(ID),
+    FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
+    PRIMARY KEY (ProductID, RoomID)
 );
-
