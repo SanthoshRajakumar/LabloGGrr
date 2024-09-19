@@ -4,7 +4,7 @@ CREATE TABLE People(
     FirstName VARCHAR(50),          
     LastName VARCHAR(50),           
     UserName VARCHAR(100),             
-    Salt VARCHAR(3),
+    Salt VARCHAR(50),
     HashCode VARCHAR(50)
 );
 
@@ -18,13 +18,20 @@ CREATE TABLE Rooms (
     RoomName VARCHAR(50)
 );
 
+CREATE TABLE AccessLevel (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    AccessLevel VARCHAR(50)
+);
+
 CREATE TABLE Access (
     PeopleID INT,
     RoleID INT,                              
     RoomID INT,
+    AccessID INT,
     FOREIGN KEY (PeopleID) REFERENCES People(ID),
     FOREIGN KEY (RoleID) REFERENCES Roles(ID),
     FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
+    FOREIGN KEY (AccessID) REFERENCES AccessLevel(ID),
     PRIMARY KEY (PeopleID, RoleID, RoomID)
 );
 
@@ -51,3 +58,36 @@ CREATE TABLE Location (
     FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
     PRIMARY KEY (ProductID, RoomID)
 );
+
+INSERT INTO People (Ssn, , FirstName, LastName, UserName, Salt, HashCode)
+VALUES (199901011111, "Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"); --passw: 1234
+VALUES (200001012222, "Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"); --passw: monkey
+VALUES (19981013333, "Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"); --passw: memory
+VALUES (200001011111, "Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); --passw: tdb
+
+INSERT INTO Roles (RoleType)
+VALUES ("Admin");
+VALUES ("Teacher");
+VALUES ("Teacher Assistant");
+VALUES ("Student");
+
+INSERT INTO Rooms (RoomName)
+VALUES ("Room1");
+VALUES ("Room2");
+VALUES ("Room3");
+VALUES ("Room4");
+
+INSERT INTO AccessLevel (AccessLevel)
+VALUES ("Admin");
+VALUES ("Add");
+VALUES ("Edit");
+VALUES ("View");
+
+INSERT INTO Access (PeopleID, RoleID, RoomID, AccessID)
+VALUES(1,1,1,1);
+
+
+
+
+
+
