@@ -1,3 +1,4 @@
+
 <h1 style="font-size: 50px">Admin page</h1>
 
 <style>
@@ -28,3 +29,5 @@
 <a href="create_room.html" class="button button5">Create room/shelfs/storage</button>
 <a href="create_course.html" class="button button5">Create course</button>
 <a href="inventory.html" class="button button5">Inventory</button>
+
+
