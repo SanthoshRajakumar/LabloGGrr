@@ -26,8 +26,8 @@
   }
 </style>
 
-<a href="create_room.html" class="button button5">Create room/shelfs/storage</button>
-<a href="create_course.html" class="button button5">Create course</button>
-<a href="inventory.html" class="button button5">Inventory</button>
+<a href="create_room.php" class="button button5">Create room/shelfs/storage</button>
+<a href="create_course.php" class="button button5">Create course</button>
+<a href="inventory.php" class="button button5">Inventory</button>
 
 
