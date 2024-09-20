@@ -60,9 +60,9 @@ CREATE TABLE ProductLocation (
 );
 
 INSERT INTO People (Ssn, , FirstName, LastName, UserName, Salt, HashCode)
-VALUES (199901011111, "Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"); --passw: 1234
-VALUES (200001012222, "Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"); --passw: monkey
-VALUES (19981013333, "Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"); --passw: memory
+VALUES (199901011111, "Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), --passw: 1234
+VALUES (200001012222, "Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"), --passw: monkey
+VALUES (19981013333, "Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), --passw: memory
 VALUES (200001011111, "Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); --passw: tdb
 
 INSERT INTO Roles (RoleType)
