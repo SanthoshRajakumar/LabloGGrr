@@ -1,4 +1,6 @@
 
+
+<!-- ELSA --> 
 <h1 style="font-size: 50px">Admin page</h1>
 
 <style>
@@ -26,8 +28,16 @@
   }
 </style>
 
-<a href="create_room.php" class="button button5">Create room/shelfs/storage</button>
-<a href="create_course.php" class="button button5">Create course</button>
-<a href="inventory.php" class="button button5">Inventory</button>
+<form action="create_room.php" method="POST">
+    <input type="submit" value="Create room/shelfs/storage" class="button button5"/>
+</form>
+
+<form action="create_course.php" method="POST">
+  <input type="submit" value="Create course" class="button button5" />
+</form>
+
+<form action="inventory.php" method="POST">
+  <input type="submit" value="Inventory" class="button button5"/>
+</form>
 
 
