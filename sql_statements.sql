@@ -85,6 +85,19 @@ VALUES ("View");
 
 INSERT INTO Access (PeopleID, RoleID, RoomID, AccessID)
 VALUES(1,1,1,1);
+VALUES(1,1,2,1);
+VALUES(1,1,3,1);
+VALUES(1,1,4,1);
+VALUES(2,2,1,2);
+VALUES(2,2,3,2);
+VALUES(3,3,2,3);
+VALUES(4,4,4,4);
+
+
+
+
+
+
 
 
 
