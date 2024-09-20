@@ -50,7 +50,7 @@ CREATE TABLE Product (
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ID)
 );
 
-CREATE TABLE Location (
+CREATE TABLE ProductLocation (
     ProductID INT,
     RoomID INT,
     Quantity INT,
@@ -93,14 +93,47 @@ VALUES(2,2,3,2);
 VALUES(3,3,2,3);
 VALUES(4,4,4,4);
 
+INSERT INTO ProductType (ProductType)
+VALUES("Liquid Chemical");
+VALUES("Solid Chemical");
+VALUES("Glassware");
+VALUES("Single-use Item");
+VALUES("Other");
 
+INSERT INTO Product (ProductName, Volume, ProductTypeID)
+VALUES("Hydrochloric Acid", 1000, 1);
+VALUES("Sodium Hydroxide", 1000, 1);
 
+INSERT INTO Product (ProductName, Mass, ProductTypeID)
+VALUES("Sodium Chloride", 1000, 2);
+VALUES("Copper Perchlorate", 1000, 2);
 
+INSERT INTO Product (ProductName, Pieces, ProductTypeID)
+VALUES("Nitrile Gloves", 100, 4);
+VALUES("Pipette tip (1 μl)", 20, 4);
+VALUES("Beaker (100 ml)", 1, 3);
+VALUES("Stirring Rod", 1, 3);
+VALUES("Titration Stand", 1, 5);
+VALUES("Fire Extinguisher", 1, 5);
 
-
-
-
-
-
-
-
+INSERT INTO ProductLocation (ProductID, RoomID, Quantity)
+VALUES(1,1,10);
+VALUES(2,2,6);
+VALUES(3,1,2);
+VALUES(4,2,3);
+VALUES(5,1,4);
+VALUES(6,2,5);
+VALUES(7,1,2);
+VALUES(8,2,1);
+VALUES(9,1,1);
+VALUES(10,2,2);
+VALUES(1,3,10);
+VALUES(2,4,6);
+VALUES(3,3,2);
+VALUES(4,4,3);
+VALUES(5,3,4);
+VALUES(6,4,5);
+VALUES(7,3,2);
+VALUES(8,4,1);
+VALUES(9,3,1);
+VALUES(10,4,2);
