@@ -1,5 +1,6 @@
 <?php
 include "login.php";
+if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 $sql = "SELECT * FROM Rooms"; // Fixade SQL-fråga
 $result = $link->query($sql); 
 ?>
@@ -14,7 +15,7 @@ $result = $link->query($sql);
 <body>
 <h1>All rooms</h1>
 <?php
-if ($result->num_rows > 0) {
+if ($result && $result->num_rows > 0) {
     echo "<table border='1'>
             <thead><tr><th>Room Name</th></tr></thead>
             <tbody>";
@@ -26,11 +27,11 @@ if ($result->num_rows > 0) {
     echo "<p style='text-align: center;'>0 results</p>";
 }
 
-$link->close();
+if ($link)
+    $link->close();
 ?>
 </body>
 </html>
-
 
 
 
