@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 # Database connection parameters.
 $servername = "localhost";
 $username = "root";  # default
@@ -47,6 +49,7 @@ if ($testhash == $hash) {
 # Handles validation results.
 if ($valid_login) {
     echo "<h2>The login was valid, congrats!</h2>";
+    $_SESSION["username"] = $username;
 }
 else {
     echo "<h2>The login was invalid. Thief!</h2>";
