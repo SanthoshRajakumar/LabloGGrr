@@ -27,7 +27,7 @@
             header("Location: teacher.php"); // Redirect to teacher page
             exit();
         } elseif ($_POST['role'] == 'student') {
-            header("Location: student_login.php"); // Redirect to student page
+            header("Location: login_page.php"); // Redirect to student page
             exit();
         }
     }

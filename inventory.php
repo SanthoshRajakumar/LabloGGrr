@@ -13,7 +13,7 @@
 <h1 style="font-size: 420px">Inventory</h1>
 <?php
 
-include '/Users/johaneliasson/Desktop/LabLoGGr/login/login.php';
+include 'dopen.php';
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
 
@@ -45,6 +45,5 @@ if ($result && $result->num_rows > 0)
     echo "<tr><td colspan='4'>No products found for this room.</td></tr>";
 }
 echo "</tbody></table>";
-if ($link)
-    $link->close();
+include 'dclose.php';
 ?>
