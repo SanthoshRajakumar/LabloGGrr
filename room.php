@@ -1,7 +1,7 @@
 <?php
 include '/Users/johaneliasson/Desktop/LabLoGGr/login/login.php';
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
-$sql = "SELECT Rooms.RoomName, ProductLocation.RoomID FROM Rooms LEFT JOIN ProductLocation ON Rooms.RoomName = ProductLocation.RoomID"; // Fixade SQL-fråga
+$sql = "SELECT ID AS RoomID, RoomName FROM Rooms"; // Fixade SQL-fråga
 $result = $link->query($sql); 
 ?>
 
