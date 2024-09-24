@@ -11,26 +11,14 @@
         <h3>ABOUT</h3>
         <p>BLA BLA BLA...</p>
     </div>
-
-    <div class="login"></div>
-        <!-- Form for Teacher and Student Login -->
-        <form method="post">
-            <button type="submit" name="role" value="teacher">Teacher</button>
-            <button type="submit" name="role" value="student">Student</button>
+    <div class="login">
+        <!-- Form for Login -->
+        <form method="get" action="login.php">
+            <button type="submit">Login</button>
         </form>
     </div>
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Check which button was pressed based on the value of 'role'
-        if ($_POST['role'] == 'teacher') {
-            header("Location: teacher.php"); // Redirect to teacher page
-            exit();
-        } elseif ($_POST['role'] == 'student') {
-            header("Location: student_login.php"); // Redirect to student page
-            exit();
-        }
-    }
-    ?>
 </body>
 </html>
+
+
+

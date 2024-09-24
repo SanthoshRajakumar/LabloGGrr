@@ -50,7 +50,7 @@ CREATE TABLE Product (
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ID)
 );
 
-CREATE TABLE Location (
+CREATE TABLE ProductLocation (
     ProductID INT,
     RoomID INT,
     Quantity INT,
@@ -59,48 +59,91 @@ CREATE TABLE Location (
     PRIMARY KEY (ProductID, RoomID)
 );
 
-INSERT INTO People (Ssn, , FirstName, LastName, UserName, Salt, HashCode)
-VALUES (199901011111, "Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"); --passw: 1234
-VALUES (200001012222, "Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"); --passw: monkey
-VALUES (19981013333, "Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"); --passw: memory
-VALUES (200001011111, "Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); --passw: tdb
+INSERT INTO People (Ssn, FirstName, LastName, UserName, Salt, HashCode)
+VALUES 
+("19990101-1111", "Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
+("20000101-2222", "Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
+("1998101-3333", "Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
+("20000101-1111", "Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
 
 INSERT INTO Roles (RoleType)
-VALUES ("Admin");
-VALUES ("Teacher");
-VALUES ("Teacher Assistant");
-VALUES ("Student");
+VALUES 
+("Admin"),
+("Teacher"),
+("Teacher Assistant"),
+("Student");
 
 INSERT INTO Rooms (RoomName)
-VALUES ("Room1");
-VALUES ("Room2");
-VALUES ("Room3");
-VALUES ("Room4");
+VALUES 
+("Room1"),
+("Room2"),
+("Room3"),
+("Room4");
 
 INSERT INTO AccessLevel (AccessLevel)
-VALUES ("Admin");
-VALUES ("Add");
-VALUES ("Edit");
-VALUES ("View");
+VALUES 
+("Admin"),
+("Add"),
+("Edit"),
+("View");
 
 INSERT INTO Access (PeopleID, RoleID, RoomID, AccessID)
-VALUES(1,1,1,1);
-VALUES(1,1,2,1);
-VALUES(1,1,3,1);
-VALUES(1,1,4,1);
-VALUES(2,2,1,2);
-VALUES(2,2,3,2);
-VALUES(3,3,2,3);
-VALUES(4,4,4,4);
+VALUES
+(1,1,1,1),
+(1,1,2,1),
+(1,1,3,1),
+(1,1,4,1),
+(2,2,1,2),
+(2,2,3,2),
+(3,3,2,3),
+(4,4,4,4);
 
+INSERT INTO ProductType (ProductType)
+VALUES
+("Liquid Chemical"),
+("Solid Chemical"),
+("Glassware"),
+("Single-use Item"),
+("Other");
 
+INSERT INTO Product (ProductName, Volume, ProductTypeID)
+VALUES
+("Hydrochloric Acid", 1000, 1),
+("Sodium Hydroxide", 1000, 1);
 
+INSERT INTO Product (ProductName, Mass, ProductTypeID)
+VALUES
+("Sodium Chloride", 1000, 2),
+("Copper Perchlorate", 1000, 2);
 
+INSERT INTO Product (ProductName, Pieces, ProductTypeID)
+VALUES
+("Nitrile Gloves", 100, 4),
+("Pipette tip (1 μl)", 20, 4),
+("Beaker (100 ml)", 1, 3),
+("Stirring Rod", 1, 3),
+("Titration Stand", 1, 5),
+("Fire Extinguisher", 1, 5);
 
-
-
-
-
-
-
-
+INSERT INTO ProductLocation (ProductID, RoomID, Quantity)
+VALUES
+(1,1,10),
+(2,2,6),
+(3,1,2),
+(4,2,3),
+(5,1,4),
+(6,2,5),
+(7,1,2),
+(8,2,1),
+(9,1,1),
+(10,2,2),
+(1,3,10),
+(2,4,6),
+(3,3,2),
+(4,4,3),
+(5,3,4),
+(6,4,5),
+(7,3,2),
+(8,4,1),
+(9,3,1),
+(10,4,2);
