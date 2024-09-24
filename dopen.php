@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root"; 
-$dbname = "things"; 
+$dbname = "labloggr"; 
 
 $link = mysqli_connect($servername, $username, $password, $dbname); # denna rad initierar koppling mellan databasen. 4 parametrar krävs
 #variabeln $link lagrar variabelns resultat. Om connection finns, så lagrar den en referens till db. Annars får $link värdet = False 
