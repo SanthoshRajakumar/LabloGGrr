@@ -19,12 +19,16 @@ session_start();
     <h1 class="logo">LabLoGGr</h1>
 </header>
 
-<h2 style="font-size: 50px">Admin page</h2>
 
-<form action="room.php" method="POST">
-  <input type="submit" value="Rooms" class="button button5"/>
-</form>
+<div class="button-container">
+  <form action="room.php" method="POST">
+    <input type="submit" value="Rooms" class="button button1"/>
+  </form>
 
+  <form action="room.php" method="POST">
+    <input type="submit" value="Rooms" class="button button1"/>
+  </form>
+</div>
 
 </body>
 
