@@ -50,6 +50,8 @@ if ($testhash == $hash) {
 if ($valid_login) {
     echo "<h2>The login was valid, congrats!</h2>";
     $_SESSION["username"] = $username;
+    header("Location: homepage.php");
+    exit();
 }
 else {
     echo "<h2>The login was invalid. Thief!</h2>";
