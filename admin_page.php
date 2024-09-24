@@ -10,14 +10,17 @@
     <title>Admin Page</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
+<header class="site-header">
+    <h1 class="logo">LabLogger</h1>
+</header>
 
-<h1 style="font-size: 50px">Admin page</h1>
+<h2 style="font-size: 50px">Admin page</h2>
 
-
-<form action="inventory.php" method="POST">
-  <input type="submit" value="Inventory" class="button button5"/>
+<form action="room.php" method="POST">
+  <input type="submit" value="Rooms" class="button button5"/>
 </form>
 
-
+</body>
