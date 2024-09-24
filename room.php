@@ -1,5 +1,5 @@
 <?php
-include '/Users/johaneliasson/Desktop/LabLoGGr/login/login.php';
+include 'dopen.php';
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 $sql = "SELECT ID AS RoomID, RoomName FROM Rooms"; // Fixade SQL-fråga
 $result = $link->query($sql); 
@@ -35,8 +35,8 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align: center;'>0 results</p>";
 }
 
-if ($link)
-    $link->close();
+include 'dclose.php';
+
 ?>
 </body>
 </html>
