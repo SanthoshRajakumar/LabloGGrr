@@ -1,7 +1,11 @@
 <?php
 include 'dopen.php';
+session_start();
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
-$sql = "SELECT ID AS RoomID, RoomName FROM Rooms"; // Fixade SQL-fråga
+$sql = "SELECT ID AS RoomID, RoomName
+        FROM Rooms
+        INNER JOIN Access ON Access.RoomID = ID
+        WHERE Access.PeopleID =" . $_SESSION["userID"]; // Fixade SQL-fråga
 $result = $link->query($sql); 
 ?>
 
@@ -23,7 +27,7 @@ if ($result && $result->num_rows > 0) {
         echo "<tr>
                 <td>" . $row['RoomName'] . "</td>
                 <td>
-                    <form action='inventory.php' method='get'>
+                    <form action='inventory.php' method='post'>
                         <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
                         <input type='submit' value='View Inventory'>
                     </form>

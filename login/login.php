@@ -48,9 +48,25 @@ if ($testhash == $hash) {
 
 # Handles validation results.
 if ($valid_login) {
+    # Setting up query to get userID.
+    $sql = "SELECT ID FROM People WHERE UserName = ?";
+    $stmt = $link->prepare($sql);
+
+    # Binding parameters to username.
+    $stmt->bind_param("s", $username);
+
+    # Executing statement and getting output.
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+
+    $row = $result->fetch_assoc();
+
+
     echo "<h2>The login was valid, congrats!</h2>";
     $_SESSION["username"] = $username;
-    header("Location: homepage.php");
+    $_SESSION["userID"] = $row["ID"];
+    header("Location: ../homepage.php");
     exit();
 }
 else {
