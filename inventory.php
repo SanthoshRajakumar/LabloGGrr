@@ -1,7 +1,7 @@
 <!-- GABRIEL -->
 <?php 
-include 'dopen.php';
 session_start();
+include 'dopen.php';
 ?>
 
 <!-- ELSA --> 
@@ -20,6 +20,11 @@ session_start();
 <?php
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
+
+if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
+    header("Location: room.php");
+    exit();
+}
 
 $roomID = isset($_POST['room_id']) ? $_POST['room_id'] : die("room_id saknas");
 $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces 

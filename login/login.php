@@ -1,14 +1,7 @@
 <?php
+# Connect to database and start session.
+include '../dopen.php';
 session_start();
-
-# Database connection parameters.
-$servername = "localhost";
-$username = "root";  # default
-$password = "root";  # default
-$dbname = "labloggr";
-
-# Creating connection.
-$link = mysqli_connect($servername, $username, $password, $dbname);
 
 # Kills connectin on connection error.
 if (mysqli_connect_error()) {
@@ -77,5 +70,7 @@ if ($valid_login) {
 else {
     echo "<h2>The login was invalid. Thief!</h2>";
 }
+
+include '../dclose.php'
 
 ?>
