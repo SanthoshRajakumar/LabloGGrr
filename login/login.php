@@ -15,6 +15,11 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error()); # script stops
 }
 
+if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
+    header("Location: ../login_page.php");
+    exit();
+}
+
 # User input.
 $username = $_POST['username'];
 $password = $_POST['password'];
