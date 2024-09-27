@@ -32,11 +32,18 @@
 
 <body>
 <main>
-<h2>Login</h2>
-<form action="/login/login.php" method="POST">
-    Username: <input type="text" name="username" required/><br />
-    Password: <input type="password" name="password" required /><br />
+<div class="div1">
+    <div class="box_login">
+        <form action="/login/login.php" method="POST">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter username" name="username" required/><br />
+            
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter password" name="password" required /><br />
     <input type="submit" value="Login" />
+    </div>
+
+</div>
 </form>
 </main>
 </body>

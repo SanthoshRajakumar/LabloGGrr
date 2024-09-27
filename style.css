@@ -1,10 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 :root {
-  /* Base font size */
+
   font-size: 10px;
 
-  /* Heading height variable*/
   --heading-height: 30em;
 }
 
@@ -28,7 +27,7 @@ form {
     margin-top: 110px;
 }
 
-/* Create angled background with 'before' pseudo-element */
+
 header::before {
   content: "";
   display: block;
@@ -143,3 +142,32 @@ p.bold {
     align-items: center; 
 }
 
+
+label, input[type="text"], input[type="password"]{
+    font-size: 20px; /* consistent font size */
+    color: rgb(62, 11, 11); /* consistent color */
+    font-family: 'Corporative', sans-serif; /* ensures font consistency */
+}
+  
+input[type="text"], input[type="password"] {
+    padding: 0.5em; /* comfortable text entry */
+    margin-bottom: 30px;
+    border: 1px solid #ccc; /* subtle border */
+    display: block; /* ensures inputs do not line up inline */
+    width: 90%; /* responsive width */
+}
+  
+input[type="submit"] {
+    background-color: #ffffff; /* matching button styles */
+    color: rgb(128, 17, 0); /* text color from button class */
+    padding: 10px 15px;
+    border-radius: 100px; /* rounded corners */
+    border: none; /* no border */
+    cursor: pointer; /* pointer cursor on hover */
+    transition: background-color 0.3s; /* smooth transition for hover effect */
+    font-size: 16px; /* consistent font size with other buttons */
+}
+  
+input[type="submit"]:hover {
+    background-color: #ddd; /* lighter background on hover */
+}
