@@ -58,9 +58,18 @@
     </div>
 </div>
 
+<div class="div1">
+    <div class="text_blocks">
+    <p class="bold">Can I customize the design of my inventory?</p>
+        <p>The look and feel of the inventory table as a whole (interface, fonts, etc.) cannot be changed. 
+        However, you can customize the what you want to be written and displayed. Get in touch with us and we will explain more!</p>
+    </div>
+    <div class="text_blocks">
+    <p class="bold"> Could not find the answers you were looking for?</p>
+        <p>Do not hesitate to contact us. You find our contact information in the top menu.</p>
+    </div>
+</div>
 
-<p class="bold">Can I customize the design of my inventory?</p>
-    <p>The look and feel of the inventory table as a whole (interface, fonts, etc.) cannot be changed. However, you can customize the what you want to be written and displayed. Get in touch with us and we will explain more!</p>
 
 </main>
 </body>
