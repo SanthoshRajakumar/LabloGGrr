@@ -40,7 +40,7 @@ header::before {
   /*transform: skewY(-5.5deg);*/
   background: 
     linear-gradient(rgba(92, 90, 90, 0), rgba(152, 146, 146, 0.6)),
-    url("Namnlös\ design.svg"), no-repeat center / cover;
+    url("header.svg design.svg"), no-repeat center / cover;
   background-size: cover;
   border-bottom: .2em solid #fff;
 }
