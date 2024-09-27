@@ -45,6 +45,7 @@
     </div>
 </div>
 </main>
+
 <body>
     <h1>Information Management Systems 1DL471</h1>
 
