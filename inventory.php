@@ -21,12 +21,23 @@ include 'dopen.php';
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
 
-if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
+$sql = "SELECT Access.AccessID FROM Access WHERE PeopleID = ? AND RoomID = ?";
+$stmt = $link->prepare($sql);
+
+$stmt->bind_param("ss", $_SESSION["userID"], $_GET["room_id"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+$row = $result->fetch_assoc();
+$access = $row['AccessID'] ?? FALSE;
+
+if ($access == FALSE) {
     header("Location: room.php");
     exit();
 }
 
-$roomID = isset($_POST['room_id']) ? $_POST['room_id'] : die("room_id saknas");
+$roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
 $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces 
         FROM Product
         INNER JOIN ProductLocation ON Product.ID = ProductLocation.ProductID 
