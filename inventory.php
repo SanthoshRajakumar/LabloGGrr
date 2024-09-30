@@ -21,6 +21,7 @@ include 'dopen.php';
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
 
+# Gets access level.
 $sql = "SELECT Access.AccessID FROM Access WHERE PeopleID = ? AND RoomID = ?";
 $stmt = $link->prepare($sql);
 
@@ -32,13 +33,14 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $access = $row['AccessID'] ?? FALSE;
 
+# Redirects on no access.
 if ($access == FALSE) {
     header("Location: room.php");
     exit();
 }
 
 $roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
-$sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces 
+$sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces, ProductLocation.Quantity, Product.ID
         FROM Product
         INNER JOIN ProductLocation ON Product.ID = ProductLocation.ProductID 
         WHERE ProductLocation.RoomID = $roomID";
@@ -46,23 +48,54 @@ $result = $link->query($sql);
 if (!$result) {
     die("fan också: " . $link->error);
 }
+
+if ($access <= 3) {
+
+
+
 echo "<table border='1'>";
-echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th></tr></thead>";
+echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
 echo "<tbody>";
 
-if ($result && $result->num_rows > 0) 
-{
-    while ($row = $result->fetch_assoc()) 
+    if ($result && $result->num_rows > 0) 
     {
-        echo "<tr>";
-        echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
-        echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
-        echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
-        echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
-        echo "</tr>";
+        while ($row = $result->fetch_assoc()) 
+        {
+            echo "<tr>";
+            echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
+            echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
+            echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
+            echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
+            echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
+            echo "<td><form action='update_product_quantity.php' method='post'><input type='number' name='quantNew'><input type='submit' value='Update quantity'><input type='hidden' value='" . $row['ID'] . "' name='prodID'><input type='hidden' value='" . $roomID . "' name='room_id'></form></td>";
+            echo "</tr>";
+        }
     }
-} else {
-    echo "<tr><td colspan='4'>No products found for this room.</td></tr>";
+
+}
+
+else {
+echo "<table border='1'>";
+echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th></tr></thead>";
+echo "<tbody>";
+
+    if ($result && $result->num_rows > 0) 
+    {
+        while ($row = $result->fetch_assoc()) 
+        {
+            echo "<tr>";
+            echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
+            echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
+            echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
+            echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
+            echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
+            echo "</tr>";
+        }
+    
+
+    } else {
+        echo "<tr><td colspan='4'>No products found for this room.</td></tr>";
+    }
 }
 echo "</tbody></table>";
 include 'dclose.php';
