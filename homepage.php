@@ -37,7 +37,7 @@ session_start();
 <body>
 <main>
 <div class="button-container">
-  <form action="room.php" method="POST">
+  <form action="room.php" method="GET">
     <input type="submit" value="Rooms" class="button button1"/>
   </form>
 </div>
