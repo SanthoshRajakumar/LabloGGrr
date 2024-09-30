@@ -24,7 +24,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 $row = $result->fetch_assoc();
-$access = $row['AccessID'] ?? FALSE;
+$access = $row["AccessID"] ?? FALSE;
+
 
 # Redirects back to room.php on insufficient access.
 if ($access == FALSE || $access > 3) {
@@ -36,13 +37,12 @@ if ($access == FALSE || $access > 3) {
 $sql = "UPDATE ProductLocation SET ProductLocation.Quantity = ? WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ?";
 $stmt = $link->prepare($sql);
 
-$stmt->bind_param("sss", $_POST["quantNew"], $_POST["prodID"], $_POST["room_id"])
+$stmt->bind_param("sss", $_POST["quantNew"], $_POST["prodID"], $_POST["room_id"]);
 
-$stmt->execute();
-$result = $stmt->get_result();
+$result = $stmt->execute();
 
 if ($result) {
-	header('Location: inventory.php/?room_id="' . $_POST["room_id"] . '"');
+	header('Location: inventory.php?room_id=' . $_POST["room_id"]);
     exit();
 }
 
