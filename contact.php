@@ -33,13 +33,11 @@
 <main>
  
 <p class="bold"> We want to hear from you! </p>
+  <p>support@labbloggr.com</p>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
     eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
     eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
-    eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
-<p>WHO ARE WE?</p>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
     eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
