@@ -1,18 +1,16 @@
 <?php
+# Connect to database and start session.
+include '../dopen.php';
 session_start();
-
-# Database connection parameters.
-$servername = "localhost";
-$username = "root";  # default
-$password = "root";  # default
-$dbname = "labloggr";
-
-# Creating connection.
-$link = mysqli_connect($servername, $username, $password, $dbname);
 
 # Kills connectin on connection error.
 if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error()); # script stops
+}
+
+if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
+    header("Location: ../login_page.php");
+    exit();
 }
 
 # User input.
@@ -48,13 +46,31 @@ if ($testhash == $hash) {
 
 # Handles validation results.
 if ($valid_login) {
+    # Setting up query to get userID.
+    $sql = "SELECT ID FROM People WHERE UserName = ?";
+    $stmt = $link->prepare($sql);
+
+    # Binding parameters to username.
+    $stmt->bind_param("s", $username);
+
+    # Executing statement and getting output.
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+
+    $row = $result->fetch_assoc();
+
+
     echo "<h2>The login was valid, congrats!</h2>";
     $_SESSION["username"] = $username;
+    $_SESSION["userID"] = $row["ID"];
     header("Location: ../homepage.php");
     exit();
 }
 else {
     echo "<h2>The login was invalid. Thief!</h2>";
 }
+
+include '../dclose.php'
 
 ?>

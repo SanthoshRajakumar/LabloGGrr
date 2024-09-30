@@ -1,3 +1,9 @@
+<!-- GABRIEL -->
+<?php 
+session_start();
+include 'dopen.php';
+?>
+
 <!-- ELSA --> 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,16 +16,19 @@
 <body>
 <!-- ELSA (jag testade att lägga in lite kod här för att se om det fungerar.) --> 
 
-<h1 style="font-size: 420px">Inventory</h1>
+<h1 style="font-size: 420">Inventory</h1>
 <?php
-
-include 'dopen.php';
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
 
-$roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
+if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
+    header("Location: room.php");
+    exit();
+}
+
+$roomID = isset($_POST['room_id']) ? $_POST['room_id'] : die("room_id saknas");
 $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces 
-        FROM Product 
+        FROM Product
         INNER JOIN ProductLocation ON Product.ID = ProductLocation.ProductID 
         WHERE ProductLocation.RoomID = $roomID";
 $result = $link->query($sql);

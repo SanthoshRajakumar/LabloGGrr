@@ -2,11 +2,16 @@ CREATE TABLE People(
     ID INT AUTO_INCREMENT PRIMARY KEY,
     Ssn VARCHAR(13),
     FirstName VARCHAR(50),          
-    LastName VARCHAR(50),           
+    LastName VARCHAR(50),
+    Email VARCHAR(100),           
     UserName VARCHAR(100),             
     Salt VARCHAR(50),
-    HashCode VARCHAR(50)
+    HashCode VARCHAR(50),
+    Active BOOLEAN DEFAULT TRUE
 );
+
+CREATE UNIQUE INDEX ix_people
+ON People (UserName, Salt);
 
 CREATE TABLE Roles(
     ID INT AUTO_INCREMENT PRIMARY KEY,
