@@ -27,7 +27,7 @@ if ($result && $result->num_rows > 0) {
         echo "<tr>
                 <td>" . $row['RoomName'] . "</td>
                 <td>
-                    <form action='inventory.php' method='post'>
+                    <form action='inventory.php' method='get'>
                         <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
                         <input type='submit' value='View Inventory'>
                     </form>
