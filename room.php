@@ -46,3 +46,34 @@ include 'dclose.php';
 </html>
 
 
+<!-- Back Button -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background-color: #708090; 
+            border: none;              
+            color: white;              
+            padding: 10px 20px;        
+            text-align: center;        
+            text-decoration: none;     
+            display: inline-block;     
+            font-size: 12px;           
+            margin: 5px 2px;         
+            cursor: pointer;           
+            border-radius: 10px;       
+            transition: background-color 0.3s ease; 
+        }
+
+        .button:hover {
+            background-color: #708090; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <button class="button" onclick="window.location.href='homepage.php'">Back to Home</button>
+</body>
+</html>
