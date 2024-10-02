@@ -48,7 +48,6 @@
     <input type="password" placeholder="Enter password" name="password" required /><br />
     
     <button type="submit" class="button">Login</button>
-
 </form>
 
 <div class="footer">

@@ -55,7 +55,7 @@ header::before {
   left: 0;
   top: 0px;
   width: 100%;
-  background-image: url("bild5.png");
+  background-image: url("images/bild5.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -183,7 +183,7 @@ p {
     width: 300px;
     height: 200px;
     padding: 15px;
-    border: #53006f;
+    border: 2px solid #53006f;
     border-radius: 25px;
     background-color: #f5f3ee;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -206,19 +206,20 @@ p {
     color: #333; /* Darker color for better contrast */
 }
 
-/*
-.text_blocks{
-    width: 600px;
+
+.box1{
+    width: 700px;
     height: 200px;
     padding: 15px;
-    background-color: #f5f3ee;
+    border-radius: 25px;
+    background-color: #ffffff;
     align-content: space-around;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; 
+    justify-content: center; 
     align-items: center; 
     text-align: center; 
-}*/
+}
 
 label, input[type="text"], input[type="password"]{
     font-size: 20px; /* consistent font size */
