@@ -130,7 +130,7 @@ h3 {
 
 /* Footer text */
 h4 {
-  font-size: 12px;
+  font-size: 15px;
   color: rgb(128, 17, 0);
   font-weight: lighter;
 }
@@ -308,7 +308,7 @@ td {
 
 address{
   font-size: 20px;
-  color: rgb(62, 11, 11);
+  color: rgb(128, 17, 0); 
   font-style: normal;
   font-weight: 700;
 }

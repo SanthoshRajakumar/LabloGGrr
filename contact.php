@@ -44,18 +44,15 @@
   <p>Whether you have questions, feedback, or just want to chat, we are here to help! Don’t hesitate to reach out—we're just a message away and excited to assist you!</p>
 </div>
 
-  <p text-decoration="underlined">info@labloggr.com</p>
-  <p>Tel +46 123 45 67</p>
-<address>
+  <p style="text-decoration: underline;">info@labloggr.com</p>
+  <p>Tel <span style="text-decoration: underline;">+46 123 45 67</span></p>
+<p>
   Lägerhyddsvägen 1 <br>
   752 37 Uppsala <br>
   Sweden
-</address>
+</p>
 
-  <p>If you are already a client and need help, reach out to support@labloggr.com.</p>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
-    eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
-
+<p>If you are already a client and need help, reach out to <span style="text-decoration: underline;"> support@labloggr.com.</span></p>
 
 <div class="footer">
   <h4> &copy; 2024 LabLoGGr | Privacy policy | Terms & Condition </h4>
