@@ -2,6 +2,14 @@
 include 'dopen.php';
 session_start();
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
+
+$_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
+
+if (!$_SESSION["userID"]) {
+    echo "<h1>Oopsie! You should probably log in first.</h1>";
+    echo "<a href=" . '"login_page.php"' . ">Go here!</a>";
+}
+else {
 $sql = "SELECT ID AS RoomID, RoomName
         FROM Rooms
         INNER JOIN Access ON Access.RoomID = ID
@@ -27,7 +35,7 @@ if ($result && $result->num_rows > 0) {
         echo "<tr>
                 <td>" . $row['RoomName'] . "</td>
                 <td>
-                    <form action='inventory.php' method='post'>
+                    <form action='inventory.php' method='get'>
                         <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
                         <input type='submit' value='View Inventory'>
                     </form>
@@ -38,7 +46,7 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "<p style='text-align: center;'>0 results</p>";
 }
-
+}
 include 'dclose.php';
 
 ?>
@@ -46,3 +54,34 @@ include 'dclose.php';
 </html>
 
 
+<!-- Back Button -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .button {
+            background-color: #708090; 
+            border: none;              
+            color: white;              
+            padding: 10px 20px;        
+            text-align: center;        
+            text-decoration: none;     
+            display: inline-block;     
+            font-size: 12px;           
+            margin: 5px 2px;         
+            cursor: pointer;           
+            border-radius: 10px;       
+            transition: background-color 0.3s ease; 
+        }
+
+        .button:hover {
+            background-color: #708090; 
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <button class="button" onclick="window.location.href='homepage.php'">Back to Home</button>
+</body>
+</html>
