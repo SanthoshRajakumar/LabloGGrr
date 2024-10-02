@@ -44,6 +44,7 @@ session_start();
     </form>
 </header>
 
+<h2>Welcome XXX!</h2>
   <div class="div1">
   <form action="room.php" method="GET">
     <input type="submit" value="Rooms" class="button button1"/>
