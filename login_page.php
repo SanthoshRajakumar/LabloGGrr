@@ -1,52 +1,63 @@
-
 <!-- ELSA --> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Page</title>
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style_.css">
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<body>
+
+
+<div class="sample-header">
+  <div class="sample-header-section">
+    <h1>LabLoGGr</h1>
+    <h2></h2>
+  </div>
+</div>
+
+<!-- Content Section -->
+<div class="sample-section-wrap">
+  <div class="sample-section">
 
 <header>
-    <form action="index.php" method="POST">
-        <input type="submit" value="HOME" class="button"/>
+<form action="index.php" method="GET">
+      <button type="submit" class="button">HOME</button>
     </form>
-
-    <form action="about.php" method="POST">
-        <input type="submit" value="ABOUT" class="button"/>
+    <form action="about.php" method="GET">
+      <button type="submit" class="button">ABOUT</button>
     </form>
-
-    <h1>LabLoGGr</h1>
-
-    <form action="faq.php" method="POST">
-        <input type="submit" value="FAQ" class="button"/>
+    <form action="faq.php" method="GET">
+      <button type="submit" class="button">FAQ</button>
     </form>
-
-    <form action="contact.php" method="POST">
-        <input type="submit" value="CONTACT" class="button"/>
+    <form action="contact.php" method="GET">
+      <button type="submit" class="button">CONTACT</button>
     </form>
-
 </header>
 
-<body>
-<main>
-<div class="div1">
-    <div class="box_login">
-        <form action="/login/login.php" method="POST">
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter username" name="username" required/><br />
+
+<form action="/login/login.php" method="POST">
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter username" name="username" required/><br />
             
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter password" name="password" required /><br />
-    <input type="submit" value="Login" />
-    </div>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter password" name="password" required /><br />
+    
+    <button type="submit" class="button">Login</button>
 
-</div>
 </form>
-</main>
-</body>
 
+<div class="footer">
+    <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
+</div>
+
+<script src="java.js">
+</script>
+</body>
+</html>
 
 
