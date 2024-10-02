@@ -26,23 +26,24 @@
 
   <header>
 <form action="index.php" method="GET">
-      <button type="submit" class="button">HOME</button>
+      <button type="submit" class="button2">HOME</button>
     </form>
     <form action="about.php" method="GET">
-      <button type="submit" class="button">ABOUT</button>
+      <button type="submit" class="button2">ABOUT</button>
     </form>
     <form action="faq.php" method="GET">
-      <button type="submit" class="button">FAQ</button>
+      <button type="submit" class="button2">FAQ</button>
     </form>
     <form action="contact.php" method="GET">
-      <button type="submit" class="button">CONTACT</button>
+      <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
 
-
-
+<div class="div2">
 <h2> We want to hear from you!</h2>
   <p>Whether you have questions, feedback, or just want to chat, we are here to help! Don’t hesitate to reach out—we're just a message away and excited to assist you!</p>
+</div>
+
   <p text-decoration="underlined">info@labloggr.com</p>
   <p>Tel +46 123 45 67</p>
 <address>

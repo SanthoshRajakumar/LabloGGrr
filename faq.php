@@ -26,21 +26,23 @@
 
   <header>
 <form action="index.php" method="GET">
-      <button type="submit" class="button">HOME</button>
+      <button type="submit" class="button2">HOME</button>
     </form>
     <form action="about.php" method="GET">
-      <button type="submit" class="button">ABOUT</button>
+      <button type="submit" class="button2">ABOUT</button>
     </form>
     <form action="faq.php" method="GET">
-      <button type="submit" class="button">FAQs</button>
+      <button type="submit" class="button2">FAQ</button>
     </form>
     <form action="contact.php" method="GET">
-      <button type="submit" class="button">CONTACT</button>
+      <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
 
-<h2> FAQs</h2>
-<p>Have a question for us? Perhaps you can find the answers below!</p>
+<div class="div2">
+    <h2> FAQs</h2>
+    <p>Have a question for us? Perhaps you can find the answers below!</p>
+</div>
 
 <div class="div1">
   <div class="box1">
