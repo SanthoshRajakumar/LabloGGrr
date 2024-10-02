@@ -301,7 +301,7 @@ td {
   margin-bottom: 50px;
 }
 
-/* For header + short text, FAQ header and text, contact header and text*/
+/* For space between contant and  initial header + short text. Ex: FAQ header and text, contact header and text*/
 .div2{
     margin-bottom: 130px;
 }

@@ -57,6 +57,7 @@ $result = $link->query($sql);
       <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
+
 <?php
 if ($result && $result->num_rows > 0) {
     echo "<table border='1'>
