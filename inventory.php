@@ -132,7 +132,7 @@ if ($access <= 2) {
     }
 
     echo "</select></td>";
-    echo "<td><input type='number' name='quantity'></td>";
+    echo "<td><input type='number' min=0 name='quantity'></td>";
     echo "<input type='hidden' value='" . $roomID . "' name='room_id'>";
     echo "<td><input type='submit' value='Enter product'></td>";
     echo "</form></td>";
