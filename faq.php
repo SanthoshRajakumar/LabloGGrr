@@ -78,8 +78,9 @@
         However, you can customize the what you want to be written and displayed. Get in touch with us and we will explain more!</p>
     </div>
     <div class="box1">
-    <h3> Add 1 more question</h3>
-        <p>XXXX</p>
+    <h3>How do students access the lab inventory?</h3>
+        <p>Students are granted access to LabLoGGr through course keys provided by their teachers or TAs. Once they log in, they can view
+        a filtered version of the inventory, displaying only the materials relevant to their coursework.</p>
     </div>
 </div>
 
