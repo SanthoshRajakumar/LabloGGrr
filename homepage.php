@@ -61,7 +61,7 @@ session_start();
   </form>
   </div>
 <div class="button-container">
-  <form action="create_user.php" method="GET">
+  <form action="/user/create_user.php" method="GET">
     <input type="submit" value="Create User" class="button button2"/>
   </form>
   </div>
