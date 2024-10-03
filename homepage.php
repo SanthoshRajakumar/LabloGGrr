@@ -60,6 +60,11 @@ session_start();
     <input type="submit" value="Rooms" class="button button1"/>
   </form>
   </div>
+<div class="button-container">
+  <form action="create_user.php" method="GET">
+    <input type="submit" value="Create User" class="button button2"/>
+  </form>
+  </div>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa...</p>
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
       quis, sem. Nulla consequat massa quis enim. </p>
@@ -90,21 +95,9 @@ session_start();
   <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
 </div>
 
-<<<<<<< HEAD
-<div class="button-container">
-  <form action="create_user.php" method = "GET"> <br>
-
-    <input type="submit" value="Create User" class="button button2"/> 
-
-  </form>
-</div>
-
-</main>
-=======
 <script src="java.js">
 </script>
 
->>>>>>> Elsa
 </body>
 </html>
 
