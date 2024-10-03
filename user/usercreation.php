@@ -11,15 +11,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $SSN = $_POST["SSN"];
     $username = $_POST["username"];
     $password = $_POST["password"];
-    $role = $_POST["role"];
+    $role = $_POST["role"]; // this is a problem here. The role is not being set correctly.
 
     // Generera SALT och hash
     $salt = bin2hex(openssl_random_pseudo_bytes(32));
     $hash = hash('sha256', $password . $salt);
 
     // Förbered SQL-frågan
-    $sql = "INSERT INTO People (SSN, FirstName, LastName, Email, UserName, Salt, HashCode, Active)
+    $sql = "INSERT INTO People (SSN, FirstName, LastName, UserName, Salt, HashCode, RoleType)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql2 = "SELECT roleID from Access WHERE PeopleID = ? AND RoomID = ?"; 
+    $result = "Inner JOIN Rooms ON Rooms.ID = Access.RoomID INNER JOIN Access ON Access.PeopleID = People.ID AND Access.RoomID = Rooms.ID"
     $stmt = $link->prepare($sql);
 
     // Kontrollera om $stmt förbereds korrekt
@@ -28,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Bind parametrarna till SQL-satsen
-    $stmt->bind_param("ssssssis", $SSN, $firstName, $lastName, $username, $username, $salt, $hash, 1);
+    $stmt->bind_param("isssssis", $SSN, $firstName, $lastName, $username, $username, $salt, $hash, $role);
     $stmt->execute();
 
     // Kontrollera om det finns ett fel

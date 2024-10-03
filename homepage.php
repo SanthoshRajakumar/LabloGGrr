@@ -3,6 +3,7 @@ session_start();
 ?>
 
 <!-- ELSA --> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,18 +34,26 @@ session_start();
 <form action="index.php" method="GET">
       <button type="submit" class="button">HOME</button>
     </form>
+
     <form action="about.php" method="GET">
       <button type="submit" class="button">ABOUT</button>
     </form>
+
+    <h1>LabLoGGr</h1>
+
     <form action="faq.php" method="GET">
       <button type="submit" class="button">FAQ</button>
     </form>
+
     <form action="contact.php" method="GET">
       <button type="submit" class="button">CONTACT</button>
     </form>
+
 </header>
 
-  <div class="div1">
+<body>
+<main>
+<div class="button-container">
   <form action="room.php" method="GET">
     <input type="submit" value="Rooms" class="button button1"/>
   </form>
