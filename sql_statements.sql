@@ -1,12 +1,11 @@
 CREATE TABLE People(
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    Ssn VARCHAR(13),
     FirstName VARCHAR(50),          
     LastName VARCHAR(50),
-    Email VARCHAR(100),           
-    UserName VARCHAR(100),             
+    Email VARCHAR(50),           
+    UserName VARCHAR(50),             
     Salt VARCHAR(50),
-    HashCode VARCHAR(50),
+    HashCode VARCHAR(100),
     Active BOOLEAN DEFAULT TRUE
 );
 
@@ -59,6 +58,7 @@ CREATE TABLE ProductLocation (
     ProductID INT,
     RoomID INT,
     Quantity INT,
+    Shelf VARCHAR(50),
     FOREIGN KEY (ProductID) REFERENCES Product(ID),
     FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
     PRIMARY KEY (ProductID, RoomID)
@@ -66,10 +66,10 @@ CREATE TABLE ProductLocation (
 
 INSERT INTO People (Ssn, FirstName, LastName, UserName, Salt, HashCode)
 VALUES 
-("19990101-1111", "Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
-("20000101-2222", "Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
-("1998101-3333", "Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
-("20000101-1111", "Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
+("Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
+("Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
+("Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
+("Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
 
 INSERT INTO Roles (RoleType)
 VALUES 
@@ -130,25 +130,25 @@ VALUES
 ("Titration Stand", 1, 5),
 ("Fire Extinguisher", 1, 5);
 
-INSERT INTO ProductLocation (ProductID, RoomID, Quantity)
+INSERT INTO ProductLocation (ProductID, RoomID, Quantity, Shelf)
 VALUES
-(1,1,10),
-(2,2,6),
-(3,1,2),
-(4,2,3),
-(5,1,4),
-(6,2,5),
-(7,1,2),
-(8,2,1),
-(9,1,1),
-(10,2,2),
-(1,3,10),
-(2,4,6),
-(3,3,2),
-(4,4,3),
-(5,3,4),
-(6,4,5),
-(7,3,2),
-(8,4,1),
-(9,3,1),
-(10,4,2);
+(1,1,10, "Shelf 1"),
+(2,2,6, "Shelf 2"),
+(3,1,2, "Drawer 1"),
+(4,2,3, "Drawer 2"),
+(5,1,4, "Shelf 3"),
+(6,2,5, "Shelf 4"),
+(7,1,2, "Shelf 5"),
+(8,2,1, "Drawer 3"),
+(9,1,1, "Drawer 4"),
+(10,2,2, "Drawer 5"),
+(1,3,10, "Drawer 6"),
+(2,4,6, "Drawer 7"),
+(3,3,2, "Shelf 6"),
+(4,4,3, "Shelf 7"),
+(5,3,4, "Drawer 4"),
+(6,4,5, "Shelf 3"),
+(7,3,2, "Shelf 3"),
+(8,4,1, "Drawer 3"),
+(9,3,1, "Drawer 3"),
+(10,4,2, "Drawer 3");
