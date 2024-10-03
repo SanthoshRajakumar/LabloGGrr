@@ -1,0 +1,309 @@
+/*@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  font-size: 10px;
+  --heading-height: 30em;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    min-height: 100vh;
+    background-color: rgb(224,204,200);
+    margin-top: 40px;
+}
+
+header {
+  position: fixed;
+  height: 50px;
+  left: 0;
+  top: 0;
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center; 
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+}
+
+/*
+header::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 5em;
+  width: 100%;
+  height: calc(var(--heading-height) + 10em);
+  z-index: -1;
+  background: 
+    linear-gradient(rgba(92, 90, 90, 0), rgba(152, 146, 146, 0.6)),
+    url("header.svg design.svg"), no-repeat center / cover;
+  background-size: cover;
+  border-bottom: .2em solid #fff;
+}*/
+
+.sample-header {
+  position: fixed;
+  left: 0;
+  top: 0px;
+  width: 100%;
+  background-image: url("images/header.svg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.sample-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(128, 17, 0);
+  opacity: 0.1;
+}
+
+.sample-header-section {
+  position: relative;
+  padding: 10% 0 5%;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  /*font-family: "Montserrat", sans-serif;*/
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+}
+
+.sample-section-wrap {
+  position: relative;
+  background-color: white;
+}
+.sample-section {
+  position: relative;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 40px;
+}
+
+.footer {
+  background-color: white;
+  color:#556B2F;
+  padding: 10px;
+  text-align: center;
+  margin-top: 100px;
+}
+.footer a {
+  color: #556B2F;
+  text-decoration: none;
+  margin: 0 10px;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Large LabbLoGGr header*/
+h1 {
+  font-size: 90px;
+  font-weight: 700;
+  letter-spacing: 8px;
+  /*padding: 10rem 0 0 4.5rem;*/
+  text-shadow: .022em .022em .022em rgb(128, 17, 0);
+  color: rgb(255, 255, 255);
+}
+
+/* Headers like: ABout labbloggr, who are we, we want to hear from you */
+h2 {
+  font-weight: 500;
+  font-size: 50px;
+  color: rgb(128, 17, 0);
+  padding-left: 20px; /* Adjust the left padding */
+    padding-right: 20px; /* Adjust the right padding */
+}
+
+/* FAQ */
+h3 {
+  font-size: 25px;
+  color: rgb(128, 17, 0);
+}
+
+/* Footer text */
+h4 {
+  font-size: 15px;
+  color: rgb(128, 17, 0);
+  font-weight: lighter;
+}
+
+/*
+main {
+  padding: calc(var(--heading-height) + 1.5vw) 4em 0;
+}*/
+
+p {
+    font-size: 20px;
+    /*margin-bottom: 1.5em;*/
+    color: rgb(128, 17, 0);
+}
+
+.button {
+  /*background-color: #ffffff;*/
+  background-color: transparent;
+  border-radius: 100px;
+  /*box-shadow: rgba(215, 158, 131, 0.048) 0 -25px 18px -14px inset,rgba(187, 89, 44, 0.06) 0 1px 2px,rgba(187, 99, 44, 0.053) 0 2px 4px,rgba(187, 118, 44, 0.15) 0 4px 8px,rgba(187, 84, 44, 0.15) 0 8px 16px,rgba(187, 99, 44, 0.15) 0 16px 32px;*/
+  color: rgb(128, 17, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Corporative', sans-serif;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:hover {
+  box-shadow: rgba(60, 44, 35, 0.35) 0 -25px 18px -14px inset,rgba(187, 99, 44, 0.25) 0 1px 2px,rgba(187, 101, 44, 0.25) 0 2px 4px,rgba(187, 134, 44, 0.25) 0 4px 8px,rgba(187, 94, 44, 0.25) 0 8px 16px,rgba(187, 99, 44, 0.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.button2{
+  /*background-color: #ffffff;*/
+  background-color: transparent;
+  border-radius: 100px;
+  /*box-shadow: rgba(215, 158, 131, 0.048) 0 -25px 18px -14px inset,rgba(187, 89, 44, 0.06) 0 1px 2px,rgba(187, 99, 44, 0.053) 0 2px 4px,rgba(187, 118, 44, 0.15) 0 4px 8px,rgba(187, 84, 44, 0.15) 0 8px 16px,rgba(187, 99, 44, 0.15) 0 16px 32px;*/
+  color: rgb(128, 17, 0);
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Corporative', sans-serif;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 250ms;
+  border: 0;
+  font-size: 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  letter-spacing: 3px;
+}
+
+.button2:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(128, 17, 0);
+    box-shadow: rgba(60, 44, 35, 0.35) 0 -25px 18px -14px inset,rgba(187, 99, 44, 0.25) 0 1px 2px,rgba(187, 101, 44, 0.25) 0 2px 4px,rgba(187, 134, 44, 0.25) 0 4px 8px,rgba(187, 94, 44, 0.25) 0 8px 16px,rgba(187, 99, 44, 0.25) 0 16px 32px;
+}
+
+.box{
+    width: 325px;
+    height: 200px;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #f5f3ee;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    align-content: space-around;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
+
+.box img{
+    width: 25%;
+    height: auto; 
+    max-height: 200px; 
+}
+
+.box p {
+    font-size: 16px; /* Adjusted font size for readability */
+}
+
+
+.box1{
+    width: 700px;
+    height: 200px;
+    padding: 15px;
+    border-radius: 25px;
+    background-color: #ffffff;
+    align-content: space-around;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+}
+
+label, input[type="text"], input[type="password"]{
+    font-size: 20px; /* consistent font size */
+    color: rgb(62, 11, 11); /* consistent color */
+    font-family: 'Corporative', sans-serif; /* ensures font consistency */
+}
+  
+input[type="text"], input[type="password"] {
+    padding: 0.5em; /* comfortable text entry */
+    margin-bottom: 30px;
+    border: 1px solid #ccc; /* subtle border */
+    display: block; /* ensures inputs do not line up inline */
+    width: 90%; /* responsive width */
+}
+
+
+table {
+  border: 100px;
+  width: 100%; /* Make the table expand to fit the container */
+  /*border-collapse: collapse; /* Remove spaces between cells */
+  background-color: #eae6d8; /* Light background color for the table */
+}
+
+th {
+  background-color: rgb(62, 11, 11);
+  color: white; /* White text color */
+  padding: 10px; /* Padding for spacing */
+  text-align: center; /* Center-align text */
+  vertical-align: middle;
+  border: 1px solid #ddd; /* Border around headers */
+  font-size: 18px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  border: 1px solid #ddd;;
+  font-size: 16px;
+  color: rgb(62, 11, 11);
+}
+
+.div1{
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+/* For space between contant and  initial header + short text. Ex: FAQ header and text, contact header and text*/
+.div2{
+    margin-bottom: 130px;
+}
+
+.div_login{
+    width: 700px;
+    height: 200px;
+    padding-left: 500px; /* Adjust the left padding */
+    padding-right: 20px; /* Adjust the right padding */
+}
+
+address{
+  font-size: 20px;
+  color: rgb(128, 17, 0); 
+  font-style: normal;
+  font-weight: 700;
+}

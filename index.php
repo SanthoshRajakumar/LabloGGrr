@@ -1,36 +1,41 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="style_.css">
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<body>
+
+<div class="sample-header">
+  <div class="sample-header-section">
+    <h1>LabLoGGr</h1>
+    <h2></h2>
+  </div>
+</div>
+
+<div class="sample-section-wrap">
+  <div class="sample-section">
 
 <header>
-    <form action="index.php" method="GET">
-      <button type="submit" class="button">HOME</button>
+<form action="index.php" method="GET">
+      <button type="submit" class="button2">HOME</button>
     </form>
-
     <form action="about.php" method="GET">
-      <button type="submit" class="button">ABOUT</button>
+      <button type="submit" class="button2">ABOUT</button>
     </form>
-
-    <h1>LabLoGGr</h1>
-
     <form action="faq.php" method="GET">
-      <button type="submit" class="button">FAQ</button>
+      <button type="submit" class="button2">FAQ</button>
     </form>
-
     <form action="contact.php" method="GET">
-      <button type="submit" class="button">CONTACT</button>
+      <button type="submit" class="button2">CONTACT</button>
     </form>
-
 </header>
 
-<body>
-<main>
 <div class="div1">
     <div class="box" id="box1">
         <img src="images/PastedGraphic-1.png" alt="Image 1">
@@ -38,14 +43,13 @@
     </div>
     <div class="box">
         <img src="images/PastedGraphic-2.png" alt="Image 2">
-        <p>Maximize the hands-on learning with more time on the actual tasks. Our product ensures students spend their session time there it should.</p>
+        <p>Maximize hands-on learning with more time on labs and tasks. Our product ensures students spend their session time there it should.</p>
     </div>
     <div class="box">
         <img src="images/PastedGraphic-3.png" alt="Image 3">
         <p>Our system keeps materials organized and minimizes material management, so teachers can focus on educating. </p>
     </div>
 </div>
-
 <!-- 
     <h1>Information Management Systems 1DL471</h1>
 
@@ -58,15 +62,9 @@
 <div class="div1">
     <!-- Form for Login -->
     <form method="get" action="login_page.php">
-        <button type="submit" class="button">Login</button>
+        <button type="submit" class="button2">Login here</button>
     </form>
 </div>
-
-</body>
-</html>
-
-
-
 
     <div class="login"></div>
         <!--Form for Teacher and Student Login -->
@@ -87,7 +85,14 @@
         }
     }
     ?>
-</main>
+
+<div class="footer">
+    <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
+</div>
+
+<script src="java.js">
+</script>
+
 </body>
 </html>
->>>>>>> a9daaeeaf4f0c961320043fa57ebe9b56db700a0
+
