@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include 'dopen.php';
+include '../dopen.php';
 if (!$link) { die("HELVETE: " . mysqli_connect_error());}
 ?> 
 
@@ -47,5 +47,5 @@ if (!$link) { die("HELVETE: " . mysqli_connect_error());}
 </html>
 
 <?php
-include "dclose.php";
+include "../dclose.php";
 ?>

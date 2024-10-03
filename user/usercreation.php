@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'dopen.php';
+include '../dopen.php';
 if (!$link) { 
     die("HELVETE: " . mysqli_connect_error());
 }
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<h1>The user was created!</h1>";
         
         // Stäng anslutningen innan omdirigering
-        include "dclose.php";
+        include "../dclose.php";
 
         // Omdirigera till YouTube-länken
         header("Location: https://www.youtube.com/watch?v=v7ScGV5128A");
