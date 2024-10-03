@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
+    <title>Sign in</title>
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
     <!-- Include jQuery library -->
@@ -39,7 +39,7 @@
     </form>
 </header>
 
-<h2>Login here</h2>
+<h2>Sign in here</h2>
 <div class="div_login">
 <form action="/login/login.php" method="POST">
     <label for="username"><b>Username</b></label>
