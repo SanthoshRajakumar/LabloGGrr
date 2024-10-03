@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page</title>
+    <title>Contact Page</title>
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
     <!-- Include jQuery library -->
@@ -26,38 +26,36 @@
 
   <header>
 <form action="index.php" method="GET">
-      <button type="submit" class="button">HOME</button>
+      <button type="submit" class="button2">HOME</button>
     </form>
     <form action="about.php" method="GET">
-      <button type="submit" class="button">ABOUT</button>
+      <button type="submit" class="button2">ABOUT</button>
     </form>
     <form action="faq.php" method="GET">
-      <button type="submit" class="button">FAQ</button>
+      <button type="submit" class="button2">FAQ</button>
     </form>
     <form action="contact.php" method="GET">
-      <button type="submit" class="button">CONTACT</button>
+      <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
 
-
-
+<div class="div2">
 <h2> We want to hear from you!</h2>
   <p>Whether you have questions, feedback, or just want to chat, we are here to help! Don’t hesitate to reach out—we're just a message away and excited to assist you!</p>
-  <p text-decoration="underlined">info@labbloggr.com</p>
-  <p>Tel +46 123 45 67</p>
-<address>
+</div>
+
+  <p style="text-decoration: underline;">info@labloggr.com</p>
+  <p>Tel <span style="text-decoration: underline;">+46 123 45 67</span></p>
+<p>
   Lägerhyddsvägen 1 <br>
   752 37 Uppsala <br>
   Sweden
-</address>
+</p>
 
-  <p>If you are already a client and need help, reach out to support@mazemap.com.</p>
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos dolor accusamus neque laborum atque accusantium perspiciatis, in illo itaque assumenda totam. Facilis, voluptatum ipsum excepturi similique facere unde quos necessitatibus quia culpa
-    eligendi consequuntur vero quas eum dolorem voluptates laboriosam? Dolor neque quas minus numquam laboriosam magni voluptatem enim eveniet.</p>
-
+<p>If you are already a client and need help, reach out to <span style="text-decoration: underline;"> support@labloggr.com.</span></p>
 
 <div class="footer">
-  <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
+  <h4> &copy; 2024 LabLoGGr | Privacy policy | Terms & Condition </h4>
 </div>
 
 <script src="java.js">
