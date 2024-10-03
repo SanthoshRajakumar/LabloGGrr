@@ -50,24 +50,27 @@
         <p>Our system keeps materials organized and minimizes material management, so teachers can focus on educating. </p>
     </div>
 </div>
-<!-- 
-    <h1>Information Management Systems 1DL471</h1>
 
-    <div class="about"></div>
-        <h3>ABOUT</h3>
-        <p>BLA BLA BLA...</p>
-    </div>
--->
+<div class="div_login">
+    <h2>Enter student key here: </h2>
+    <form action="/login/login.php" method="POST">
+        <input type="text" placeholder="Enter student key" name="studentkey" required/><br />
+    <button type="submit" class="button">Enter</button>
+</form>
+</div>
 
 <div class="div1">
     <!-- Form for Login -->
+    <h3>Teacher or TA?</h3>
     <form method="get" action="login_page.php">
-        <button type="submit" class="button2">Login here</button>
+        <button type="submit" class="button">Login here</button>
     </form>
 </div>
 
+
+<!--
     <div class="login"></div>
-        <!--Form for Teacher and Student Login -->
+      
         <form method="post">
             <button type="submit" name="role" value="teacher">Teacher</button>
             <button type="submit" name="role" value="student">Student</button>
@@ -85,6 +88,7 @@
         }
     }
     ?>
+-->
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>

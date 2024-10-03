@@ -287,7 +287,7 @@ td {
   display: flex; 
   justify-content: space-around; 
   align-items: center;
-  margin-top: 20px;
+  margin-top: 40px;
   margin-bottom: 50px;
 }
 
@@ -297,10 +297,11 @@ td {
 }
 
 .div_login{
-    width: 700px;
-    height: 200px;
-    padding-left: 500px; /* Adjust the left padding */
-    padding-right: 20px; /* Adjust the right padding */
+    width: 70vw;
+    height: 18vw;
+    margin-top: 8vw;
+    padding-left: 10vw; /* Adjust the left padding */
+    padding-right: 10vw; /* Adjust the right padding */
 }
 
 address{
