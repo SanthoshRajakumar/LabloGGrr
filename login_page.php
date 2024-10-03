@@ -39,7 +39,8 @@
     </form>
 </header>
 
-
+<h2>Login here</h2>
+<div class="div_login">
 <form action="/login/login.php" method="POST">
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Enter username" name="username" required/><br />
@@ -47,8 +48,10 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter password" name="password" required /><br />
     
-    <button type="submit" class="button">Login</button>
+    <button type="submit" class="button2">Login</button>
 </form>
+</div>
+
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
