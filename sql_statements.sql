@@ -64,7 +64,7 @@ CREATE TABLE ProductLocation (
     PRIMARY KEY (ProductID, RoomID)
 );
 
-INSERT INTO People (Ssn, FirstName, LastName, UserName, Salt, HashCode)
+INSERT INTO People (FirstName, LastName, UserName, Salt, HashCode)
 VALUES 
 ("Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
 ("Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
