@@ -13,12 +13,12 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
     exit();
 }
 
-    $sql = "INSERT INTO ProductLocation (ProductID, RoomID, Quantity) VALUES (?, ?, ?)";
-    $stmt = $link->prepare($sql);
+$sql = "INSERT INTO ProductLocation (ProductID, RoomID, Quantity) VALUES (?, ?, ?)";
+$stmt = $link->prepare($sql);
 
-    $stmt->bind_param("sss", $_POST["prodID"], $_POST["room_id"], $_POST["quantity"]);
+$stmt->bind_param("sss", $_POST["prodID"], $_POST["room_id"], $_POST["quantity"]);
 
-    $result = $stmt->execute();
+$result = $stmt->execute();
 
 if ($result) {
     header('Location: inventory.php?room_id=' . $_POST["room_id"]);
