@@ -106,26 +106,70 @@ if ($access <= 2) {
     }
     echo "</tbody></table><br><br>";
 
+    
 
     # Table to enter new products.
     echo "<table border='1'>";
-    echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Confirm</th></tr></thead>";
+    echo "<thead><tr><th>Product</th><th>Quantity</th><th>Confirm</th></tr></thead>";
     echo "<tbody>";
 
-    echo "<form action='add_product.php' method='post'>";
+    echo "<form action='add_product_to_location.php' method='post'>";
     echo "<tr>";
-    echo "<td><input type='text' name='prodName'></td>";
-    echo "<td><input type='text' name='volume'></td>";
-    echo "<td><input type='text' name='mass'></td>";
-    echo "<td><input type='text' name='pieces'></td>";
-    echo "<td><input type='text' name='quantity'></td>";
+    echo "<td><select name='prodID'>";
+
+    $sql = "SELECT ID, ProductName FROM Product";
+    $stmt = $link->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = $result->fetch_assoc();
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<option value=" . $row["ID"] . ">" . $row["ProductName"] . "</option>";
+        }
+    }
+
+    echo "</select></td>";
+    echo "<td><input type='number' name='quantity'></td>";
+    echo "<input type='hidden' value='" . $roomID . "' name='room_id'>";
     echo "<td><input type='submit' value='Enter product'></td>";
-    echo "<input type='hidden' value='" . $roomID . "' name='room_id'></form></td>";
+    echo "</form></td>";
 
     echo "</tr>";
     echo "</form>";
 
     echo "</tbody></table>";
+
+
+    # Garbage bad nono-use.
+    /*echo "<form action='add_product.php' method='post'>";
+    echo "<tr>";
+    echo "<td><select name='prodType'>";
+
+    $sql = "SELECT ID, ProductType FROM ProductType";
+    $stmt = $link->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = $result->fetch_assoc();
+    
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<option value=" . $row["ID"] . ">" . $row["ProductType"] . "</option>";
+        }
+    }
+
+    echo "</select></td>";
+    echo "<td><input type='text' name='prodName'></td>";
+    echo "<td><input type='number' name='volume'></td>";
+    echo "<td><input type='number' name='mass'></td>";
+    echo "<td><input type='number' name='pieces'></td>";
+    echo "<td><input type='number' name='quantity'></td>";
+    echo "<td><input type='submit' value='Enter product'></td>";
+    echo "<input type='hidden' value='" . $roomID . "' name='room_id'></form></td>";*/
 
 }
 # Reduce/edit only.
