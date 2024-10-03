@@ -12,7 +12,6 @@
 </head>
 <body>
 
-
 <div class="sample-header">
   <div class="sample-header-section">
     <h1>LabLoGGr</h1>
@@ -52,7 +51,6 @@
 </form>
 </div>
 
-
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
 </div>
@@ -61,5 +59,3 @@
 </script>
 </body>
 </html>
-
-
