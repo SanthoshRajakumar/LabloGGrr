@@ -245,18 +245,24 @@ p {
 }
 
 label, input[type="text"], input[type="password"]{
-    font-size: 20px; /* consistent font size */
+    font-size: 1.7vw; 
     color: rgb(62, 11, 11); /* consistent color */
     font-family: 'Corporative', sans-serif; /* ensures font consistency */
 }
   
 input[type="text"], input[type="password"] {
-    padding: 0.5em; /* comfortable text entry */
-    margin-bottom: 30px;
+    padding: 0.7em; /* comfortable text entry */
+    margin-bottom: 0.8vw;
     border: 1px solid #ccc; /* subtle border */
     display: block; /* ensures inputs do not line up inline */
     width: 90%; /* responsive width */
 }
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 2px solid rgb(128, 17, 0); /* Change the border color */
+  outline: none; /* Removes the default blue outline */
+  box-shadow: 0 0 5px rgba(128, 17, 0, 0.5); /* Optional: add a subtle glow effect */
+}
+
 
 
 table {
@@ -305,6 +311,7 @@ td {
   align-items: center;
   padding-left: 20vw; /* Adjust the left padding */
   padding-right: 20vw; /* Adjust the right padding */
+  padding-top: 5vw;
   margin-top: 10vw;
 
 }
