@@ -59,7 +59,7 @@
 </form>
 </div>
 
-<div class="div1">
+<div class="div3">
     <!-- Form for Login -->
     <h3>Teacher or TA?</h3>
     <form method="get" action="login_page.php">

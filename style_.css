@@ -118,10 +118,11 @@ h1 {
 /* Headers like: ABout labbloggr, who are we, we want to hear from you */
 h2 {
   font-weight: 500;
-  font-size: 50px;
+  /*font-size: 50px;*/
+  font-size: 5vw;
   color: rgb(128, 17, 0);
   padding-left: 20px; /* Adjust the left padding */
-    padding-right: 20px; /* Adjust the right padding */
+  padding-right: 20px; /* Adjust the right padding */
 }
 
 /* FAQ */
@@ -143,7 +144,7 @@ main {
 }*/
 
 p {
-    font-size: 20px;
+    font-size: 1vw;
     /*margin-bottom: 1.5em;*/
     color: rgb(128, 17, 0);
 }
@@ -203,8 +204,9 @@ p {
 }
 
 .box{
-    width: 325px;
-    height: 200px;
+    /*width: 325px;*/
+    width: 20vw;
+    height: 13vw;
     padding: 15px;
     border-radius: 25px;
     background-color: #f5f3ee;
@@ -218,13 +220,13 @@ p {
 }
 
 .box img{
-    width: 25%;
+    width: 7vw;
     height: auto; 
     max-height: 200px; 
 }
 
 .box p {
-    font-size: 16px; /* Adjusted font size for readability */
+    font-size: 1.5vw; /* Adjusted font size for readability */
 }
 
 
@@ -287,13 +289,23 @@ td {
   display: flex; 
   justify-content: space-around; 
   align-items: center;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
 }
 
 /* For space between contant and  initial header + short text. Ex: FAQ header and text, contact header and text*/
 .div2{
     margin-bottom: 130px;
+}
+
+/* For index.php Teacher or TA? --> Login here */
+.div3{
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center;
+  padding-left: 30vw; /* Adjust the left padding */
+  padding-right: 30vw; /* Adjust the right padding */
+
 }
 
 .div_login{
