@@ -9,8 +9,12 @@ CREATE TABLE People(
     Active BOOLEAN DEFAULT TRUE
 );
 
-CREATE UNIQUE INDEX ix_people
-ON People (UserName, Salt);
+CREATE UNIQUE INDEX ix_username
+ON People (UserName);
+
+CREATE UNIQUE INDEX ix_salt
+ON People (Salt);
+
 
 CREATE TABLE Roles(
     ID INT AUTO_INCREMENT PRIMARY KEY,
