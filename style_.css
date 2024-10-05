@@ -92,9 +92,10 @@ header::before {
 .footer {
   background-color: white;
   color:#556B2F;
-  padding: 10px;
+  padding: 50px;
   text-align: center;
-  margin-top: 100px;
+  /*margin-top: 100px;*/
+  margin-top: 10vw;
 }
 .footer a {
   color: #556B2F;
@@ -132,7 +133,8 @@ h3 {
 
 /* Footer text */
 h4 {
-  font-size: 15px;
+  /*font-size: 15px;*/
+font-size: 1.5vw;
   color: rgb(128, 17, 0);
   font-weight: lighter;
 }
