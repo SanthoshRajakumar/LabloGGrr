@@ -2,10 +2,10 @@
 session_start();
 include '../dopen.php';
 
-//$newUserID = $_SESSION['newUserID'];
-//$newUserName = $_SESSION['newUserName'];
-//$newUserPassword = $_SESSION['newUserPassword'];
-//$roleID = $_SESSION['roleID'];
+$newUserID = $_SESSION['newUserID'];
+$newUserName = $_SESSION['newUserName'];
+$newUserPassword = $_SESSION['newUserPassword'];
+$roleID = $_SESSION['roleID'];
 
 $sql = "SELECT ID, RoomName FROM Rooms WHERE ID NOT IN(SELECT R.ID AS RoomID FROM Access A
         INNER JOIN Rooms R ON R.ID = A.RoomID
@@ -19,8 +19,6 @@ $rooms = $stmt -> get_result();
 $sql = "SELECT * FROM AccessLevel";
 $accesslevel = $link -> query($sql);
 
-$newUserID = 2;
-
 $sql = "SELECT R.ID AS RoomID, R.RoomName, AL.ID AS AccessID, AL.AccessLevel FROM Access A
         INNER JOIN Rooms R ON R.ID = A.RoomID
         INNER JOIN AccessLevel AL ON AL.ID = A.AccessID
@@ -30,9 +28,6 @@ $stmt = $link->prepare($sql);
 $stmt -> bind_param('s', $newUserID);
 $stmt -> execute();
 $result = $stmt -> get_result();
-
-$sql = ""
-
 
 if ($result->num_rows > 0) {
     echo '<table><tr><th>Room</th><th>Access level</th></tr>';
@@ -47,21 +42,26 @@ if ($result->num_rows > 0) {
 <button class="btn" onclick="showAddForm()">Add</button>
 
 <div id="addAccess" class="form-container">
-    <h3>My Form</h3>
-    <form>
-    Genre: <select name = "mgenreid">  <!-- Do not need "type" since options are predefined -->
+    <h3>Edit access</h3>
+    <form action="./backend/create_account.php" method="POST">
+    Room: <select name = "room">
         <?php
         if ($rooms -> num_rows >0) {
-            while ($row = $result -> fetch_assoc()){
-                echo "<option value = '" . $row["gid"] . "'>" . $row['mgenre'] . "</option>";
+            while ($row = $rooms -> fetch_assoc()){
+                echo "<option value = '" . $row["RoomID"] . "'>" . $row['RoomName'] . "</option>";
             }
         }
         ?>
     </select>
-        <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br><br>
+    Access Level: <select name="accessLevel">
+        <?php
+        if ($accesslevel->num_rows > 0) {
+            while ($row = $accesslevel->fetch_assoc()) {
+                echo "<option value='" . $row["ID"] . "'>" . $row['AccessLevel'] . "</option>";
+            }
+        }
+        ?>
+    </select>
         <input type="submit" value="Submit">
     </form>
 </div>
