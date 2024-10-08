@@ -4,14 +4,13 @@
 # generell function for att hantera fel som kommer från databas
 
 # Connect to database
-include '../dopen.php';
+include '../../dopen.php';
 include 'functions.php';
 session_start();
 
 $fname = $_POST['fname'];
 $lname= $_POST['lname'];
 $email = $_POST['email'];
-$ssn = $_POST['ssn'];
 $roleID = $_POST['roleid'];
 $validated = false;
 
@@ -20,7 +19,7 @@ while (!$validated){
     $salt = generateHexSalt();
 
     # Validate username and salt
-    $sql = "SELECT COUNT(*) FROM People WHERE UserName = ? AND Salt = ?";
+    $sql = "SELECT COUNT(*) FROM People WHERE UserName = ? OR Salt = ?";
     $stmt = $link->prepare($sql);
     $stmt -> bind_param("ss", $username, $salt);
     $stmt->execute();
@@ -31,15 +30,26 @@ while (!$validated){
     if ($count === 0) {
         $password = generatePassword();
         $hashcode = md5($salt . $password . $salt);
-        $sql = "INSERT INTO People (Ssn, FirstName, LastName, Email, UserName, Salt, HashCode) VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO People (FirstName, LastName, Email, UserName, Salt, HashCode) VALUES (?,?,?,?,?,?)";
         $stmt = $link->prepare($sql);
-        $stmt->bind_param("sssssss", $ssn, $fname, $lname, $email, $username, $salt, $hashcode);
-        $result = $stmt->execute();
+        $stmt->bind_param("ssssss", $fname, $lname, $email, $username, $salt, $hashcode);
+        $stmt->execute();
         $validated = true;
     } 
 }
 
-$message = "the new account: " . $username . "with the password: " . $password . " has been created";
-$_SESSION['message'] = $message;
-header("Location: ./new_account.php");
+$sql = "SELECT ID FROM People WHERE UserName = ? AND Salt = ?";
+$stmt = $link->prepare($sql);
+$stmt->bind_param("ss", $username, $salt);
+$stmt->execute();
+$stmt->bind_result($userID); 
+$stmt->fetch();
+$stmt->free_result();
+
+$_SESSION['newUserID'] = $userID;
+$_SESSION['newUserName'] = $username;
+$_SESSION['newUserPassword'] = $password;
+$_SESSION['roleID'] = $roleID;
+
+header("Location: ../edit_access.php");
 ?>
