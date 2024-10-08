@@ -1,6 +1,7 @@
 <?php
-include 'dopen.php';
 session_start();
+include 'dopen.php';
+
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
 $_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
@@ -8,13 +9,27 @@ $_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
 if (!$_SESSION["userID"]) {
     echo "<h1>Oopsie! You should probably log in first.</h1>";
     echo "<a href=" . '"login_page.php"' . ">Go here!</a>";
+    exit();
 }
 else {
 $sql = "SELECT ID AS RoomID, RoomName
         FROM Rooms
         INNER JOIN Access ON Access.RoomID = ID
-        WHERE Access.PeopleID =" . $_SESSION["userID"]; // Fixade SQL-fråga
-$result = $link->query($sql); 
+        WHERE Access.PeopleID = ?"; // Fixade SQL-fråga
+$stmt = $link->prepare($sql);
+$stmt -> bind_param("i", $_SESSION["userID"]);
+$stmt -> execute();
+$result = $stmt -> get_result(); 
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo "<h1>Welcome</h1>";}
+
+    }
+    else { echo "<h1>aaaw man you got no rooms</h1>";
+          
+        }
+}
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +91,7 @@ if ($result && $result->num_rows > 0) {
 } else {
     echo "<p style='text-align: center;'>0 results</p>";
 }
-}
+
 include 'dclose.php';
 
 ?>
