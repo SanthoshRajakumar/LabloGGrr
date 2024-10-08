@@ -16,14 +16,14 @@ $mail->Username = "labloggr@gmail.com";
 $mail->Password = "jvyj tbnr tuxz yirj"; //labloggr123#
 $mail->SMTPSecure = 'tls'; 
 $mail->Port=587;
-$mail->setFrom("labloggr@gmail.com", "LabLoGGr");
+$mail->setFrom("noreply@labloggr.com", "LabLoGGr");
 $mail->addAddress("sara_1022@hotmail.com", "Sara");
 $mail->addReplyTo("labloggr@gmail.com", "LabLoGGr");
 $mail->isHTML(false);
 $mail->Subject = 'MailMail';
 $mail->Body = "hejhejhej";
 $mail->AltBody = "AltAltAlt";
-$mail->SMTPDebug = 3; // Enable verbose debug output
+//$mail->SMTPDebug = 3; // Enable verbose debug output
 
 
 try {
