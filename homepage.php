@@ -49,7 +49,7 @@ session_start();
   <form action="room.php" method="GET">
     <button type="submit" class="button">Rooms</button>
   </form>
-  <form action="/user/create_user.php" method="GET">
+  <form action="/account/new_account.php" method="GET">
     <button type="submit" class="button">Create user</button>
   </form>
 </div>
