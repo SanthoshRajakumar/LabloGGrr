@@ -9,9 +9,9 @@ $newUserID = $_SESSION['newUserID'];
 $roleID = $_SESSION['roleID'];
 
 $sql = "INSERT INTO Access (PeopleID, RoleID, RoomID, AccessID) VALUES (?,?,?,?)";
-    $stmt = $link->prepare($sql);
-    $stmt->bind_param("iiii", $newUserID, $roleID, $room, $accessLevel);
-    $stmt->execute();
+$stmt = $link->prepare($sql);
+$stmt->bind_param("iiii", $newUserID, $roleID, $room, $accessLevel);
+$stmt->execute();
 
 header("Location: ../edit_access.php");
 ?>

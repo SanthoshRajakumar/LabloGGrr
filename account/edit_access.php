@@ -30,9 +30,18 @@ $stmt -> execute();
 $result = $stmt -> get_result();
 
 if ($result->num_rows > 0) {
-    echo '<table><tr><th>Room</th><th>Access level</th></tr>';
+    echo '<table><tr><th>Room</th><th>Access Level</th><th>Action</th></tr>';
     while($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["RoomName"] . "</td><td>" . $row["AccessLevel"] . "</td></tr>";
+        echo "<tr>
+                <td>" . htmlspecialchars($row["RoomName"]) . "</td>
+                <td>" . htmlspecialchars($row["AccessLevel"]) . "</td>
+                <td>
+                    <form action='./backend/delete_access.php' method='post' style='display:inline;'>
+                        <input type='hidden' name='accessID' value='" . htmlspecialchars($row["AccessID"]) . "'>
+                        <input type='submit' value='Delete'>
+                    </form>
+                </td>
+              </tr>";
     }
     echo '</table>';
 } else {
