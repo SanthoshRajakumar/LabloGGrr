@@ -43,12 +43,12 @@ if ($result->num_rows > 0) {
 
 <div id="addAccess" class="form-container">
     <h3>Edit access</h3>
-    <form action="./backend/create_account.php" method="POST">
+    <form action="./backend/add_access.php" method="POST">
     Room: <select name = "room">
         <?php
         if ($rooms -> num_rows >0) {
             while ($row = $rooms -> fetch_assoc()){
-                echo "<option value = '" . $row["RoomID"] . "'>" . $row['RoomName'] . "</option>";
+                echo "<option value = '" . $row["ID"] . "'>" . $row['RoomName'] . "</option>";
             }
         }
         ?>
