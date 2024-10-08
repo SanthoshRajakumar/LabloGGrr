@@ -30,15 +30,20 @@ $stmt -> execute();
 $result = $stmt -> get_result();
 
 if ($result->num_rows > 0) {
-    echo '<table><tr><th>Room</th><th>Access Level</th><th>Action</th></tr>';
-    while($row = $result->fetch_assoc()) {
+    echo '<table><tr><th>Room</th><th>Access Level</th></tr>';
+    
+    while ($row = $result->fetch_assoc()) {
+        $roomName = htmlspecialchars($row["RoomName"]);
+        $accessLevel = htmlspecialchars($row["AccessLevel"]);
+        $accessID = htmlspecialchars($row["AccessID"]);
+
         echo "<tr>
-                <td>" . htmlspecialchars($row["RoomName"]) . "</td>
-                <td>" . htmlspecialchars($row["AccessLevel"]) . "</td>
+                <td>{$roomName}</td>
+                <td>{$accessLevel}</td>
                 <td>
                     <form action='./backend/delete_access.php' method='post' style='display:inline;'>
-                        <input type='hidden' name='accessID' value='" . htmlspecialchars($row["AccessID"]) . "'>
-                        <input type='submit' value='Delete'>
+                        <input type='hidden' name='accessID' value='{$accessID}'>
+                        <button type='submit'>Delete</button>
                     </form>
                 </td>
               </tr>";
@@ -47,6 +52,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "No current accesses";
 }
+
 ?>
 <button class="btn" onclick="showAddForm()">Add</button>
 
