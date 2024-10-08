@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
+    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png"> 
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
     <!-- Include jQuery library -->
@@ -14,7 +15,7 @@
 
 <div class="sample-header">
   <div class="sample-header-section">
-    <h1>LabLoGGr</h1>
+    <h1>LabLoGGr.</h1>
     <h2></h2>
   </div>
 </div>
@@ -47,7 +48,7 @@
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter password" name="password" required /><br />
     
-    <button type="submit" class="button2">Login</button>
+    <button type="submit" class="button">Login</button>
 </form>
 </div>
 

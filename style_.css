@@ -86,7 +86,7 @@ header::before {
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
-  padding: 40px;
+  padding: 8vw;
 }
 
 .footer {
@@ -94,7 +94,8 @@ header::before {
   color:#556B2F;
   padding: 10px;
   text-align: center;
-  margin-top: 100px;
+  /*margin-top: 100px;*/
+  margin-top: 10vw;
 }
 .footer a {
   color: #556B2F;
@@ -118,21 +119,22 @@ h1 {
 /* Headers like: ABout labbloggr, who are we, we want to hear from you */
 h2 {
   font-weight: 500;
-  font-size: 50px;
+  font-size: 5vw;
   color: rgb(128, 17, 0);
-  padding-left: 20px; /* Adjust the left padding */
-    padding-right: 20px; /* Adjust the right padding */
+  padding-left: 5vw; /* Adjust the left padding */
+  padding-right: 5vw; /* Adjust the right padding */
 }
 
 /* FAQ */
 h3 {
-  font-size: 25px;
+  font-size: 2vw;
   color: rgb(128, 17, 0);
 }
 
 /* Footer text */
 h4 {
-  font-size: 15px;
+  /*font-size: 15px;*/
+font-size: 1.5vw;
   color: rgb(128, 17, 0);
   font-weight: lighter;
 }
@@ -143,7 +145,7 @@ main {
 }*/
 
 p {
-    font-size: 20px;
+    font-size: 1.5vw;
     /*margin-bottom: 1.5em;*/
     color: rgb(128, 17, 0);
 }
@@ -151,18 +153,19 @@ p {
 .button {
   /*background-color: #ffffff;*/
   background-color: transparent;
+  white-space: nowrap; /* Makes the text stay on one row */
   border-radius: 100px;
-  border: 2px solid rgb(128, 17, 0);
+  border: 0.2vw solid rgb(128, 17, 0);
   /*box-shadow: rgba(215, 158, 131, 0.048) 0 -25px 18px -14px inset,rgba(187, 89, 44, 0.06) 0 1px 2px,rgba(187, 99, 44, 0.053) 0 2px 4px,rgba(187, 118, 44, 0.15) 0 4px 8px,rgba(187, 84, 44, 0.15) 0 8px 16px,rgba(187, 99, 44, 0.15) 0 16px 32px;*/
   color: rgb(128, 17, 0);
   cursor: pointer;
   display: inline-block;
   font-family: 'Corporative', sans-serif;
-  padding: 5px 20px;
+  padding: 0.5vw 1vw;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 21px;
+  font-size: 1.5vw;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -203,8 +206,9 @@ p {
 }
 
 .box{
-    width: 325px;
-    height: 200px;
+    /*width: 325px;*/
+    width: 20vw;
+    height: 13vw;
     padding: 15px;
     border-radius: 25px;
     background-color: #f5f3ee;
@@ -218,13 +222,13 @@ p {
 }
 
 .box img{
-    width: 25%;
+    width: 7vw;
     height: auto; 
     max-height: 200px; 
 }
 
 .box p {
-    font-size: 16px; /* Adjusted font size for readability */
+    font-size: 1.5vw; /* Adjusted font size for readability */
 }
 
 
@@ -243,18 +247,24 @@ p {
 }
 
 label, input[type="text"], input[type="password"]{
-    font-size: 20px; /* consistent font size */
+    font-size: 1.7vw; 
     color: rgb(62, 11, 11); /* consistent color */
     font-family: 'Corporative', sans-serif; /* ensures font consistency */
 }
   
 input[type="text"], input[type="password"] {
-    padding: 0.5em; /* comfortable text entry */
-    margin-bottom: 30px;
+    padding: 0.7em; /* comfortable text entry */
+    margin-bottom: 0.8vw;
     border: 1px solid #ccc; /* subtle border */
     display: block; /* ensures inputs do not line up inline */
     width: 90%; /* responsive width */
 }
+input[type="text"]:focus, input[type="password"]:focus {
+  border: 2px solid rgb(128, 17, 0); /* Change the border color */
+  outline: none; /* Removes the default blue outline */
+  box-shadow: 0 0 5px rgba(128, 17, 0, 0.5); /* Optional: add a subtle glow effect */
+}
+
 
 
 table {
@@ -287,8 +297,8 @@ td {
   display: flex; 
   justify-content: space-around; 
   align-items: center;
-  margin-top: 40px;
-  margin-bottom: 50px;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
 }
 
 /* For space between contant and  initial header + short text. Ex: FAQ header and text, contact header and text*/
@@ -296,10 +306,23 @@ td {
     margin-bottom: 130px;
 }
 
+/* For index.php Teacher or TA? --> Login here */
+.div3{
+  display: flex; 
+  justify-content: space-around; 
+  align-items: center;
+  padding-left: 20vw; /* Adjust the left padding */
+  padding-right: 20vw; /* Adjust the right padding */
+  padding-top: 5vw;
+  margin-top: 10vw;
+
+}
+
 .div_login{
     width: 70vw;
     height: 18vw;
     margin-top: 8vw;
+    margin-bottom: 10vw;
     padding-left: 10vw; /* Adjust the left padding */
     padding-right: 10vw; /* Adjust the right padding */
 }

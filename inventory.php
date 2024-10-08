@@ -11,6 +11,7 @@ include 'dopen.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
+    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
     <!-- Include jQuery library -->
@@ -21,7 +22,7 @@ include 'dopen.php';
 
 <div class="sample-header">
   <div class="sample-header-section">
-    <h1>LabLoGGr</h1>
+    <h1>LabLoGGr.</h1>
     <h2></h2>
   </div>
 </div>
@@ -132,7 +133,7 @@ if ($access <= 2) {
     }
 
     echo "</select></td>";
-    echo "<td><input type='number' name='quantity'></td>";
+    echo "<td><input type='number' min=0 name='quantity'></td>";
     echo "<input type='hidden' value='" . $roomID . "' name='room_id'>";
     echo "<td><input type='submit' value='Enter product'></td>";
     echo "</form></td>";

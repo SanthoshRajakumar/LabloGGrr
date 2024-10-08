@@ -10,6 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
+    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
     <!-- Include jQuery library -->
@@ -19,7 +20,7 @@ session_start();
 
 <div class="sample-header">
   <div class="sample-header-section">
-    <h1>LabLoGGr</h1>
+    <h1>LabLoGGr.</h1>
     <h2></h2>
   </div>
 </div>
@@ -48,7 +49,7 @@ session_start();
   <form action="room.php" method="GET">
     <button type="submit" class="button">Rooms</button>
   </form>
-  <form action="/user/create_user.php" method="GET">
+  <form action="/account/new_account.php" method="GET">
     <button type="submit" class="button">Create user</button>
   </form>
 </div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
+    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
     <!-- Include jQuery library -->
@@ -13,7 +14,7 @@
 
 <div class="sample-header">
   <div class="sample-header-section">
-    <h1>LabLoGGr</h1>
+    <h1>LabLoGGr.</h1>
     <h2></h2>
   </div>
 </div>
@@ -38,15 +39,15 @@
 
 <div class="div1">
     <div class="box" id="box1">
-        <img src="images/PastedGraphic-1.png" alt="Image 1">
+        <img src="images/PastedGraphic-2.png" alt="Image 1">
         <p>Lead students directly to what they need, so students can dive right into learning with the exact right equipment in hand.</p>
     </div>
     <div class="box">
-        <img src="images/PastedGraphic-2.png" alt="Image 2">
+        <img src="images/PastedGraphic-3.png" alt="Image 2">
         <p>Maximize hands-on learning with more time on labs and tasks. Our product ensures students spend their session time there it should.</p>
     </div>
     <div class="box">
-        <img src="images/PastedGraphic-3.png" alt="Image 3">
+        <img src="images/PastedGraphic-4.png" alt="Image 3">
         <p>Our system keeps materials organized and minimizes material management, so teachers can focus on educating. </p>
     </div>
 </div>
@@ -59,7 +60,7 @@
 </form>
 </div>
 
-<div class="div1">
+<div class="div3">
     <!-- Form for Login -->
     <h3>Teacher or TA?</h3>
     <form method="get" action="login_page.php">
