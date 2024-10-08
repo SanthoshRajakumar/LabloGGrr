@@ -11,6 +11,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $username = $_POST["username"];
     $password = $_POST["password"]; 
+
+  // Regex validation
+  $namePattern = "/^[a-zA-Z'-]+$/";  // Only letters, apostrophes, and hyphens for names
+  $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Email format
+  $usernamePattern = "/^[a-zA-Z0-9_]{3,15}$/";  // Alphanumeric, underscores, 3-15 characters
+  $passwordPattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/";  // At least 8 chars, 1 letter, 1 number, 1 special char
+
+  // Validate first name
+  if (!preg_match($namePattern, $firstName)) {
+      die("Invalid first name. Only letters, apostrophes, and hyphens are allowed.");
+  }
+
+  // Validate last name
+  if (!preg_match($namePattern, $lastName)) {
+      die("Invalid last name. Only letters, apostrophes, and hyphens are allowed.");
+  }
+
+  // Validate email
+  if (!preg_match($emailPattern, $email)) {
+      die("Invalid email format.");
+  }
+
+  // Validate username
+  if (!preg_match($usernamePattern, $username)) {
+      die("Invalid username. Must be 3-15 characters long and contain only letters, numbers, or underscores.");
+  }
+
+  // Validate password
+  if (!preg_match($passwordPattern, $password)) {
+      die("Invalid password. Must be at least 8 characters long, include at least one letter, one number, and one special character.");
+  }
     
     // Generera SALT och hash
     $salt = bin2hex(openssl_random_pseudo_bytes(25));
