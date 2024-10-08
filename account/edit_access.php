@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
                 <td>
                     <form action='./backend/delete_access.php' method='post' style='display:inline;'>
                         <input type='hidden' name='accessID' value='{$accessID}'>
-                        <button type='submit'>Delete</button>
+                        <button type='delete'>Delete</button>
                     </form>
                 </td>
               </tr>";
