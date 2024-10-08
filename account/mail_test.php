@@ -13,7 +13,7 @@ $mail->isSMTP();
 $mail->SMTPAuth = true;
 $mail->Host = "smtp.gmail.com";
 $mail->Username = "labloggr@gmail.com";
-$mail->Password = "labloggr123#";
+$mail->Password = "jvyj tbnr tuxz yirj"; //labloggr123#
 $mail->SMTPSecure = 'tls'; 
 $mail->Port=587;
 $mail->setFrom("labloggr@gmail.com", "LabLoGGr");
