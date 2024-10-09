@@ -68,12 +68,21 @@ if ($access == FALSE) {
     exit();
 }
 
+# Now with prepared statement!
 $roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
 $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces, ProductLocation.Quantity, Product.ID
         FROM Product
         INNER JOIN ProductLocation ON Product.ID = ProductLocation.ProductID 
-        WHERE ProductLocation.RoomID = $roomID";
-$result = $link->query($sql);
+        WHERE ProductLocation.RoomID = ?";
+
+$stmt = $link->prepare($sql);
+
+$stmt->bind_param("i", $roomID);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+
 if (!$result) {
     die("fan också: " . $link->error);
 }
