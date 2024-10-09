@@ -22,13 +22,12 @@ $stmt -> execute();
 $result = $stmt -> get_result(); 
 
 if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        echo "<h1>Welcome</h1>";}
+    
 
     }
-    else { echo "<h1>aaaw man you got no rooms</h1>";
+else { echo "<h1>aaaw man you got no rooms</h1>";
           
-        }
+    }
 }
 ?>
 
