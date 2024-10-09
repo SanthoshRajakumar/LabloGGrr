@@ -23,4 +23,29 @@ function generatePassword($length = 10) {
 function generateHexSalt($length = 16) {
     return bin2hex(random_bytes($length));
 }
+
+function sendEmail($toAddress, $subject, $body, $altBody) {
+    $mail = new PHPMailer(true);
+    $mail->isHTML(true);
+    $mail->isSMTP();
+    $mail->SMTPAuth = true;
+    $mail->Host = "smtp.gmail.com";
+    $mail->Username = "labloggr@gmail.com";
+    $mail->Password = "jvyj tbnr tuxz yirj"; //labloggr123#
+    $mail->SMTPSecure = 'tls'; 
+    $mail->Port=587;
+    $mail->setFrom("noreply@labloggr.com", "LabLoGGr");
+    $mail->addAddress($toAddress);
+    $mail->addReplyTo("labloggr@gmail.com", "LabLoGGr");
+    //$mail->isHTML(false);
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+    $mail->AltBody = $altBody;
+
+    try {
+        $mail->send();
+    } catch (Exception $e) {
+        echo "Message could not be sent Error:". $mail->ErrorInfo ."";}
+}
 ?>
+
