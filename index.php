@@ -92,7 +92,7 @@
 -->
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
 <script src="java.js">
