@@ -91,14 +91,13 @@ header::before {
 
 .footer {
   background-color: white;
-  color:#556B2F;
   padding: 10px;
   text-align: center;
   /*margin-top: 100px;*/
   margin-top: 10vw;
 }
 .footer a {
-  color: #556B2F;
+  color:rgb(128, 17, 0);
   text-decoration: none;
   margin: 0 10px;
 }
@@ -230,7 +229,6 @@ p {
 .box p {
     font-size: 1.5vw; /* Adjusted font size for readability */
 }
-
 
 .box1{
     width: 700px;
