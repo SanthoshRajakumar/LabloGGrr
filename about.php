@@ -61,8 +61,8 @@
   <p>By providing a structured and user-friendly system, we aim to eliminate bottlenecks, enhance collaboration, and bring clarity to university laboratory environments. LabLoGGr isn’t just about software; it’s about making research and learning more efficient, one lab at a time.</p>
   <p></p>
 
-<div class="footer">
-  <h4> &copy; 2024 LabbLoGGr | Privacy policy | Terms & Condition </h4>
+  <div class="footer">
+    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
 <script src="java.js">

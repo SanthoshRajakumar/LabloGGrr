@@ -56,7 +56,7 @@
 <p>If you are already a client and need help, reach out to <span style="text-decoration: underline;"> support@labloggr.com.</span></p>
 
 <div class="footer">
-  <h4> &copy; 2024 LabLoGGr | Privacy policy | Terms & Condition </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
 <script src="java.js">
