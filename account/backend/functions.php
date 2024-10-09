@@ -24,6 +24,13 @@ function generateHexSalt($length = 16) {
     return bin2hex(random_bytes($length));
 }
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;  
+use PHPMailer\PHPMailer\SMTP;
+
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
 function sendEmail($toAddress, $subject, $body, $altBody) {
     $mail = new PHPMailer(true);
     $mail->isHTML(true);
@@ -46,6 +53,5 @@ function sendEmail($toAddress, $subject, $body, $altBody) {
         $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent Error:". $mail->ErrorInfo ."";}
-}
-?>
+}?>
 
