@@ -239,7 +239,7 @@ echo "<tbody>";
 include 'dclose.php';
 ?>
 <!-- Back Button -->
-
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -263,12 +263,10 @@ include 'dclose.php';
             background-color: #708090; 
         }
     </style>
-</head>
-<body>
-    <!-- Back Button -->
-    <button class="button" onclick="window.location.href='room.php'">Back to Rooms</button>
-</body>
-</html>
+</head> -->
+
+<!-- Back Button -->
+<button class="button button-small" onclick="window.location.href='room.php'">Back to Rooms</button>
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>

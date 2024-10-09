@@ -81,7 +81,7 @@ if ($result && $result->num_rows > 0) {
                 <td>
                     <form action='inventory.php' method='get'>
                         <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
-                        <input type='submit' value='View Inventory'>
+                        <input type='submit' class='button button-small' value='View Inventory'>
                     </form>
                 </td>
               </tr>"; 
@@ -99,7 +99,7 @@ include 'dclose.php';
 
 
 <!-- Back Button -->
-
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -124,11 +124,10 @@ include 'dclose.php';
         }
     </style>
 </head>
-<body>
-    <!-- Back Button -->
-    <button class="button" onclick="window.location.href='homepage.php'">Back to Home</button>
-</body>
-</html>
+<body> -->
+
+
+<button onclick="window.location.href='homepage.php'" class="button button-small" >Back to Home</button>
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>

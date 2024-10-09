@@ -56,7 +56,7 @@
     <h2>Enter student key here: </h2>
     <form action="/login/login.php" method="POST">
         <input type="text" placeholder="Enter student key" name="studentkey" required/><br />
-    <button type="submit" class="button">Enter</button>
+    <button type="submit" class="button button-large">Enter</button>
 </form>
 </div>
 
@@ -64,7 +64,7 @@
     <!-- Form for Login -->
     <h3>Teacher or TA?</h3>
     <form method="get" action="login_page.php">
-        <button type="submit" class="button">Login here</button>
+        <button type="submit" class="button button-large">Login here</button>
     </form>
 </div>
 

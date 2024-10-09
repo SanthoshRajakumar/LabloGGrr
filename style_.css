@@ -150,21 +150,17 @@ p {
 }
 
 .button {
-  /*background-color: #ffffff;*/
   background-color: transparent;
   white-space: nowrap; /* Makes the text stay on one row */
   border-radius: 100px;
   border: 0.2vw solid rgb(128, 17, 0);
-  /*box-shadow: rgba(215, 158, 131, 0.048) 0 -25px 18px -14px inset,rgba(187, 89, 44, 0.06) 0 1px 2px,rgba(187, 99, 44, 0.053) 0 2px 4px,rgba(187, 118, 44, 0.15) 0 4px 8px,rgba(187, 84, 44, 0.15) 0 8px 16px,rgba(187, 99, 44, 0.15) 0 16px 32px;*/
   color: rgb(128, 17, 0);
   cursor: pointer;
   display: inline-block;
   font-family: 'Corporative', sans-serif;
-  padding: 0.5vw 1vw;
   text-align: center;
   text-decoration: none;
   transition: all 250ms;
-  font-size: 1.5vw;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -174,6 +170,16 @@ p {
     color: rgb(255, 255, 255);
     background-color: rgb(128, 17, 0);
     box-shadow: rgba(60, 44, 35, 0.35) 0 -25px 18px -14px inset,rgba(187, 99, 44, 0.25) 0 1px 2px,rgba(187, 101, 44, 0.25) 0 2px 4px,rgba(187, 134, 44, 0.25) 0 4px 8px,rgba(187, 94, 44, 0.25) 0 8px 16px,rgba(187, 99, 44, 0.25) 0 16px 32px;
+}
+
+.button-large{
+  padding: 0.5vw 1vw;
+  font-size: 1.4vw;
+}
+
+.button-small{
+  padding: 0.3vw 0.6vw;
+  font-size: 1vw;
 }
 
 /* Button 2 is the style of the buttons in the top header */
@@ -266,29 +272,35 @@ input[type="text"]:focus, input[type="password"]:focus {
 
 
 table {
-  border: 100px;
+  border: 150px;
   width: 100%; /* Make the table expand to fit the container */
-  /*border-collapse: collapse; /* Remove spaces between cells */
+  border-collapse: collapse; /* Remove spaces between cells */
   background-color: #eae6d8; /* Light background color for the table */
+  margin-bottom: 2vw;
 }
 
 th {
-  background-color: rgb(62, 11, 11);
+  background-color: rgb(128, 17, 0);
   color: white; /* White text color */
-  padding: 10px; /* Padding for spacing */
-  text-align: center; /* Center-align text */
+  padding: 1.5vw; 
+  text-align: center; 
   vertical-align: middle;
-  border: 1px solid #ddd; /* Border around headers */
-  font-size: 18px;
+  font-size: 1.5vw;
+  border: 2px solid rgb(128, 17, 0);
 }
 
 td {
   text-align: center;
   vertical-align: middle;
   padding: 5px;
-  border: 1px solid #ddd;;
-  font-size: 16px;
-  color: rgb(62, 11, 11);
+  border: 2px solid rgb(128, 17, 0);
+  font-size: 1.4vw;
+  color: rgb(128, 17, 0);
+}
+
+tr:hover {
+  /*background-color: coral;*/
+  background-color: rgba(115, 16, 10, 0.333);
 }
 
 .div1{

@@ -47,10 +47,10 @@ session_start();
   <div class="div1">
 <body>
   <form action="room.php" method="GET">
-    <button type="submit" class="button">Rooms</button>
+    <button type="submit" class="button button-large">Rooms</button>
   </form>
   <form action="/account/new_account.php" method="GET">
-    <button type="submit" class="button">Create user</button>
+    <button type="submit" class="button button-large">Create user</button>
   </form>
 </div>
 
