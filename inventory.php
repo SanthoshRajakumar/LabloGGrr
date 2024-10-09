@@ -127,8 +127,10 @@ if ($access <= 2) {
     echo "<tr>";
     echo "<td><select name='prodID'>";
 
-    $sql = "SELECT ID, ProductName FROM Product";
+    $sql = "SELECT Product.ID, Product.ProductName FROM Product WHERE Product.ID NOT IN (SELECT ProductLocation.ProductID FROM ProductLocation WHERE ProductLocation.RoomID = ?)";
     $stmt = $link->prepare($sql);
+
+    $stmt->bind_param("s", $roomID);
 
     $stmt->execute();
     $result = $stmt->get_result();
