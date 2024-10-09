@@ -22,7 +22,6 @@ $stmt -> execute();
 $result = $stmt -> get_result(); 
 
 if ($result->num_rows > 0) {
-    
 
     }
 else { echo "<h1>aaaw man you got no rooms</h1>";
