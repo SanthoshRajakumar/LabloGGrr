@@ -45,11 +45,11 @@ include 'dopen.php';
 </header>
 
 <?php
-
+# Gets first name of active user.
 $sql = "SELECT People.FirstName FROM People WHERE People.ID = ?";
 $stmt = $link->prepare($sql);
 
-$stmt->bind_param("s", $_SESSION["userID"]);
+$stmt->bind_param("s", $_SESSION["userID"]); // Binds parameters
 
 $stmt->execute();
 $result = $stmt->get_result();
@@ -65,9 +65,15 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
   <form action="room.php" method="GET">
     <button type="submit" class="button button-large">Rooms</button>
   </form>
-  <form action="/account/new_account.php" method="GET">
+
+<?php
+
+# Should check for role here, when this is implemented.
+  echo '<form action="/account/new_account.php" method="GET">
     <button type="submit" class="button button-large">Create user</button>
-  </form>
+  </form>';
+
+?>
 </div>
 
 <div class="footer">

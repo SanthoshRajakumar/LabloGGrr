@@ -28,9 +28,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;  
 use PHPMailer\PHPMailer\SMTP;
 
-require '../PHPMailer/src/Exception.php';
-require '../PHPMailer/src/PHPMailer.php';
-require '../PHPMailer/src/SMTP.php';
+require '../../PHPMailer/src/Exception.php';
+require '../../PHPMailer/src/PHPMailer.php';
+require '../../PHPMailer/src/SMTP.php';
 function sendEmail($toAddress, $subject, $body, $altBody) {
     $mail = new PHPMailer(true);
     $mail->isHTML(true);
