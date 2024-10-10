@@ -1,5 +1,6 @@
 <?php 
 session_start();
+include 'dopen.php';
 ?>
 
 <!-- ELSA --> 
@@ -43,7 +44,22 @@ session_start();
     </form>
 </header>
 
-<h2>Welcome XXX!</h2>
+<?php
+
+$sql = "SELECT People.FirstName FROM People WHERE People.ID = ?";
+$stmt = $link->prepare($sql);
+
+$stmt->bind_param("s", $_SESSION["userID"]);
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+$row = $result->fetch_assoc();
+
+
+echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
+?>
+
   <div class="div1">
 <body>
   <form action="room.php" method="GET">
@@ -64,3 +80,6 @@ session_start();
 </body>
 </html>
 
+<?php
+include 'dclose.php';
+?>
