@@ -110,7 +110,11 @@ if ($access <= 2) {
             <input type='number' min='0' value='" . $row['Quantity'] . "' name='quantNew'>
             <input type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
-            <input type='hidden' value='" . $roomID . "' name='room_id'></form></td>";
+            <input type='hidden' value='" . $roomID . "' name='room_id'>
+            </form><form action='remove_product_from_room.php' method='post'>
+            <input type='hidden' value='" . $roomID . "' name='room_id'>
+            <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
+            <input type='submit' value='Delete'></form></td>";
             echo "</tr>";
         }
     }
@@ -144,7 +148,7 @@ if ($access <= 2) {
     }
 
     echo "</select></td>";
-    echo "<td><input type='number' min=0 name='quantity'></td>";
+    echo "<td><input type='number' min=0 value=1 name='quantity'></td>";
     echo "<input type='hidden' value='" . $roomID . "' name='room_id'>";
     echo "<td><input type='submit' value='Enter product'></td>";
     echo "</form></td>";
