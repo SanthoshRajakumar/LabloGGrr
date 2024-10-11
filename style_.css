@@ -328,13 +328,42 @@ tr:hover {
 
 }
 
+/*
 .div_login{
     width: 70vw;
     height: 18vw;
     margin-top: 8vw;
     margin-bottom: 10vw;
-    padding-left: 10vw; /* Adjust the left padding */
-    padding-right: 10vw; /* Adjust the right padding */
+    padding-left: 10vw; 
+    padding-right: 10vw;
+}*/
+
+.div_login {
+  width: 70vw;
+  height: 18vw;
+  margin-top: 8vw;
+  margin-bottom: 10vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 94%;
+}
+
+.form-footer a {
+  color:rgb(128, 17, 0);
+  text-decoration: none;
+  font-size: 1.5vw;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
 }
 
 address{

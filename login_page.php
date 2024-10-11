@@ -47,8 +47,12 @@
             
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter password" name="password" required /><br />
+    <div class="form-footer">
+      <a href="some_file.php">Forgot your password?</a>
+      <button type="submit" class="button button-large">Login</button>
+    </div>
     
-    <button type="submit" class="button button-large">Login</button>
+    
 </form>
 </div>
 
