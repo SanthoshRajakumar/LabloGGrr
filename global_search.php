@@ -11,14 +11,28 @@ $globalSearchQuery = "
         ProductType.ProductType AS type
     FROM Product
     LEFT JOIN ProductType ON Product.ProductTypeID = ProductType.ID
-    WHERE Product.ProductName LIKE '%$searchQuery%'
+    WHERE Product.ProductName LIKE ?
 ";
 
+// Prepare the statement
+$stmt = mysqli_prepare($link, $globalSearchQuery);
+
+// Bind the search query with wildcards to the statement
+$searchParam = "%$searchQuery%";
+mysqli_stmt_bind_param($stmt, 's', $searchParam);
+
+
 // Execute the query
-$searchResult = mysqli_query($link, $globalSearchQuery);
+mysqli_stmt_execute($stmt);
+
+// Get the result
+$searchResult = mysqli_stmt_get_result($stmt);
 
 // Fetch all the search results
 $basicResults = mysqli_fetch_all($searchResult, MYSQLI_ASSOC);
+
+// Close the statement
+mysqli_stmt_close($stmt);
 
 // If a product is selected or search results are present, display more details
 $showDetails = !empty($searchQuery);
@@ -65,12 +79,27 @@ $showDetails = !empty($searchQuery);
                 LEFT JOIN ProductType ON Product.ProductTypeID = ProductType.ID
                 LEFT JOIN ProductLocation ON Product.ID = ProductLocation.ProductID
                 LEFT JOIN Rooms ON ProductLocation.RoomID = Rooms.ID
-                WHERE Product.ProductName LIKE '%$searchQuery%'
+                WHERE Product.ProductName LIKE ?
                 GROUP BY Product.ID
             ";
 
-            $detailsResult = mysqli_query($link, $detailsQuery);
+            // Prepare the statement
+            $stmtDetails = mysqli_prepare($link, $detailsQuery);
+
+            // Bind the search query with wildcards to the statement
+            mysqli_stmt_bind_param($stmtDetails, 's', $searchParam);
+
+            // Execute the query
+            mysqli_stmt_execute($stmtDetails);
+
+            // Get the result
+            $detailsResult = mysqli_stmt_get_result($stmtDetails);
+
+            // Fetch all the search results
             $detailedResults = mysqli_fetch_all($detailsResult, MYSQLI_ASSOC);
+
+            // Close the statement
+            mysqli_stmt_close($stmtDetails);
 
             foreach ($detailedResults as $result): ?>
                 <tr>
