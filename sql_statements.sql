@@ -1,12 +1,19 @@
+CREATE TABLE Roles(
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    RoleType VARCHAR(50)
+);
+
 CREATE TABLE People(
     ID INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(50),          
     LastName VARCHAR(50),
     Email VARCHAR(50),           
     UserName VARCHAR(50),             
+    RoleID INT,
     Salt VARCHAR(50),
     HashCode VARCHAR(100),
-    Active BOOLEAN DEFAULT TRUE
+    Active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (RoleID) REFERENCES Roles(ID)
 );
 
 CREATE UNIQUE INDEX ix_username
@@ -14,12 +21,6 @@ ON People (UserName);
 
 CREATE UNIQUE INDEX ix_salt
 ON People (Salt);
-
-
-CREATE TABLE Roles(
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    RoleType VARCHAR(50)
-);
 
 CREATE TABLE Rooms (
     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -33,14 +34,12 @@ CREATE TABLE AccessLevel (
 
 CREATE TABLE Access (
     PeopleID INT,
-    RoleID INT,                              
     RoomID INT,
     AccessID INT,
     FOREIGN KEY (PeopleID) REFERENCES People(ID),
-    FOREIGN KEY (RoleID) REFERENCES Roles(ID),
     FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
     FOREIGN KEY (AccessID) REFERENCES AccessLevel(ID),
-    PRIMARY KEY (PeopleID, RoleID, RoomID)
+    PRIMARY KEY (PeopleID, RoomID)
 );
 
 CREATE TABLE ProductType (
@@ -68,19 +67,19 @@ CREATE TABLE ProductLocation (
     PRIMARY KEY (ProductID, RoomID)
 );
 
-INSERT INTO People (FirstName, LastName, UserName, Salt, HashCode)
-VALUES 
-("Sara", "Mosebach", "admin", "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
-("Gabriel", "Hedman Slottner", "gabbe", "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
-("Therese", "Björkman", "teppatopp", "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
-("Elsa", "Rosenblad", "krams", "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
-
 INSERT INTO Roles (RoleType)
 VALUES 
 ("Admin"),
 ("Teacher"),
 ("Teacher Assistant"),
 ("Student");
+
+INSERT INTO People (FirstName, LastName, UserName, RoleID, Salt, HashCode)
+VALUES 
+("Sara", "Mosebach", "admin", 1, "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
+("Gabriel", "Hedman Slottner", "gabbe", 2, "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
+("Therese", "Björkman", "teppatopp", 3, "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
+("Elsa", "Rosenblad", "krams", 4, "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
 
 INSERT INTO Rooms (RoomName)
 VALUES 
@@ -96,16 +95,16 @@ VALUES
 ("Edit"),
 ("View");
 
-INSERT INTO Access (PeopleID, RoleID, RoomID, AccessID)
+INSERT INTO Access (PeopleID, RoomID, AccessID)
 VALUES
-(1,1,1,1),
-(1,1,2,1),
-(1,1,3,1),
-(1,1,4,1),
-(2,2,1,2),
-(2,2,3,2),
-(3,3,2,3),
-(4,4,4,4);
+(1,1,1),
+(1,2,1),
+(1,3,1),
+(1,4,1),
+(2,1,2),
+(2,3,2),
+(3,2,3),
+(4,4,4);
 
 INSERT INTO ProductType (ProductType)
 VALUES

@@ -30,9 +30,9 @@ while (!$validated){
     if ($count === 0) {
         $password = generatePassword();
         $hashcode = md5($salt . $password . $salt);
-        $sql = "INSERT INTO People (FirstName, LastName, Email, UserName, Salt, HashCode) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode) VALUES (?,?,?,?,?,?,?)";
         $stmt = $link->prepare($sql);
-        $stmt->bind_param("ssssss", $fname, $lname, $email, $username, $salt, $hashcode);
+        $stmt->bind_param("sssssss", $fname, $lname, $email, $username, $roleID, $salt, $hashcode);
         $stmt->execute();
         $validated = true;
     } 
@@ -46,10 +46,15 @@ $stmt->bind_result($userID);
 $stmt->fetch();
 $stmt->free_result();
 
+# Better to use get request later?
+# edit_access.php should be usable on other users than newly created later.
 $_SESSION['newUserID'] = $userID;
+# Below 2 not used. Remove?
 $_SESSION['newUserName'] = $username;
 $_SESSION['newUserPassword'] = $password;
-$_SESSION['roleID'] = $roleID;
+# Removed because roleID session variable is now used for active user.
 
 header("Location: ../edit_access.php");
+
+include '../../dclose.php'
 ?>
