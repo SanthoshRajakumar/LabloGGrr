@@ -70,6 +70,10 @@ else { echo "<h1>aaaw man you got no rooms</h1>";
     </form>
 </header>
 
+<div class="topnav">
+  <input type="text" placeholder="Search..">
+</div>
+
 <?php
 if ($result && $result->num_rows > 0) {
     echo "<table border='1'>
@@ -125,7 +129,6 @@ include 'dclose.php';
     </style>
 </head>
 <body> -->
-
 
 <button onclick="window.location.href='homepage.php'" class="button button-small" >Back to Home</button>
 
