@@ -68,10 +68,14 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
 
 <?php
 
-# Should check for role here, when this is implemented.
-  echo '<form action="/account/new_account.php" method="GET">
+
+  # Only shows create user button if user has role admin.
+  if ($_SESSION["roleID"] == 1) {
+    echo '<form action="/account/new_account.php" method="GET">
     <button type="submit" class="button button-large">Create user</button>
   </form>';
+  }
+  
 
 ?>
 </div>
