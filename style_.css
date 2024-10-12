@@ -26,22 +26,6 @@ header {
   background-color: rgb(255, 255, 255);
 }
 
-/*
-header::before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  bottom: 5em;
-  width: 100%;
-  height: calc(var(--heading-height) + 10em);
-  z-index: -1;
-  background: 
-    linear-gradient(rgba(92, 90, 90, 0), rgba(152, 146, 146, 0.6)),
-    url("header.svg design.svg"), no-repeat center / cover;
-  background-size: cover;
-  border-bottom: .2em solid #fff;
-}*/
 
 .sample-header {
   position: fixed;
@@ -213,7 +197,7 @@ p {
 .box{
     /*width: 325px;*/
     width: 20vw;
-    height: 13vw;
+    height: 15vw;
     padding: 15px;
     border-radius: 25px;
     background-color: #f5f3ee;
@@ -268,8 +252,6 @@ input[type="text"]:focus, input[type="password"]:focus {
   outline: none; /* Removes the default blue outline */
   box-shadow: 0 0 5px rgba(128, 17, 0, 0.5); /* Optional: add a subtle glow effect */
 }
-
-
 
 table {
   border: 150px;
