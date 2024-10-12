@@ -47,7 +47,7 @@ if ($testhash == $hash) {
 # Handles validation results.
 if ($valid_login) {
     # Setting up query to get userID.
-    $sql = "SELECT ID FROM People WHERE UserName = ?";
+    $sql = "SELECT ID, RoleID FROM People WHERE UserName = ?";
     $stmt = $link->prepare($sql);
 
     # Binding parameters to username.
@@ -62,8 +62,9 @@ if ($valid_login) {
 
 
     echo "<h2>The login was valid, congrats!</h2>";
-    $_SESSION["username"] = $username;
-    $_SESSION["userID"] = $row["ID"];
+    $_SESSION["username"] = $username; // Adds username to session.
+    $_SESSION["userID"] = $row["ID"]; // Adds user ID to session.
+    $_SESSION["roleID"] = $row["RoleID"]; // Adds active user role to session.
     header("Location: ../homepage.php");
     exit();
 }

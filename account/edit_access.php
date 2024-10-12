@@ -2,10 +2,11 @@
 session_start();
 include '../dopen.php';
 
+# Should probably be get request and accessible from user management later.
 $newUserID = $_SESSION['newUserID'];
+# Below 2 not used. Remove?
 $newUserName = $_SESSION['newUserName'];
 $newUserPassword = $_SESSION['newUserPassword'];
-$roleID = $_SESSION['roleID'];
 
 $sql = "SELECT ID, RoomName FROM Rooms WHERE ID NOT IN(SELECT R.ID AS RoomID FROM Access A
         INNER JOIN Rooms R ON R.ID = A.RoomID
