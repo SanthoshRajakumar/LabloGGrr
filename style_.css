@@ -234,26 +234,24 @@ p {
     text-align: center; 
 }
 
-label, input[type="text"], input[type="password"], input[type="email"]{
+label, input[type="text"], input[type="password"], input[type="email"], select{
     font-size: 1.5vw; 
     color: rgb(62, 11, 11); /* consistent color */
     font-family: 'Corporative', sans-serif; /* ensures font consistency */
 }
   
-input[type="text"], input[type="password"], input[type="email"]{
+input[type="text"], input[type="password"], input[type="email"], select{
     padding: 0.7em; /* comfortable text entry */
     margin-bottom: 0.8vw;
     border: 1px solid #ccc; /* subtle border */
     display: block; /* ensures inputs do not line up inline */
     width: 90%; /* responsive width */
 }
-input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus{
+input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, select:focus{
   border: 2px solid rgb(128, 17, 0); /* Change the border color */
   outline: none; /* Removes the default blue outline */
   box-shadow: 0 0 5px rgba(128, 17, 0, 0.5); /* Optional: add a subtle glow effect */
 }
-
-
 
 table {
   border: 150px;
