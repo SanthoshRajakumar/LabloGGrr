@@ -80,6 +80,7 @@ header {
   /*margin-top: 100px;*/
   margin-top: 15vw;
 }
+/*
 .footer a {
   color:rgb(128, 17, 0);
   text-decoration: none;
@@ -87,7 +88,18 @@ header {
 }
 .footer a:hover {
   text-decoration: underline;
+}*/
+
+a {
+  color:rgb(128, 17, 0);
+  text-decoration: none;
+  margin: 0 10px;
 }
+
+a:hover {
+  text-decoration: underline;
+}
+
 
 /* Large LabbLoGGr header*/
 h1 {

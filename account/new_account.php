@@ -30,7 +30,7 @@ $result = $link->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
+    <title>Create user</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="../style_.css">

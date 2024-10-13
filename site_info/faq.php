@@ -88,7 +88,7 @@
 <div class="div1">
 <div class="box1">
     <h3> Could not find the answers you were looking for?</h3>
-        <p>Do not hesitate to contact us. You find our contact information in the top menu.</p>
+        <p>Do not hesitate to<a href="../contact.php">contact us.</a></p>
     </div>
 </div>
 
