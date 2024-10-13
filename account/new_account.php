@@ -67,12 +67,24 @@ $result = $link->query($sql);
     </form>
 </header>
 
+<h2>Create user</h2>
+<h4>** Some description **</h4>
+
+<div class="div_login">
+
 <form action="./backend/create_account.php" method="POST">
-    Firstname: <input type="text" id="fname" name="fname" required/><br/>
-    Lastname: <input type="text" id="lname" name="lname" required/><br/>
-    Email: <input type="email" id="email" name="email" required/><br/>
-    Role: <select name="roleid" required>
-        <option value="" disabled selected hidden>Select a role</option>
+  <label for="fname">Firstname:</label>
+  <input type="text" placeholder="Enter firstname" id="fname" name="fname" required/><br/>
+
+  <label for="lname">Lastname:</label>
+  <input type="text" placeholder="Enter lastname" id="lname" name="lname" required/><br/>
+
+  <label for="email">Email: </label>
+  <input type="email" placeholder="Enter email" id="email" name="email" required/><br/>
+
+    <label for="role">Role:</label>
+    <select name="roleid" name="role" required>
+        <option value="" disabled selected hidden class="placeholder-option">Select a role</option>
         <?php
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -81,9 +93,9 @@ $result = $link->query($sql);
         }
         ?>
     </select><br/>    
-    <input type="submit" value="Create account"/>
+    <input type="submit" class="button button-large" value="Create user"/>
 </form>
-
+</div>
 <script>
     const fnameInput = document.getElementById('fname');
     const lnameInput = document.getElementById('lname');
