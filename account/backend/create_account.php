@@ -40,28 +40,30 @@ if ($send){
     $stmt = $link->prepare($sql);
     $stmt->bind_param("sssssss", $fname, $lname, $email, $username, $roleID, $salt, $hashcode);
     $stmt->execute();
+
+    $sql = "SELECT ID FROM People WHERE UserName = ? AND Salt = ?";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param("ss", $username, $salt);
+    $stmt->execute();
+    $stmt->bind_result($userID); 
+    $stmt->fetch();
+    $stmt->free_result();
+
+    # Better to use get request later?
+    # edit_access.php should be usable on other users than newly created later.
+    $_SESSION['newUserID'] = $userID;
+    # Below 2 not used. Remove?
+    $_SESSION['newUserName'] = $username;
+    $_SESSION['newUserPassword'] = $password;
+    # Removed because roleID session variable is now used for active user.
+
+    header("Location: ../edit_access.php");
 } else {
     $_SESSION['message'] = "Invalid email, please try again!";
     header("Location: ../create_account.php");
 }
 
-$sql = "SELECT ID FROM People WHERE UserName = ? AND Salt = ?";
-$stmt = $link->prepare($sql);
-$stmt->bind_param("ss", $username, $salt);
-$stmt->execute();
-$stmt->bind_result($userID); 
-$stmt->fetch();
-$stmt->free_result();
 
-# Better to use get request later?
-# edit_access.php should be usable on other users than newly created later.
-$_SESSION['newUserID'] = $userID;
-# Below 2 not used. Remove?
-$_SESSION['newUserName'] = $username;
-$_SESSION['newUserPassword'] = $password;
-# Removed because roleID session variable is now used for active user.
-
-header("Location: ../edit_access.php");
 
 include '../../dclose.php'
 ?>
