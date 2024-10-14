@@ -14,7 +14,7 @@ $globalSearchQuery = "
     WHERE Product.ProductName LIKE ?
 ";
 
-// Prepare the statement
+// Prepare statement
 $stmt = mysqli_prepare($link, $globalSearchQuery);
 
 // Bind the search query with wildcards to the statement
@@ -43,15 +43,11 @@ $showDetails = !empty($searchQuery);
 <html>
 <head>
     <title>Product Search</title>
+    <link rel="stylesheet" href="style_.css">
 </head>
 <body>
-    <h1>Global Search</h1>
-
     <!-- Search form -->
     <form action="global_search.php" method="get">
-        <label for="search">Search:</label>
-        <input type="text" id="search" name="search" value="<?php echo htmlspecialchars($searchQuery); ?>" required><br><br>
-        <button type="submit">Search</button>
     </form>
 
     <!-- Display the search results -->
@@ -83,7 +79,7 @@ $showDetails = !empty($searchQuery);
                 GROUP BY Product.ID
             ";
 
-            // Prepare the statement
+            // Prepare statement
             $stmtDetails = mysqli_prepare($link, $detailsQuery);
 
             // Bind the search query with wildcards to the statement
@@ -129,3 +125,4 @@ $showDetails = !empty($searchQuery);
     <?php endif; ?>
 </body>
 </html>
+

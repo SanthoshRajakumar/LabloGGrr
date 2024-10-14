@@ -65,7 +65,12 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
   <form action="room.php" method="GET">
     <button type="submit" class="button button-large">Rooms</button>
   </form>
-
+  <form action="profile_edit.php" method="GET">
+    <button type="submit" class="button button-large">Edit Profile</button>
+  </form>
+  <form action="reset_password.php" method="GET">
+    <button type="submit" class="button button-large">Reset Password</button>
+  </form>
 <?php
 
 

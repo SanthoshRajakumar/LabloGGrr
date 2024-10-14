@@ -71,7 +71,10 @@ else { echo "<h1>aaaw man you got no rooms</h1>";
 </header>
 
 <div class="topnav">
-  <input type="text" placeholder="Search..">
+  <!-- Global Search Form -->
+  <form action="global_search.php" method="get">
+        <input type="text" name="search" placeholder="Search for products..." required>
+    </form>
 </div>
 
 <?php

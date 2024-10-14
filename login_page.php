@@ -64,3 +64,55 @@
 </script>
 </body>
 </html>
+
+<?php
+session_start();
+include 'dopen.php'; // Include your database connection file
+
+// Function to hash password with the user's salt
+function hashPassword($password, $salt) {
+    return md5($password . $salt);
+}
+
+// Check if username and password are set
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = $_POST['password'];
+
+    // Prepare a SQL query to find the user by username
+    $sql = "SELECT * FROM People WHERE UserName = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Check if user exists
+    if ($result->num_rows === 1) {
+        // Fetch user data
+        $user = $result->fetch_assoc();
+        $salt = $user['Salt'];
+        $hashedPassword = hashPassword($password, $salt);
+
+        // Verify the hashed password with the stored HashCode
+        if ($hashedPassword === $user['HashCode']) {
+            // Password is correct, start session and redirect to the home page
+            $_SESSION['user_id'] = $user['ID'];
+            $_SESSION['username'] = $user['UserName'];
+            $_SESSION['role_id'] = $user['RoleID'];
+
+            // Redirect to home or dashboard page
+            header("Location:index.php");
+            exit;
+        } else {
+            // Password is incorrect
+            echo "Incorrect password.";
+        }
+    } else {
+        // User not found
+        echo "User not found.";
+    }
+} else {
+    echo "Please fill in both fields.";
+}
+
+?>
