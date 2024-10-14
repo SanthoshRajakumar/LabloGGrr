@@ -35,6 +35,7 @@ if ($result->num_rows > 0) {
     
     while ($row = $result->fetch_assoc()) {
         $roomName = htmlspecialchars($row["RoomName"]);
+        $roomID = htmlspecialchars($row["RoomID"]);
         $accessLevel = htmlspecialchars($row["AccessLevel"]);
         $accessID = htmlspecialchars($row["AccessID"]);
 
@@ -42,8 +43,9 @@ if ($result->num_rows > 0) {
                 <td>{$roomName}</td>
                 <td>{$accessLevel}</td>
                 <td>
-                    <form action='./backend/delete_access.php' method='post' style='display:inline;'>
-                        <input type='hidden' name='accessID' value='{$accessID}'>
+                    <form action='./backend/delete_access.php' method='post' style='display:inline;' class='delete-button-form'>
+                        <input type='hidden' name='peopleID' value='{$newUserID}'>
+                        <input type='hidden' name='roomID' value='{$roomID}'>
                         <button type='delete'>Delete</button>
                     </form>
                 </td>
@@ -86,14 +88,15 @@ if ($result->num_rows > 0) {
     // JavaScript function to toggle form visibility
     function showAddForm() {
         var form = document.getElementById("addAccess");
+
         if (form.style.display === "none" || form.style.display === "") {
             form.style.display = "block";
+
         } else {
             form.style.display = "none";
         }
     }
 </script>
-
 
 <style>
         /* Hide the form by default */

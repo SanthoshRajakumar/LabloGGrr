@@ -3,11 +3,12 @@ include '../../dopen.php';
 include 'functions.php';
 session_start();
 
-$accessID = $_POST['accessID'];
+$roomID = $_POST['roomID'];
+$peopleID = $_SESSION['newUserID'];
 
-$sql = "DELETE FROM Access WHERE AccessID = ?";
+$sql = "DELETE FROM Access WHERE RoomID = ? AND PeopleID = ?";
 $stmt = $link->prepare($sql);
-$stmt->bind_param("i", $accessID);
+$stmt->bind_param("ii", $roomID, $peopleID);
 $stmt->execute();
 
 header("Location: ../edit_access.php");
