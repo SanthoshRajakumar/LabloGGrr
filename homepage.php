@@ -65,22 +65,27 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
   <form action="room.php" method="GET">
     <button type="submit" class="button button-large">Rooms</button>
   </form>
+<<<<<<< HEAD
   <form action="profile_edit.php" method="GET">
     <button type="submit" class="button button-large">Edit Profile</button>
   </form>
   <form action="reset_password.php" method="GET">
     <button type="submit" class="button button-large">Reset Password</button>
   </form>
+=======
+  <div class="div1">
+  <form action = "room_creation/new_room_form.php" method = "GET">
+    <button type="submit" class="button button-large">Create Room</button>
+     
+  </form>
+
+>>>>>>> 599cb1cfa5b0ca91f23a95d083881f01cc3d3eb9
 <?php
 
-
-  # Only shows create user button if user has role admin.
-  if ($_SESSION["roleID"] == 1) {
-    echo '<form action="/account/new_account.php" method="GET">
+# Should check for role here, when this is implemented.
+  echo '<form action="/account/new_account.php" method="GET">
     <button type="submit" class="button button-large">Create user</button>
   </form>';
-  }
-  
 
 ?>
 </div>

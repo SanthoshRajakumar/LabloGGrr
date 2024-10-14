@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms & Conditions</title>
+    <title>Contact us</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="../style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -40,14 +40,26 @@
     </form>
 </header>
 
-<h2> Terms & Conditions </h2>
+<div class="div2">
+<h2> We want to hear from you!</h2>
+  <p>Whether you have questions, feedback, or just want to chat, we are here to help! Don’t hesitate to reach out—we're just a message away and excited to assist you!</p>
+</div>
 
+  <p style="text-decoration: underline;">info@labloggr.com</p>
+  <p>Tel <span style="text-decoration: underline;">+46 123 45 67</span></p>
+<p>
+  Lägerhyddsvägen 1 <br>
+  752 37 Uppsala <br>
+  Sweden
+</p>
+
+<p>If you are already a client and need help, reach out to <span style="text-decoration: underline;"> support@labloggr.com.</span></p>
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
-<script src="java.js">
+<script src="../java.js">
 </script>
 
 </body>

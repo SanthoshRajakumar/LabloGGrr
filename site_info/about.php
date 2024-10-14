@@ -7,7 +7,7 @@
     <title>About LabLoGGr</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="../style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -65,7 +65,7 @@
     <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
-<script src="java.js">
+<script src="../java.js">
 </script>
 
 </body>
