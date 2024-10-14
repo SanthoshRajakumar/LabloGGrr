@@ -22,6 +22,8 @@ include '../dopen.php';
 
 $sql = "SELECT ID, RoleType FROM Roles";
 $result = $link->query($sql);
+
+include '../dclose.php';
 ?>
 
 <!-- ELSA --> 

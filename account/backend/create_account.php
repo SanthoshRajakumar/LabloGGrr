@@ -30,13 +30,19 @@ while (!$validated){
     if ($count === 0) {
         $password = generatePassword();
         $hashcode = md5($salt . $password . $salt);
-        $sql = "INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode) VALUES (?,?,?,?,?,?,?)";
-        $stmt = $link->prepare($sql);
-        $stmt->bind_param("sssssss", $fname, $lname, $email, $username, $roleID, $salt, $hashcode);
-        $stmt->execute();
         $validated = true;
     } 
 }
+
+
+$sql = "INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode) VALUES (?,?,?,?,?,?,?)";
+$stmt = $link->prepare($sql);
+$stmt->bind_param("sssssss", $fname, $lname, $email, $username, $roleID, $salt, $hashcode);
+$stmt->execute();
+
+
+
+
 
 $sql = "SELECT ID FROM People WHERE UserName = ? AND Salt = ?";
 $stmt = $link->prepare($sql);

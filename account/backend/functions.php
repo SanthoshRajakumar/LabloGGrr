@@ -44,7 +44,6 @@ function sendEmail($toAddress, $subject, $body, $altBody) {
     $mail->setFrom("noreply@labloggr.com", "LabLoGGr");
     $mail->addAddress($toAddress);
     $mail->addReplyTo("labloggr@gmail.com", "LabLoGGr");
-    //$mail->isHTML(false);
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->AltBody = $altBody;
@@ -53,5 +52,8 @@ function sendEmail($toAddress, $subject, $body, $altBody) {
         $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent Error:". $mail->ErrorInfo ."";}
-}?>
+    return $mail
+}
+
+?>
 
