@@ -35,6 +35,11 @@ if ($result->num_rows > 0) {
     $hash = $row["HashCode"];
 }
 
+else {
+    header("Location: ../login_page.php");
+    exit();
+}
+
 # Setting up hash to check against database.
 $testhash = md5($salt . $password . $salt);
 
