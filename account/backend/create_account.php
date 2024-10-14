@@ -34,15 +34,16 @@ while (!$validated){
     } 
 }
 
-
-$sql = "INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode) VALUES (?,?,?,?,?,?,?)";
-$stmt = $link->prepare($sql);
-$stmt->bind_param("sssssss", $fname, $lname, $email, $username, $roleID, $salt, $hashcode);
-$stmt->execute();
-
-
-
-
+$send = sendEmail($email, "Welcome to LabLoGGr!", "Your new username is $username and your password is $password", "Your new username is $username and your password is $password")
+if ($send){
+    $sql = "INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode) VALUES (?,?,?,?,?,?,?)";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param("sssssss", $fname, $lname, $email, $username, $roleID, $salt, $hashcode);
+    $stmt->execute();
+} else {
+    $_SESSION['message'] = "Invalid email, please try again!"
+    header("Location: ../create_account.php");
+}
 
 $sql = "SELECT ID FROM People WHERE UserName = ? AND Salt = ?";
 $stmt = $link->prepare($sql);
