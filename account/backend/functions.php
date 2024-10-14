@@ -52,7 +52,7 @@ function sendEmail($toAddress, $subject, $body, $altBody) {
         $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent Error:". $mail->ErrorInfo ."";}
-    return $mail
+    return $mail;
 }
 
 ?>
