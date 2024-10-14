@@ -63,7 +63,7 @@
 <div class="div3">
     <!-- Form for Login -->
     <h3>Teacher or TA?</h3>
-    <form method="get" action="/login/login_account.php">
+    <form method="get" action="/login/login.php">
         <button type="submit" class="button button-large">Login here</button>
     </form>
 </div>
