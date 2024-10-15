@@ -1,9 +1,9 @@
-CREATE TABLE Roles(
+CREATE TABLE Roles (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     RoleType VARCHAR(50)
 );
 
-CREATE TABLE People(
+CREATE TABLE People (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     FirstName VARCHAR(50),          
     LastName VARCHAR(50),
@@ -21,6 +21,22 @@ ON People (UserName);
 
 CREATE UNIQUE INDEX ix_salt
 ON People (Salt);
+
+CREATE TABLE StudentKey (
+    ID VARCHAR(10) PRIMARY KEY,
+    CreatorID INT,
+    FOREIGN KEY (CreatorID) REFERENCES People(ID)
+);
+
+CREATE TABLE StudentAccess (
+    RoomID INT,
+    KeyID INT,
+    AccessID INT DEFAULT 4,
+    FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
+    FOREIGN KEY (KeyID) REFERENCES StudentKey(ID),
+    FOREIGN KEY (AccessID) REFERENCES AccessLevel(ID),
+    PRIMARY KEY (KeyID, RoomID)
+);
 
 CREATE TABLE Rooms (
     ID INT AUTO_INCREMENT PRIMARY KEY,

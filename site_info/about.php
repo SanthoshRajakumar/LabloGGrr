@@ -27,7 +27,7 @@
   <div class="sample-section">
 
   <header>
-<form action="index.php" method="GET">
+<form action="../index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
     <form action="about.php" method="GET">

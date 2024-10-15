@@ -26,13 +26,13 @@
 <form action="../index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
-    <form action="../about.php" method="GET">
+    <form action="../site_info/about.php" method="GET">
       <button type="submit" class="button2">ABOUT</button>
     </form>
-    <form action="../faq.php" method="GET">
+    <form action="../site_info/faq.php" method="GET">
       <button type="submit" class="button2">FAQ</button>
     </form>
-    <form action="../contact.php" method="GET">
+    <form action="../site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
