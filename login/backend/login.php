@@ -1,6 +1,6 @@
 <?php
 # Connect to database and start session.
-include '../dopen.php';
+include '../../dopen.php';
 session_start();
 
 # Kills connectin on connection error.
@@ -70,13 +70,13 @@ if ($valid_login) {
     $_SESSION["username"] = $username; // Adds username to session.
     $_SESSION["userID"] = $row["ID"]; // Adds user ID to session.
     $_SESSION["roleID"] = $row["RoleID"]; // Adds active user role to session.
-    header("Location: ../homepage.php");  // Varför funkar inte denna? Man kommer inte längre till homepage - Elsa
+    header("Location: ../../homepage.php");  // Varför funkar inte denna? Man kommer inte längre till homepage - Elsa
     exit();
 }
 else {
     echo "<h2>The login was invalid. Thief!</h2>";
 }
 
-include '../dclose.php'
+include '../../dclose.php'
 
 ?>
