@@ -54,7 +54,7 @@
 
 <div class="div_login">
     <h2>Enter student key here: </h2>
-    <form action="/login/login.php" method="POST">
+    <form action="/studentkey/validation.php" method="POST">
         <input type="text" placeholder="Enter student key" name="studentkey" required/><br />
     <button type="submit" class="button button-large">Enter</button>
 </form>

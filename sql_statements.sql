@@ -22,22 +22,6 @@ ON People (UserName);
 CREATE UNIQUE INDEX ix_salt
 ON People (Salt);
 
-CREATE TABLE StudentKey (
-    ID VARCHAR(10) PRIMARY KEY,
-    CreatorID INT,
-    FOREIGN KEY (CreatorID) REFERENCES People(ID)
-);
-
-CREATE TABLE StudentAccess (
-    RoomID INT,
-    KeyID INT,
-    AccessID INT DEFAULT 4,
-    FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
-    FOREIGN KEY (KeyID) REFERENCES StudentKey(ID),
-    FOREIGN KEY (AccessID) REFERENCES AccessLevel(ID),
-    PRIMARY KEY (KeyID, RoomID)
-);
-
 CREATE TABLE Rooms (
     ID INT AUTO_INCREMENT PRIMARY KEY,
     RoomName VARCHAR(50)
@@ -56,6 +40,22 @@ CREATE TABLE Access (
     FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
     FOREIGN KEY (AccessID) REFERENCES AccessLevel(ID),
     PRIMARY KEY (PeopleID, RoomID)
+);
+
+CREATE TABLE StudentKey (
+    ID VARCHAR(10) PRIMARY KEY,
+    CreatorID INT,
+    FOREIGN KEY (CreatorID) REFERENCES People(ID)
+);
+
+CREATE TABLE StudentAccess (
+    RoomID INT,
+    KeyID VARCHAR(10),
+    AccessID INT DEFAULT 4,
+    FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
+    FOREIGN KEY (KeyID) REFERENCES StudentKey(ID),
+    FOREIGN KEY (AccessID) REFERENCES AccessLevel(ID),
+    PRIMARY KEY (KeyID, RoomID)
 );
 
 CREATE TABLE ProductType (
@@ -171,3 +171,12 @@ VALUES
 (8,4,1, "Drawer 3"),
 (9,3,1, "Drawer 3"),
 (10,4,2, "Drawer 3");
+
+INSERT INTO StudentKey (ID, CreatorID)
+VALUES
+('1234567891', 1);
+
+INSERT INTO StudentAccess (RoomID, KeyID)
+VALUES
+(1, '1234567891'),
+(3, '1234567891');
