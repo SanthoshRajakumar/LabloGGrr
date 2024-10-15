@@ -70,7 +70,7 @@ if ($valid_login) {
     $_SESSION["username"] = $username; // Adds username to session.
     $_SESSION["userID"] = $row["ID"]; // Adds user ID to session.
     $_SESSION["roleID"] = $row["RoleID"]; // Adds active user role to session.
-    header("Location: ../homepage.php");
+    header("Location: ../homepage.php");  // Varför funkar inte denna? Man kommer inte längre till homepage - Elsa
     exit();
 }
 else {
