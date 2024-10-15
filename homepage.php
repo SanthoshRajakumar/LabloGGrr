@@ -30,16 +30,16 @@ include 'dopen.php';
   <div class="sample-section">
 
 <header>
-<form action="index.php" method="GET">
+<form action="../index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
-    <form action="about.php" method="GET">
+    <form action="../site_info/about.php" method="GET">
       <button type="submit" class="button2">ABOUT</button>
     </form>
-    <form action="faq.php" method="GET">
+    <form action="../site_info/faq.php" method="GET">
       <button type="submit" class="button2">FAQ</button>
     </form>
-    <form action="contact.php" method="GET">
+    <form action="../site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
@@ -86,7 +86,7 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
 </div>
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
 <script src="java.js">

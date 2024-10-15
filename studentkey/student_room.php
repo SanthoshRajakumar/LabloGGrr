@@ -1,25 +1,29 @@
 <?php
 session_start();
-include 'dopen.php';
+include '../dopen.php';
 
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
-$_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
+$_SESSION["studentKey"] = $_SESSION["studentKey"];
 
-if (!$_SESSION["userID"]) {
+if (!$_SESSION["studentKey"]) {
     echo "<h1>Oopsie! You should probably log in first.</h1>";
     echo "<a href=" . '"login_page.php"' . ">Go here!</a>";
     exit();
 }
+
 else {
-$sql = "SELECT ID AS RoomID, RoomName
-        FROM Rooms
-        INNER JOIN Access ON Access.RoomID = ID
-        WHERE Access.PeopleID = ?"; // Fixade SQL-fråga
+    $sql = "SELECT Rooms.ID as RoomID, Rooms.RoomName, AccessLevel.AccessLevel 
+    FROM StudentAccess 
+    JOIN Rooms ON StudentAccess.RoomID = Rooms.ID 
+    JOIN AccessLevel ON StudentAccess.AccessID = AccessLevel.ID 
+    WHERE StudentAccess.KeyID = ?";
+
+# Prepare the statement.
 $stmt = $link->prepare($sql);
-$stmt -> bind_param("i", $_SESSION["userID"]);
-$stmt -> execute();
-$result = $stmt -> get_result(); 
+$stmt->bind_param("s", $_SESSION["studentKey"]);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
 
@@ -86,7 +90,7 @@ if ($result && $result->num_rows > 0) {
         echo "<tr>
                 <td>" . $row['RoomName'] . "</td>
                 <td>
-                    <form action='inventory.php' method='get'>
+                    <form action='../inventory.php' method='get'>
                         <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
                         <input type='submit' class='button button-small' value='View Inventory'>
                     </form>
@@ -98,40 +102,11 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align: center;'>0 results</p>";
 }
 
-include 'dclose.php';
+include '../dclose.php';
 
 ?>
 </body>
 </html>
-
-
-<!-- Back Button -->
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .button {
-            background-color: #708090; 
-            border: none;              
-            color: white;              
-            padding: 10px 20px;        
-            text-align: center;        
-            text-decoration: none;     
-            display: inline-block;     
-            font-size: 12px;           
-            margin: 5px 2px;         
-            cursor: pointer;           
-            border-radius: 10px;       
-            transition: background-color 0.3s ease; 
-        }
-
-        .button:hover {
-            background-color: #708090; 
-        }
-    </style>
-</head>
-<body> -->
 
 <button onclick="window.location.href='homepage.php'" class="button button-small" >Back to Home</button>
 

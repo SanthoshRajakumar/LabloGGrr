@@ -23,16 +23,16 @@
   <div class="sample-section">
 
 <header>
-<form action="index.php" method="GET">
+<form action="../index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
-    <form action="about.php" method="GET">
+    <form action="../site_info/about.php" method="GET">
       <button type="submit" class="button2">ABOUT</button>
     </form>
-    <form action="faq.php" method="GET">
+    <form action="../site_info/faq.php" method="GET">
       <button type="submit" class="button2">FAQ</button>
     </form>
-    <form action="contact.php" method="GET">
+    <form action="../site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
@@ -54,7 +54,7 @@
 
 <div class="div_login">
     <h2>Enter student key here: </h2>
-    <form action="/login/login.php" method="POST">
+    <form action="/studentkey/validation.php" method="POST">
         <input type="text" placeholder="Enter student key" name="studentkey" required/><br />
     <button type="submit" class="button button-large">Enter</button>
 </form>
@@ -63,7 +63,7 @@
 <div class="div3">
     <!-- Form for Login -->
     <h3>Teacher or TA?</h3>
-    <form method="get" action="login_page.php">
+    <form method="get" action="/login/login.php">
         <button type="submit" class="button button-large">Login here</button>
     </form>
 </div>
@@ -92,7 +92,7 @@
 -->
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
 <script src="java.js">
