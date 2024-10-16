@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +55,7 @@
         <p>Our system keeps materials organized and minimizes material management, so teachers can focus on educating. </p>
     </div>
 </div>
-
+<!-- Has to get an error message in when the key is wrong -->
 <div class="div_login">
     <h2>Enter student key here: </h2>
     <form action="/studentkey/validation.php" method="POST">
@@ -67,29 +71,6 @@
         <button type="submit" class="button button-large">Login here</button>
     </form>
 </div>
-
-
-<!--
-    <div class="login"></div>
-      
-        <form method="post">
-            <button type="submit" name="role" value="teacher">Teacher</button>
-            <button type="submit" name="role" value="student">Student</button>
-        </form>
-    </div>
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Check which button was pressed based on the value of 'role'
-        if ($_POST['role'] == 'teacher') {
-            header("Location: teacher.php"); // Redirect to teacher page
-            exit();
-        } elseif ($_POST['role'] == 'student') {
-            header("Location: login_page.php"); // Redirect to student page
-            exit();
-        }
-    }
-    ?>
--->
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>

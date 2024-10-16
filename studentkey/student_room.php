@@ -40,9 +40,9 @@ else { echo "<h1>aaaw man you got no rooms</h1>";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roooms</title>
-    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
+    <link rel="icon" type="images/x-icon" href="images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="../style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -90,7 +90,7 @@ if ($result && $result->num_rows > 0) {
         echo "<tr>
                 <td>" . $row['RoomName'] . "</td>
                 <td>
-                    <form action='../inventory.php' method='get'>
+                    <form action='../student_inventory.php' method='get'>
                         <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
                         <input type='submit' class='button button-small' value='View Inventory'>
                     </form>

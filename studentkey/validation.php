@@ -40,7 +40,10 @@ if (isset($_POST['studentkey']) && !empty($_POST['studentkey'])) {
             header('Location: student_room.php');
             exit();
         } else {
-            echo "The Student Key is invalid.";
+            $_SESSION["error"] = "The Student Key is invalid. Please try again.";
+
+            header('Location: ../index.php');
+            exit();
         }
 
         # Close the statement.
