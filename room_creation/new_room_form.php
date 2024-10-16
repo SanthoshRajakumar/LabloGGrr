@@ -29,10 +29,9 @@ include '../dopen.php';
 
 <!-- Content Section -->
 <div class="sample-section-wrap">
-  <div class="sample-section">
-
+<div class="sample-section">
   <header>
-<form action="../index.php" method="GET">
+    <form action="../index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
     <form action="../about.php" method="GET">
@@ -44,9 +43,18 @@ include '../dopen.php';
     <form action="../contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
+  </header>
 
-</header>
+  <!-- Flytta formuläret inuti denna sektion -->
+  <form action="new_room.php" method="POST">
+    <label for="room_name">Room Name:</label>
+    <input type="text" id="room_name" name="room_name" required>
+    <button type="submit" class="button2">Submit</button>
+  </form>
+</div>
 </div>
 
-
+<script src="java.js"></script>
+</body>
+</html>
 
