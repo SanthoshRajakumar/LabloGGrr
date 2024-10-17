@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include 'dopen.php';  // Include the database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
 // Check if the user is logged in by verifying the session
 if (!isset($_SESSION["userID"])) {
@@ -81,5 +81,5 @@ if ($result->num_rows > 0) {
 </html>
 
 <?php
-include 'dclose.php';  // Close the database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the database connection
 ?>

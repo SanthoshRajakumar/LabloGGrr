@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
@@ -38,7 +38,7 @@ else { echo "<h1>aaaw man you got no rooms</h1>";
     <title>Rooms</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style_.css">
+    <?php echo '<link rel="stylesheet" href="' . $url . '/styling/style_.css"> ';?>
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -102,7 +102,7 @@ echo '<form action="room_creation/new_room_form.php" method="GET">
         <button type="submit" class="button button-large">Create New Room</button>
       </form>';
 
-include 'dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 
 ?>
 </body>

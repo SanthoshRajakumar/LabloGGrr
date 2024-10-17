@@ -1,3 +1,8 @@
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
+session_start();
+?>
+
 <!-- ELSA --> 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +46,7 @@
 
 <h2>Sign in here</h2>
 <div class="div_login">
-<form action="./backend/login.php" method="POST">
+<?php echo ' <form action="' . $url . '/login/backend/login.php" method="POST">'; ?>
     <label for="username">Username</label>
     <input type="text" placeholder="Enter username" name="username" required/><br />
             
@@ -55,7 +60,6 @@
 </div>
 
 <?php
-session_start();
 
 if(isset($_SESSION['message'])){
     $message = $_SESSION['message'];
@@ -73,3 +77,6 @@ if(isset($_SESSION['message'])){
 </body>
 </html>
 
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
+?>

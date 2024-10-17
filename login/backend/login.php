@@ -9,7 +9,7 @@ if (mysqli_connect_error()) {
 }
 
 if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
-    header("Location: ../login.php");
+    header("Location: $url/login/login.php");
     exit();
 }
 

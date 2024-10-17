@@ -58,20 +58,20 @@ $row = $result->fetch_assoc();
 
 
 echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
-?>
 
+echo '
   <div class="div1">
 <body>
-  <form action="room.php" method="GET">
+  <form action="' . $url . '/room/room.php" method="GET">
     <button type="submit" class="button button-large">Rooms</button>
   </form>
-  <form action="profile_edit.php" method="GET">
+  <form action="' . $url . '/profile/profile_edit.php" method="GET">
     <button type="submit" class="button button-large">Edit Profile</button>
   </form>
-  <form action="reset_password.php" method="GET">
+  <form action="' . $url . 'profile/reset_password.php" method="GET">
     <button type="submit" class="button button-large">Reset Password</button>
-  </form>
-<?php
+  </form>';
+
 
   # Only shows manage users if user has role admin.
   if ($_SESSION["roleID"] == 1) {
@@ -100,7 +100,7 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
 </div>
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>
+    <?php echo '<h4> &copy; 2024 LabbLoGGr | <a href="' . $url . '/site_info/privacy_policy.php">Privacy policy</a> | <a href="' . $url . '/site_info/terms_condi.php">Terms & Condition</a> </h4>'; ?>
 </div>
 
 <script src="java.js">
