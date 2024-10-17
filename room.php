@@ -35,7 +35,7 @@ else { echo "<h1>aaaw man you got no rooms</h1>";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roooms</title>
+    <title>Rooms</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
@@ -107,35 +107,6 @@ include 'dclose.php';
 ?>
 </body>
 </html>
-
-
-<!-- Back Button -->
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .button {
-            background-color: #708090; 
-            border: none;              
-            color: white;              
-            padding: 10px 20px;        
-            text-align: center;        
-            text-decoration: none;     
-            display: inline-block;     
-            font-size: 12px;           
-            margin: 5px 2px;         
-            cursor: pointer;           
-            border-radius: 10px;       
-            transition: background-color 0.3s ease; 
-        }
-
-        .button:hover {
-            background-color: #708090; 
-        }
-    </style>
-</head>
-<body> -->
 
 <button onclick="window.location.href='homepage.php'" class="button button-small" >Back to Home</button>
 
