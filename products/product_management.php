@@ -54,9 +54,6 @@ if ($_SESSION['roleID'] != 1) {
 
 <div class="div1">
 <body>
-  <form action="new_account.php" method="GET">
-    <button type="submit" class="button button-large">List all products</button>
-  </form>
   <form action="edit_access.php" method="GET">
   	<select>
   		<?php

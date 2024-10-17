@@ -54,7 +54,7 @@ if ($_SESSION['roleID'] != 1) {
 
 <div class="div1">
 <body>
-  <form action="new_account.php" method="GET">
+  <form action="create_account.php" method="GET">
     <button type="submit" class="button button-large">Create user</button>
   </form>
   <form action="edit_access.php" method="GET">
