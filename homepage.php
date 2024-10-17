@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include 'dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 ?>
 
 <!-- ELSA --> 
@@ -110,5 +110,5 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
 </html>
 
 <?php
-include 'dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

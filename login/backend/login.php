@@ -1,6 +1,6 @@
 <?php
 # Connect to database and start session.
-include '../../dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 session_start();
 
 # Kills connectin on connection error.
@@ -71,7 +71,7 @@ if($active){
         $_SESSION["username"] = $username; // Adds username to session.
         $_SESSION["userID"] = $row["ID"]; // Adds user ID to session.
         $_SESSION["roleID"] = $row["RoleID"]; // Adds active user role to session.
-        header("Location: ../../homepage.php");  // Varför funkar inte denna? Man kommer inte längre till homepage - Elsa
+        header("Location: /homepage.php");  // Varför funkar inte denna? Man kommer inte längre till homepage - Elsa
         exit();
     } else {
         $_SESSION["message"] = "The username or password is incorrect. Please try again!";
@@ -80,6 +80,6 @@ if($active){
     $_SESSION["message"] = "This account has been deactivated.";
 }
 
-include '../../dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 
 ?>
