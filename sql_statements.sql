@@ -90,12 +90,12 @@ VALUES
 ("Teacher Assistant"),
 ("Student");
 
-INSERT INTO People (FirstName, LastName, UserName, RoleID, Salt, HashCode)
+INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode)
 VALUES 
-("Sara", "Mosebach", "admin", 1, "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
-("Gabriel", "Hedman Slottner", "gabbe", 2, "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
-("Therese", "Björkman", "teppatopp", 3, "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
-("Elsa", "Rosenblad", "krams", 4, "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
+("Sara", "Mosebach", "sara_1022@hotmail.com", "admin", 1, "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
+("Gabriel", "Hedman Slottner", NULL, "gabbe", 2, "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
+("Therese", "Björkman", "teppatopp@gmail.com", "teppatopp", 3, "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
+("Elsa", "Rosenblad", NULL, "krams", 4, "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
 
 INSERT INTO Rooms (RoomName)
 VALUES 

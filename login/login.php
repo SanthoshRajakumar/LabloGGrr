@@ -51,10 +51,18 @@
       <a href="forgot_password.php">Forgot your password?</a>
       <button type="submit" class="button button-large">Login</button>
     </div>
-    
-    
 </form>
 </div>
+
+<?php
+session_start();
+
+if(isset($_SESSION['message'])){
+    $message = $_SESSION['message'];
+    echo "$message";
+    unset($_SESSION['message']);
+}
+?>
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="../privacy_policy.php">Privacy policy</a> | <a href="../terms_condi.php">Terms & Condition</a> </h4>
