@@ -1,8 +1,8 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 session_start();
-
 $pageTitle = "LabLoGGr";
-include 'styling/header.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
 
 
@@ -88,5 +88,6 @@ include 'styling/header.php';
 -->
 
 <?php 
-include 'styling/footer.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
