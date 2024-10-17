@@ -1,6 +1,6 @@
 <?php
 # Connect to database and start session.
-include 'dopen.php';
+include '../dopen.php';
 session_start();
 
 # Kills connectin on connection error.
@@ -8,6 +8,10 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error()); # script stops
 }
 
+if ($_SESSION['roleID'] != 1) {
+	header("Location: ../homepage.php");
+	exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +20,12 @@ if (mysqli_connect_error()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
-    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
+    <link rel="icon" type="..images/x-icon" href="../images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="../style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
 
 <div class="sample-header">
   <div class="sample-header-section">
@@ -35,46 +38,38 @@ if (mysqli_connect_error()) {
   <div class="sample-section">
 
 <header>
-<form action="index.php" method="GET">
+<form action="../index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
-    <form action="about.php" method="GET">
+    <form action="../site_info/about.php" method="GET">
       <button type="submit" class="button2">ABOUT</button>
     </form>
-    <form action="faq.php" method="GET">
+    <form action="../site_info/faq.php" method="GET">
       <button type="submit" class="button2">FAQ</button>
     </form>
-    <form action="contact.php" method="GET">
+    <form action="../site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
 
-<?php
+<div class="div1">
+<body>
+  <form action="new_account.php" method="GET">
+    <button type="submit" class="button button-large">Create user</button>
+  </form>
+  <form action="edit_access.php" method="GET">
+    <button type="submit" class="button button-large">Edit room access</button>
+  </form>
 
-echo '<h2>Admin suite</h2>';
 
-echo '<div class="div1">';
 
-echo '<form action="/account/user_management.php" method="GET">
-    <button type="submit" class="button button-large">Manage users</button>
-  </form>';
+  </div>
 
-echo '<form action="/room_creation/new_room_form.php" method="GET">
-    <button type="submit" class="button button-large">Create room</button>
-  </form>';
-
-echo '<form action="/products/product_management.php" method="GET">
-    <button type="submit" class="button button-large">Manage products</button>
-  </form>';
-
-echo '</div>';
-
-?>
-
-</div>
+<!-- Back Button -->
+<button class="button button-small" onclick="window.location.href='../homepage.php'">Back to homepage</button>
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
 <script src="java.js">
@@ -84,5 +79,5 @@ echo '</div>';
 </html>
 
 <?php
-include 'dclose.php'
+include '../dclose.php';
 ?>

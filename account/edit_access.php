@@ -2,17 +2,66 @@
 session_start();
 include '../dopen.php';
 
+if ($_SESSION['roleID'] != 1) {
+    header("Location: ../homepage.php");
+    exit();
+}
+
+$editUserID = $_GET['editUserID'] ?? $_SESSION['userID'];
+
+$_SESSION['editUserID'] = $editUserID;
+
+
+    echo '<form action="edit_access.php" method="get">';
+
+    echo '<select name="editUserID">';
+
+    $sql = "SELECT People.ID, People.UserName FROM People";
+    $stmt = $link->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = $result->fetch_assoc();
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<option value=" . $row["ID"] . ">" . $row["UserName"] . "</option>";
+        }
+    }
+
+    echo "</select>";
+
+    echo '<button type="submit" class="button button-large">Choose user</button>';
+
+    echo '</form>';
+
+    $sql = "SELECT People.UserName FROM People WHERE People.ID = ?";
+    $stmt = $link->prepare($sql);
+
+    $stmt->bind_param("i", $editUserID);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = $result->fetch_assoc();
+
+    echo '<h2>Now editing ' . $row['UserName'] . '</h2>';
+
+
+
+
 # Should probably be get request and accessible from user management later.
-$newUserID = $_SESSION['newUserID'];
+/*$newUserID = $_SESSION['newUserID'];
 # Below 2 not used. Remove?
 $newUserName = $_SESSION['newUserName'];
-$newUserPassword = $_SESSION['newUserPassword'];
+$newUserPassword = $_SESSION['newUserPassword'];*/
 
 $sql = "SELECT ID, RoomName FROM Rooms WHERE ID NOT IN(SELECT R.ID AS RoomID FROM Access A
         INNER JOIN Rooms R ON R.ID = A.RoomID
         WHERE A.PeopleID = ?)";
 $stmt = $link->prepare($sql);
-$stmt -> bind_param('s', $newUserID);
+$stmt -> bind_param('s', $editUserID); # changed from newUserID to editUserID
 $stmt -> execute();
 $rooms = $stmt -> get_result();
 
@@ -26,7 +75,7 @@ $sql = "SELECT R.ID AS RoomID, R.RoomName, AL.ID AS AccessID, AL.AccessLevel FRO
         WHERE A.PeopleID = ?";
 
 $stmt = $link->prepare($sql);
-$stmt -> bind_param('s', $newUserID);
+$stmt -> bind_param('s', $editUserID); # changed from newUserID to editUserID
 $stmt -> execute();
 $result = $stmt -> get_result();
 
@@ -39,12 +88,12 @@ if ($result->num_rows > 0) {
         $accessLevel = htmlspecialchars($row["AccessLevel"]);
         $accessID = htmlspecialchars($row["AccessID"]);
 
+        # Changed from newUserID to editUserID in this block.
         echo "<tr>
                 <td>{$roomName}</td>
                 <td>{$accessLevel}</td>
                 <td>
                     <form action='./backend/delete_access.php' method='post' style='display:inline;' class='delete-button-form'>
-                        <input type='hidden' name='peopleID' value='{$newUserID}'>
                         <input type='hidden' name='roomID' value='{$roomID}'>
                         <button type='delete'>Delete</button>
                     </form>
@@ -55,6 +104,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "No current accesses";
 }
+
+
 
 ?>
 <button class="btn" onclick="showAddForm()">Add</button>
@@ -104,3 +155,10 @@ if ($result->num_rows > 0) {
             display: none; /* Form is hidden initially */
         }
 </style>
+
+<!-- Back Button -->
+<br><br><button class="button button-small" onclick="window.location.href='user_management.php'">Back to User management</button>
+
+<?php
+include '../dclose.php';
+?>

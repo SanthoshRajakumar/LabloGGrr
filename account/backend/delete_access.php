@@ -4,7 +4,7 @@ include 'functions.php';
 session_start();
 
 $roomID = $_POST['roomID'];
-$peopleID = $_SESSION['newUserID'];
+$peopleID = $_SESSION['editUserID'];
 
 $sql = "DELETE FROM Access WHERE RoomID = ? AND PeopleID = ?";
 $stmt = $link->prepare($sql);

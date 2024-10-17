@@ -8,6 +8,11 @@ include '../../dopen.php';
 include 'functions.php';
 session_start();
 
+if ($_SESSION['roleID'] != 1) {
+    header("Location: ../homepage.php");
+    exit();
+}
+
 $fname = $_POST['fname'];
 $lname= $_POST['lname'];
 $email = $_POST['email'];
@@ -51,10 +56,10 @@ if ($send){
 
     # Better to use get request later?
     # edit_access.php should be usable on other users than newly created later.
-    $_SESSION['newUserID'] = $userID;
+    $_SESSION['editUserID'] = $userID;
     # Below 2 not used. Remove?
-    $_SESSION['newUserName'] = $username;
-    $_SESSION['newUserPassword'] = $password;
+    /*$_SESSION['newUserName'] = $username;
+    $_SESSION['newUserPassword'] = $password;*/
     # Removed because roleID session variable is now used for active user.
 
     header("Location: ../edit_access.php");
