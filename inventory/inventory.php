@@ -4,7 +4,6 @@ session_start();
 include 'dopen.php';
 ?>
 
-<!-- ELSA --> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +11,7 @@ include 'dopen.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
-    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
-    <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -27,8 +24,6 @@ include 'dopen.php';
   </div>
 </div>
 
-
-<!-- Content Section -->
 <div class="sample-section-wrap">
   <div class="sample-section">
 
@@ -45,7 +40,7 @@ include 'dopen.php';
     <form action="contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
-</header>
+</header> 
 <?php
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }

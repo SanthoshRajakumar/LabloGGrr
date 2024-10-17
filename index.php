@@ -1,7 +1,12 @@
 <?php
 session_start();
+
+$pageTitle = "LabLoGGr";
+include 'styling/header.php'; 
 ?>
 
+
+ <!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
-    <!-- Link to your CSS file -->
     <link rel="stylesheet" href="style_.css">
-    <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -39,7 +42,7 @@ session_start();
     <form action="../site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
-</header>
+</header> -->
 
 <div class="div1">
     <div class="box" id="box1">
@@ -72,6 +75,7 @@ session_start();
     </form>
 </div>
 
+<!--
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>
 </div>
@@ -81,4 +85,8 @@ session_start();
 
 </body>
 </html>
+-->
 
+<?php 
+include 'styling/footer.php'; 
+?>
