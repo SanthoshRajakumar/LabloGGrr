@@ -83,7 +83,9 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
     <button type="submit" class="button button-large">Manage products</button>
     </form>';
 
-
+    echo '<form action="/admin_page.php" method="GET">
+    <button type="submit" class="button button-large">Admin suite</button>
+    </form>';
   }
 
   # Only shows create user button if user has role admin.
