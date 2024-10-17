@@ -158,35 +158,6 @@ if ($access <= 2) {
 
     echo "</tbody></table>";
 
-
-    # Garbage bad nono-use.
-    /*echo "<form action='add_product.php' method='post'>";
-    echo "<tr>";
-    echo "<td><select name='prodType'>";
-
-    $sql = "SELECT ID, ProductType FROM ProductType";
-    $stmt = $link->prepare($sql);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $row = $result->fetch_assoc();
-    
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<option value=" . $row["ID"] . ">" . $row["ProductType"] . "</option>";
-        }
-    }
-
-    echo "</select></td>";
-    echo "<td><input type='text' name='prodName'></td>";
-    echo "<td><input type='number' name='volume'></td>";
-    echo "<td><input type='number' name='mass'></td>";
-    echo "<td><input type='number' name='pieces'></td>";
-    echo "<td><input type='number' name='quantity'></td>";
-    echo "<td><input type='submit' value='Enter product'></td>";
-    echo "<input type='hidden' value='" . $roomID . "' name='room_id'></form></td>";*/
-
 }
 # Reduce/edit only.
 elseif ($access == 3) {
