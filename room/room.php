@@ -98,16 +98,15 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align: center;'>0 results</p>";
 }
 
-if ($_SESSION['RoleID']== 1) {
-    echo '<form action="new_room_form.php" method="GET">
-            <button type="submit" class="button button-large">Create New Room</button>
-          </form>';
-    echo '<form action ="delete_room.php" method = "GET">
-            <button type="submit" class="button button-large">Delete Room</button>
-          </form>';
+if (isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1) {
+  echo '<form action="new_room_form.php" method="GET">
+          <button type="submit" class="button button-large">Create New Room</button>
+        </form>';
+
+  echo '<form action="/room/delete_room_form.php" method="GET">
+          <button type="submit" class="button button-large">Delete Room</button>
+        </form>';
 }
-
-
 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 
