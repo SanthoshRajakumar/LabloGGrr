@@ -11,9 +11,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
-    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
+    <link rel="icon" type="/images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="/styling/style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -65,13 +65,13 @@ echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';
 echo '
   <div class="div1">
 <body>
-  <form action="' . $url . '/room/room.php" method="GET">
+  <form action="/room/room.php" method="GET">
     <button type="submit" class="button button-large">Rooms</button>
   </form>
-  <form action="' . $url . '/profile/profile_edit.php" method="GET">
+  <form action="/profile/profile_edit.php" method="GET">
     <button type="submit" class="button button-large">Edit Profile</button>
   </form>
-  <form action="' . $url . 'profile/reset_password.php" method="GET">
+  <form action="/profile/reset_password.php" method="GET">
     <button type="submit" class="button button-large">Reset Password</button>
   </form>';
 
@@ -90,20 +90,13 @@ echo '
     <button type="submit" class="button button-large">Admin suite</button>
     </form>';
   }
-
-  # Only shows create user button if user has role admin.
-  /*if ($_SESSION["roleID"] == 1) {
-    echo '<form action="/account/new_account.php" method="GET">
-    <button type="submit" class="button button-large">Create user</button>
-  </form>';
-  }*/
   
 
 ?>
 </div>
 
 <div class="footer">
-    <?php echo '<h4> &copy; 2024 LabbLoGGr | <a href="' . $url . '/site_info/privacy_policy.php">Privacy policy</a> | <a href="' . $url . '/site_info/terms_condi.php">Terms & Condition</a> </h4>'; ?>
+    <?php echo '<h4> &copy; 2024 LabbLoGGr | <a href="/site_info/privacy_policy.php">Privacy policy</a> | <a href="/site_info/terms_condi.php">Terms & Condition</a> </h4>'; ?>
 </div>
 
 <script src="java.js">

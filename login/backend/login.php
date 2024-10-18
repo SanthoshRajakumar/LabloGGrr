@@ -9,7 +9,7 @@ if (mysqli_connect_error()) {
 }
 
 if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
-    header("Location: $url/login/login.php");
+    header("Location: /login/login.php");
     exit();
 }
 
@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
     $active = $row["Active"];
 } else {
     $_SESSION["message"] = "The username or password is incorrect. Please try again!";
-    header("Location: ../login.php");
+    header("Location: /login/login.php");
     exit();
 }
 
