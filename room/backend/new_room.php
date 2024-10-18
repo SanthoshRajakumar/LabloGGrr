@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include '../dopen.php';
+include '../../database/dopen.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Hämta rumsnamnet från POST-förfrågan
@@ -34,5 +34,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-include '../dclose.php';
+include '../../database/dclose.php';
 ?>

@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include '../database/dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 ?>
 
@@ -46,7 +46,7 @@ include '../database/dopen.php';
   </header>
 
   <!-- Flytta formuläret inuti denna sektion -->
-  <form action="../backend/new_room.php" method="POST">
+  <form action="backend/new_room.php" method="POST">
     <label for="room_name">Room Name:</label>
     <input type="text" id="room_name" name="room_name" required>
     <button type="submit" class="button2">Submit</button>
