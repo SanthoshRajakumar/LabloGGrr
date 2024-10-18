@@ -42,6 +42,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
     <form action="../site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
+    <form action="/logout/logout_form.php" method="GET">
+      <button type="submit" class="button2">LOGOUT</button>
+    </form>
 </header>
 
 <?php
