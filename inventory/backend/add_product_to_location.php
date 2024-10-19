@@ -9,7 +9,7 @@ if (mysqli_connect_error()) {
 
 # Redirects get requests.
 if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
-    header("Location: room.php");
+    header("Location: /room/room.php");
     exit();
 }
 
@@ -21,7 +21,7 @@ $stmt->bind_param("sss", $_POST["prodID"], $_POST["room_id"], $_POST["quantity"]
 $result = $stmt->execute();
 
 if ($result) {
-    header('Location: inventory.php?room_id=' . $_POST["room_id"]);
+    header('Location: /inventory/inventory.php?room_id=' . $_POST["room_id"]);
     exit();
 }
 

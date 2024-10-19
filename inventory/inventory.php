@@ -70,7 +70,7 @@ if ($access <= 2) {
             <input type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
             <input type='hidden' value='" . $roomID . "' name='room_id'>
-            </form><form action='remove_product_from_room.php' method='post'>
+            </form><form action='/inventory/backend/remove_product_from_room.php' method='post'>
             <input type='hidden' value='" . $roomID . "' name='room_id'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
             <input type='submit' value='Delete'></form></td>";

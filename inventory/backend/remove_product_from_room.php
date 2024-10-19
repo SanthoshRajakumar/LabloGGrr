@@ -1,7 +1,7 @@
 <?php
 # Connect to database and start session.
 session_start();
-include $_SERVER['DOCUMENT_ROOT'] . 'dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 # Kills connectin on connection error.
 if (mysqli_connect_error()) {
@@ -41,9 +41,9 @@ $stmt->bind_param("ss", $_POST["prodID"], $_POST["room_id"]);
 $result = $stmt->execute();
 
 if ($result) {
-	header('Location: inventory.php?room_id=' . $_POST["room_id"]);
+	header('Location: /inventory/inventory.php?room_id=' . $_POST["room_id"]);
     exit();
 }
 
-include $_SERVER['DOCUMENT_ROOT'] . 'dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
