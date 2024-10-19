@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
 // Check if the user is logged in by verifying the session
 if (!isset($_SESSION["userID"])) {
-    header("Location: login_page.php"); // Redirect to login if not logged in
+    header("Location: /login/login.php"); // Redirect to login if not logged in
     exit();
 }
 
