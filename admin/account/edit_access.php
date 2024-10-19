@@ -1,9 +1,9 @@
 <?php 
 session_start();
-include '../dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 if ($_SESSION['roleID'] != 1) {
-    header("Location: ../homepage.php");
+    header("Location: /homepage.php");
     exit();
 }
 
@@ -12,7 +12,7 @@ $editUserID = $_GET['editUserID'] ?? $_SESSION['userID'];
 $_SESSION['editUserID'] = $editUserID;
 
 
-    echo '<form action="edit_access.php" method="get">';
+    echo '<form action="/admin/account/edit_access.php" method="get">';
 
     echo '<select name="editUserID">';
 
@@ -93,7 +93,7 @@ if ($result->num_rows > 0) {
                 <td>{$roomName}</td>
                 <td>{$accessLevel}</td>
                 <td>
-                    <form action='./backend/delete_access.php' method='post' style='display:inline;' class='delete-button-form'>
+                    <form action='/admin/account/backend/delete_access.php' method='post' style='display:inline;' class='delete-button-form'>
                         <input type='hidden' name='roomID' value='{$roomID}'>
                         <button type='delete'>Delete</button>
                     </form>
@@ -112,7 +112,7 @@ if ($result->num_rows > 0) {
 
 <div id="addAccess" class="form-container">
     <h3>Edit access</h3>
-    <form action="./backend/add_access.php" method="POST">
+    <form action="/admin/account/backend/add_access.php" method="POST">
     Room: <select name = "room">
         <?php
         if ($rooms -> num_rows >0) {
@@ -157,8 +157,8 @@ if ($result->num_rows > 0) {
 </style>
 
 <!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='user_management.php'">Back to User management</button>
+<br><br><button class="button button-small" onclick="window.location.href='/admin/account/user_management.php'">Back to User management</button>
 
 <?php
-include '../dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

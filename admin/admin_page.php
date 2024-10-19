@@ -25,7 +25,7 @@ echo '<form action="/room/new_room_form.php" method="GET">
     <button type="submit" class="button button-large">Create room</button>
   </form>';
 
-echo '<form action="/products/product_management.php" method="GET">
+echo '<form action="/admin/product/product_management.php" method="GET">
     <button type="submit" class="button button-large">Manage products</button>
   </form>';
 

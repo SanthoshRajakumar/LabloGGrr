@@ -66,7 +66,7 @@ if ($_SESSION['roleID'] != 1) {
   </div>
 
 <!-- Back Button -->
-<button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+<button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to admin suite</button>
 
 <div class="footer">
     <h4> &copy; 2024 LabbLoGGr | <a href="/site_info/privacy_policy.php">Privacy policy</a> | <a href="/site_info/terms_condi.php">Terms & Condition</a> </h4>
