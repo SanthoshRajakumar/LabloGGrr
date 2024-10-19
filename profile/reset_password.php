@@ -8,29 +8,15 @@ if (!isset($_SESSION["userID"])) {
     exit();
 }
 
+# Include styling
+$pageTitle = "Reset Password";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+
 // Get the userID from the session
 $userID = $_SESSION["userID"];
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
-    <link rel="stylesheet" href="style_.css"> 
-</head>
-<body>
-
-<div class="sample-header">
-  <div class="sample-header-section">
-    <h1>Reset Password</h1>
-  </div>
-</div>
-
-<div class="sample-section-wrap">
-  <div class="sample-section">
+  <h2>Reset Password</h2>
 
     <!-- Password Reset Form -->
     <form action="reset_password_submit.php" method="POST">
@@ -47,13 +33,10 @@ $userID = $_SESSION["userID"];
   </div>
 </div>
 
-<div class="footer">
-    <h4>&copy; 2024 LabLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a></h4>
-</div>
-
 </body>
 </html>
 
 <?php
-include 'dclose.php';  
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

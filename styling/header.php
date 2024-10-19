@@ -24,7 +24,7 @@ echo '<!DOCTYPE html>
   <div class="sample-section">
 
   <header>
-<form action="' . $url . '/index.php" method="GET">
+  <form action="' . $url . '/index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
     <form action="' . $url . '/site_info/about.php" method="GET">
@@ -36,5 +36,7 @@ echo '<!DOCTYPE html>
     <form action="' . $url . '/site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
-</header>';
+  </header>';
+
+
 ?>

@@ -8,7 +8,7 @@ $_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
 
 if (!$_SESSION["userID"]) {
     echo "<h1>Oopsie! You should probably log in first.</h1>";
-    echo "<a href=" . '"login_page.php"' . ">Go here!</a>";
+    echo "<a href=" . '"login/login.php"' . ">Go here!</a>";
     exit();
 }
 else {
@@ -28,47 +28,10 @@ else { echo "<h1>aaaw man you got no rooms</h1>";
           
     }
 }
+$pageTitle = "Rooms";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rooms</title>
-    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
-    <!-- Link to your CSS file -->
-    <?php echo '<link rel="stylesheet" href="' . $url . '/styling/style_.css"> ';?>
-    <!-- Include jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-
-<div class="sample-header">
-  <div class="sample-header-section">
-    <h1>LabLoGGr.</h1>
-    <h2></h2>
-  </div>
-</div>
-
-<!-- Content Section -->
-<div class="sample-section-wrap">
-  <div class="sample-section">
-
-  <header>
-<form action="index.php" method="GET">
-      <button type="submit" class="button2">HOME</button>
-    </form>
-    <form action="../site_info/about.php" method="GET">
-      <button type="submit" class="button2">ABOUT</button>
-    </form>
-    <form action="../site_info/faq.php" method="GET">
-      <button type="submit" class="button2">FAQ</button>
-    </form>
-    <form action="../site_info/contact.php" method="GET">
-      <button type="submit" class="button2">CONTACT</button>
-    </form>
-</header>
 
 <div class="topnav">
   <!-- Global Search Form -->
@@ -107,21 +70,7 @@ if (isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1) {
           <button type="submit" class="button button-large">Delete Room</button>
         </form>';
 }
-
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 
 ?>
-</body>
-</html>
-
-<button onclick="window.location.href='homepage.php'" class="button button-small" >Back to Home</button>
-
-<div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
-</div>
-
-<script src="java.js">
-</script>
-
-</body>
-</html>

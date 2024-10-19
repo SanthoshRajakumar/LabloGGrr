@@ -1,46 +1,7 @@
-<!-- ELSA --> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About LabLoGGr</title>
-    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
-    <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="../style_.css">
-    <!-- Include jQuery library -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-
-
-<div class="sample-header">
-  <div class="sample-header-section">
-  <h1>LabLoGGr.</h1>
-    <h2></h2>
-  </div>
-</div>
-
-
-<!-- Content Section -->
-<div class="sample-section-wrap">
-  <div class="sample-section">
-
-  <header>
-<form action="../index.php" method="GET">
-      <button type="submit" class="button2">HOME</button>
-    </form>
-    <form action="about.php" method="GET">
-      <button type="submit" class="button2">ABOUT</button>
-    </form>
-    <form action="faq.php" method="GET">
-      <button type="submit" class="button2">FAQ</button>
-    </form>
-    <form action="contact.php" method="GET">
-      <button type="submit" class="button2">CONTACT</button>
-    </form>
-</header>
-
+<?php
+$pageTitle = "About";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
+?>
 
 <h2>About LabLoGGr</h2>
   <p>Efficient inventory management is essential for optimizing a laboratory. Knowing what materials you have, their quantities, and where they are stored not only improves storage efficiency but also streamlines workflows by eliminating time wasted searching for materials. 
@@ -61,12 +22,6 @@
   <p>By providing a structured and user-friendly system, we aim to eliminate bottlenecks, enhance collaboration, and bring clarity to university laboratory environments. LabLoGGr isn’t just about software; it’s about making research and learning more efficient, one lab at a time.</p>
   <p></p>
 
-  <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
-</div>
-
-<script src="../java.js">
-</script>
-
-</body>
-</html>
+<?php 
+  include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
+?>

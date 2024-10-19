@@ -2,46 +2,10 @@
 <?php 
 session_start();
 include 'dopen.php';
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory</title>
-    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
-    <link rel="stylesheet" href="style_.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-
-
-<div class="sample-header">
-  <div class="sample-header-section">
-    <h1>LabLoGGr.</h1>
-    <h2></h2>
-  </div>
-</div>
-
-<div class="sample-section-wrap">
-  <div class="sample-section">
-
-  <header>
-<form action="index.php" method="GET">
-      <button type="submit" class="button2">HOME</button>
-    </form>
-    <form action="about.php" method="GET">
-      <button type="submit" class="button2">ABOUT</button>
-    </form>
-    <form action="faq.php" method="GET">
-      <button type="submit" class="button2">FAQ</button>
-    </form>
-    <form action="contact.php" method="GET">
-      <button type="submit" class="button2">CONTACT</button>
-    </form>
-</header> 
-<?php
+# Styling
+$pageTitle = "Inventory";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
 
@@ -206,44 +170,6 @@ echo "<tbody>";
     echo "</tbody></table>";
 }
 
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
 include 'dclose.php';
 ?>
-<!-- Back Button -->
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        .button {
-            background-color: #708090; 
-            border: none;              
-            color: white;              
-            padding: 10px 20px;        
-            text-align: center;        
-            text-decoration: none;     
-            display: inline-block;     
-            font-size: 12px;           
-            margin: 5px 2px;         
-            cursor: pointer;           
-            border-radius: 10px;       
-            transition: background-color 0.3s ease; 
-        }
-
-        .button:hover {
-            background-color: #708090; 
-        }
-    </style>
-</head> -->
-
-<!-- Back Button -->
-<button class="button button-small" onclick="window.location.href='room.php'">Back to Rooms</button>
-
-<div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
-</div>
-
-<script src="java.js">
-</script>
-
-</body>
-</html>

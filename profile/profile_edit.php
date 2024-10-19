@@ -2,6 +2,10 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
+# Include styling
+$pageTitle = "Edit profile";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+
 // Check if the user is logged in by verifying the session
 if (!isset($_SESSION["userID"])) {
     header("Location: login_page.php"); // Redirect to login if not logged in
@@ -28,29 +32,11 @@ if ($result->num_rows > 0) {
     exit();
 }
 ?>
-
-<!-- HTML for displaying the profile edit form -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
-    <link rel="stylesheet" href="style_.css"> <!-- Link to your CSS file -->
-</head>
-<body>
-
-<div class="sample-header">
-  <div class="sample-header-section">
-    <h1>Edit Profile</h1>
-  </div>
-</div>
-
-<div class="sample-section-wrap">
-  <div class="sample-section">
+  
+  <h2>Edit Profile</h2>
 
     <!-- Display a welcome message to the user -->
-    <h2>Welcome to the Edit Profile page, <?php echo htmlspecialchars($user['FirstName']); ?>!</h2>
+    <h3>Welcome to the Edit Profile page, <?php echo htmlspecialchars($user['FirstName']); ?>!</h3>
 
     <!-- Profile Edit Form -->
     <form action="edit_profile_submit.php" method="POST">
@@ -73,13 +59,11 @@ if ($result->num_rows > 0) {
   </div>
 </div>
 
-<div class="footer">
-    <h4>&copy; 2024 LabLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a></h4>
-</div>
 
 </body>
 </html>
 
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the database connection
 ?>
