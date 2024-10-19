@@ -37,15 +37,8 @@ echo '
 
   # Only shows manage users if user has role admin.
   if ($_SESSION["roleID"] == 1) {
-    echo '<form action="/admin/account/user_management.php" method="GET">
-    <button type="submit" class="button button-large">Manage users</button>
-    </form>';
 
-    echo '<form action="/admin//product_management.php" method="GET">
-    <button type="submit" class="button button-large">Manage products</button>
-    </form>';
-
-    echo '<form action="/admin_page.php" method="GET">
+    echo '<form action="/admin/admin_page.php" method="GET">
     <button type="submit" class="button button-large">Admin suite</button>
     </form>';
   }

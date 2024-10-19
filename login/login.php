@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     <label for="password">Password</label>
     <input type="password" placeholder="Enter password" name="password" required /><br />
     <div class="form-footer">
-      <a href="forgot_password.php">Forgot your password?</a>
+      <a href="/login/forgot_password.php">Forgot your password?</a>
       <button type="submit" class="button button-large">Login</button>
     </div>
 </form>

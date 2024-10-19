@@ -1,7 +1,7 @@
 <!-- GABRIEL -->
 <?php 
 session_start();
-include 'dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 # Styling
 $pageTitle = "Inventory";
@@ -23,7 +23,7 @@ $access = $row['AccessID'] ?? FALSE;
 
 # Redirects on no access.
 if ($access == FALSE) {
-    header("Location: room.php");
+    header("Location: /room/room.php");
     exit();
 }
 
@@ -65,7 +65,7 @@ if ($access <= 2) {
             echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
             echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
             echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
-            echo "<td><form action='update_product_quantity.php' method='post'>
+            echo "<td><form action='/inventory/backend/update_product_quantity.php' method='post'>
             <input type='number' min='0' value='" . $row['Quantity'] . "' name='quantNew'>
             <input type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
@@ -86,7 +86,7 @@ if ($access <= 2) {
     echo "<thead><tr><th>Product</th><th>Quantity</th><th>Confirm</th></tr></thead>";
     echo "<tbody>";
 
-    echo "<form action='add_product_to_location.php' method='post'>";
+    echo "<form action='/inventory/backend/add_product_to_location.php' method='post'>";
     echo "<tr>";
     echo "<td><select name='prodID'>";
 
@@ -134,7 +134,7 @@ elseif ($access == 3) {
             echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
             echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
             echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
-            echo "<td><form action='update_product_quantity.php' method='post'>
+            echo "<td><form action='/inventory/backend/update_product_quantity.php' method='post'>
             <input type='number' min='0' max='" . $row['Quantity'] . "' value='" . $row['Quantity'] . "' name='quantNew'>
             <input type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
@@ -171,5 +171,5 @@ echo "<tbody>";
 }
 
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
-include 'dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

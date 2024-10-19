@@ -37,7 +37,6 @@ if ($result->num_rows > 0) {
 } else {
     $_SESSION["message"] = "The username or password is incorrect. Please try again!";
     header("Location: /login/login.php");
-    exit();
 }
 
 if($active){
@@ -75,6 +74,7 @@ if($active){
         exit();
     } else {
         $_SESSION["message"] = "The username or password is incorrect. Please try again!";
+        header("Location: /login/login.php");
     }
 } else {
     $_SESSION["message"] = "This account has been deactivated.";

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-include 'dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 # Kills connectin on connection error.
 if (mysqli_connect_error()) {
@@ -25,5 +25,5 @@ if ($result) {
     exit();
 }
 
-include 'dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

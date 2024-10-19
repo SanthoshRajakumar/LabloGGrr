@@ -1,6 +1,6 @@
 <?php
 # Connect to database and start session.
-include '../dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 session_start();
 
 # Kills connectin on connection error.
@@ -9,7 +9,7 @@ if (mysqli_connect_error()) {
 }
 
 if ($_SESSION['roleID'] != 1) {
-	header("Location: ../homepage.php");
+	header("Location: /homepage.php");
 	exit();
 }
 ?>
@@ -20,9 +20,9 @@ if ($_SESSION['roleID'] != 1) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabLoGGr</title>
-    <link rel="icon" type="..images/x-icon" href="../images/PastedGraphic-1.png">
+    <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="../style_.css">
+    <link rel="stylesheet" href="/styling/style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -38,26 +38,26 @@ if ($_SESSION['roleID'] != 1) {
   <div class="sample-section">
 
 <header>
-<form action="../index.php" method="GET">
+<form action="/index.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
-    <form action="../site_info/about.php" method="GET">
+    <form action="/site_info/about.php" method="GET">
       <button type="submit" class="button2">ABOUT</button>
     </form>
-    <form action="../site_info/faq.php" method="GET">
+    <form action="/site_info/faq.php" method="GET">
       <button type="submit" class="button2">FAQ</button>
     </form>
-    <form action="../site_info/contact.php" method="GET">
+    <form action="/site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
 </header>
 
 <div class="div1">
 <body>
-  <form action="create_account.php" method="GET">
+  <form action="/admin/account/create_account.php" method="GET">
     <button type="submit" class="button button-large">Create user</button>
   </form>
-  <form action="edit_access.php" method="GET">
+  <form action="/admin/account/edit_access.php" method="GET">
     <button type="submit" class="button button-large">Edit room access</button>
   </form>
 
@@ -66,18 +66,18 @@ if ($_SESSION['roleID'] != 1) {
   </div>
 
 <!-- Back Button -->
-<button class="button button-small" onclick="window.location.href='../homepage.php'">Back to homepage</button>
+<button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="../site_info/privacy_policy.php">Privacy policy</a> | <a href="../site_info/terms_condi.php">Terms & Condition</a> </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="/site_info/privacy_policy.php">Privacy policy</a> | <a href="/site_info/terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
-<script src="java.js">
+<script src="/styling/java.js">
 </script>
 
 </body>
 </html>
 
 <?php
-include '../dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
