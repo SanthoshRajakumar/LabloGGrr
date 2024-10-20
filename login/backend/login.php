@@ -78,6 +78,7 @@ if($active){
     }
 } else {
     $_SESSION["message"] = "This account has been deactivated.";
+    header("Location: /login/login.php");
 }
 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';

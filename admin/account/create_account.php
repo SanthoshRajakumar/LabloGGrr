@@ -1,12 +1,5 @@
 <?php
 
-# NEED TO BE ADDED:
-# rooms input (double select??)
-# sending info to new users email
-
-# Ta bort role???
-
-
 #session_set_cookie_params([
 #    'lifetime' => 0,
 #    'path' => '/',
@@ -18,12 +11,12 @@
 session_start();
 
 # Connect to database
-include '../dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
-$sql = "SELECT ID, RoleType FROM Roles";
+$sql = "SELECT * FROM Roles WHERE RoleType IN ('Teacher', 'Teacher Assistant')";
 $result = $link->query($sql);
 
-include '../dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
 
 <!-- ELSA --> 
@@ -35,7 +28,7 @@ include '../dclose.php';
     <title>Create user</title>
     <link rel="icon" type="images/x-icon" href="/images/PastedGraphic-1.png">
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="../style_.css">
+    <link rel="stylesheet" href="/styling/style_.css">
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -98,6 +91,10 @@ include '../dclose.php';
     <input type="submit" class="button button-large" value="Create user"/>
 </form>
 </div>
+
+<button class="button button-small" onclick="window.location.href='/admin/account/user_management.php'">Back</button>
+
+
 <script>
     const fnameInput = document.getElementById('fname');
     const lnameInput = document.getElementById('lname');
@@ -126,10 +123,10 @@ include '../dclose.php';
 </script>
 
 <div class="footer">
-    <h4> &copy; 2024 LabbLoGGr | <a href="privacy_policy.php">Privacy policy</a> | <a href="terms_condi.php">Terms & Condition</a> </h4>
+    <h4> &copy; 2024 LabbLoGGr | <a href="/site_info/privacy_policy.php">Privacy policy</a> | <a href="/site_info/terms_condi.php">Terms & Condition</a> </h4>
 </div>
 
-<script src="../java.js">
+<script src="/styling/java.js">
 </script>
 
 </body>
