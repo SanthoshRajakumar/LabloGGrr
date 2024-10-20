@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'dopen.php';  // Include the database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
 // Check if the user is logged in
 if (!isset($_SESSION["userID"])) {
@@ -17,9 +17,8 @@ $userID = $_SESSION["userID"];
 
 ?>
   <h2>Reset Password</h2>
-
     <!-- Password Reset Form -->
-    <form action="reset_password_submit.php" method="POST">
+    <form action="password_reset_submit.php" method="POST">
         <label for="new_password">New Password:</label>
         <input type="password" name="new_password" placeholder="Enter new password" required><br>
 

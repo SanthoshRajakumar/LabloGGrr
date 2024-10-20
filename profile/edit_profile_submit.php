@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'dopen.php';  // Include the database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
 // Check if the user is logged in
 if (!isset($_SESSION["userID"])) {
@@ -33,8 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Error updating profile. Please try again.";
     }
 }
-
-include 'dclose.php';  // Close the database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the database connection
 ?>
 
 <!-- HTML for the success/failure page -->
@@ -44,7 +43,7 @@ include 'dclose.php';  // Close the database connection
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Update Status</title>
-    <link rel="stylesheet" href="style_.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="/styling/style_.css"> <!-- Link to your CSS file -->
 </head>
 <body>
 
@@ -60,7 +59,7 @@ include 'dclose.php';  // Close the database connection
     <h2><?php echo htmlspecialchars($message); ?></h2>
 
     <!-- Button to go back to the homepage -->
-    <form action="homepage.php" method="GET">
+    <form action="/homepage.php" method="GET">
         <button type="submit" class="button button-large">Go Back to Homepage</button>
     </form>
   </div>

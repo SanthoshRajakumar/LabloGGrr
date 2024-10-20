@@ -1,5 +1,5 @@
 <?php
-include 'dopen.php'; // Your database connection
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 // Get the search query from the form input
 $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
@@ -20,7 +20,6 @@ $stmt = mysqli_prepare($link, $globalSearchQuery);
 // Bind the search query with wildcards to the statement
 $searchParam = "%$searchQuery%";
 mysqli_stmt_bind_param($stmt, 's', $searchParam);
-
 
 // Execute the query
 mysqli_stmt_execute($stmt);
@@ -43,11 +42,11 @@ $showDetails = !empty($searchQuery);
 <html>
 <head>
     <title>Product Search</title>
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="/styling/style_.css">
 </head>
 <body>
     <!-- Search form -->
-    <form action="global_search.php" method="get">
+    <form action="/global_search.php" method="GET">
     </form>
 
     <!-- Display the search results -->
@@ -125,4 +124,7 @@ $showDetails = !empty($searchQuery);
     <?php endif; ?>
 </body>
 </html>
+
+<?php
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 

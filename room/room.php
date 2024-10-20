@@ -34,7 +34,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
 <div class="topnav">
   <!-- Global Search Form -->
-  <form action="global_search.php" method="get">
+  <form action="../inventory/backend/global_search.php" method="get">
         <input type="text" name="search" placeholder="Search for products..." required>
     </form>
 </div>

@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Reset Result</title>
-    <link rel="stylesheet" href="style_.css">
+    <link rel="stylesheet" href="/styling/style_.css">
 </head>
 <body>
 
@@ -25,7 +25,7 @@ session_start();
     <h2><?php echo htmlspecialchars($_SESSION['reset_message']); ?></h2>
 
     <!-- Button to go back to homepage -->
-    <form action="index.php" method="GET">
+    <form action="\index.php" method="GET">
         <button type="submit" class="button button-large">Go Back to Homepage</button>
     </form>
 
