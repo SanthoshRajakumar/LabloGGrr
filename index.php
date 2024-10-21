@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 <!-- Has to get an error message in when the key is wrong -->
 <div class="div_login">
     <h2>Enter student key here: </h2>
-    <form action="/studentkey/validation.php" method="POST">
+    <form action="/studentkey/backend/validation.php" method="POST">
         <input type="text" placeholder="Enter student key" name="studentkey" required/><br />
     <button type="submit" class="button button-large">Enter</button>
 </form>

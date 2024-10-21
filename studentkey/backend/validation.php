@@ -1,7 +1,7 @@
 <?php
 # Connect to database and start session.
 session_start();
-include '../dopen.php'; 
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 # Kills connectin on connection error.
 if (mysqli_connect_error()) {
@@ -37,7 +37,7 @@ if (isset($_POST['studentkey']) && !empty($_POST['studentkey'])) {
             $_SESSION["studentKey"] = $studentkey;
 
             # Redirect to the next page.
-            header('Location: student_room.php');
+            header('Location: ../student_room.php');
             exit();
         } else {
             $_SESSION["error"] = "The Student Key is invalid. Please try again.";
