@@ -32,7 +32,10 @@ echo '
   </form>
   <form action="/profile/reset_password.php" method="GET">
     <button type="submit" class="button button-large">Reset Password</button>
-  </form>';
+  </form>
+  <form action="/logout/logout_form.php" method="GET">
+  <button type="submit" class="button button-large">Logout</button>
+</form>';
 
 
   # Only shows manage users if user has role admin.
