@@ -14,7 +14,7 @@ else {
 $sql = "SELECT ID AS RoomID, RoomName
         FROM Rooms
         INNER JOIN Access ON Access.RoomID = ID
-        WHERE Access.PeopleID = ?"; // Fixade SQL-fråga
+        WHERE Access.PeopleID = ? AND Rooms.Active = 1"; // Fixade SQL-fråga igen hehehehehehehehehehehe 
 $stmt = $link->prepare($sql);
 $stmt -> bind_param("i", $_SESSION["userID"]);
 $stmt -> execute();
