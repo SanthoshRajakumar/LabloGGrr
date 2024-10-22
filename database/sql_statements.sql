@@ -24,7 +24,8 @@ ON People (Salt);
 
 CREATE TABLE Rooms (
     ID INT AUTO_INCREMENT PRIMARY KEY,
-    RoomName VARCHAR(50)
+    RoomName VARCHAR(50),
+    Active BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE AccessLevel (

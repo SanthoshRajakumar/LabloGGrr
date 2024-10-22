@@ -3,62 +3,58 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
-# Styling
+
 $pageTitle = "Inventory";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 
-if (!$link) { die("HELVETE: " . mysqli_connect_error()); }
+if (!$link) { die("HELVETE: " . mysqli_connect_error()); } 
 
-# Gets access level.
-$sql = "SELECT Access.AccessID FROM Access WHERE PeopleID = ? AND RoomID = ?";
+
+$sql = "SELECT Access.AccessID, Rooms.Active FROM Access 
+        INNER JOIN Rooms ON Rooms.ID = Access.RoomID 
+        WHERE PeopleID = ? AND RoomID = ?";
 $stmt = $link->prepare($sql);
-
-$stmt->bind_param("ss", $_SESSION["userID"], $_GET["room_id"]);
-
+$stmt->bind_param("ii", $_SESSION["userID"], $_GET["room_id"]);
 $stmt->execute();
 $result = $stmt->get_result();
 
 $row = $result->fetch_assoc();
 $access = $row['AccessID'] ?? FALSE;
+$roomActive = $row['Active'] ?? FALSE;
 
-# Redirects on no access.
-if ($access == FALSE) {
+
+if ($access == FALSE || ($access > 1 && !$roomActive)) {
     header("Location: /room/room.php");
     exit();
 }
 
-# Now with prepared statement!
+
 $roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
 $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces, ProductLocation.Quantity, Product.ID
         FROM Product
         INNER JOIN ProductLocation ON Product.ID = ProductLocation.ProductID 
-        WHERE ProductLocation.RoomID = ?";
+        INNER JOIN Rooms ON ProductLocation.RoomID = Rooms.ID
+        WHERE ProductLocation.RoomID = ? AND (Rooms.Active = TRUE OR ? = 1)"; 
 
 $stmt = $link->prepare($sql);
-
-$stmt->bind_param("i", $roomID);
+$stmt->bind_param("ii", $roomID, $access); 
 
 $stmt->execute();
 
 $result = $stmt->get_result();
 
-if (!$result) {
-    die("fan också: " . $link->error);
+if (!$result) { 
+    die("fan också: " . $link->error); 
 }
 
-# Edit and add.
+
 if ($access <= 2) {
-
-
-
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
     echo "<tbody>";
 
-    if ($result && $result->num_rows > 0) 
-    {
-        while ($row = $result->fetch_assoc()) 
-        {
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
             echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
@@ -79,9 +75,7 @@ if ($access <= 2) {
     }
     echo "</tbody></table><br><br>";
 
-    
 
-    # Table to enter new products.
     echo "<table border='1'>";
     echo "<thead><tr><th>Product</th><th>Quantity</th><th>Confirm</th></tr></thead>";
     echo "<tbody>";
@@ -93,7 +87,7 @@ if ($access <= 2) {
     $sql = "SELECT Product.ID, Product.ProductName FROM Product WHERE Product.ID NOT IN (SELECT ProductLocation.ProductID FROM ProductLocation WHERE ProductLocation.RoomID = ?)";
     $stmt = $link->prepare($sql);
 
-    $stmt->bind_param("s", $roomID);
+    $stmt->bind_param("i", $roomID); 
 
     $stmt->execute();
     $result = $stmt->get_result();
@@ -118,16 +112,14 @@ if ($access <= 2) {
     echo "</tbody></table>";
 
 }
-# Reduce/edit only.
+
 elseif ($access == 3) {
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
     echo "<tbody>";
 
-    if ($result && $result->num_rows > 0) 
-    {
-        while ($row = $result->fetch_assoc()) 
-        {
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
             echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
@@ -144,16 +136,14 @@ elseif ($access == 3) {
     }
     echo "</tbody></table>";
 }
-# View only.
+
 else {
 echo "<table border='1'>";
 echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th></tr></thead>";
 echo "<tbody>";
 
-    if ($result && $result->num_rows > 0) 
-    {
-        while ($row = $result->fetch_assoc()) 
-        {
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
             echo "<tr>";
             echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
             echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
@@ -162,14 +152,12 @@ echo "<tbody>";
             echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
             echo "</tr>";
         }
-    
-
     } else {
         echo "<tr><td colspan='4'>No products found for this room.</td></tr>";
     }
     echo "</tbody></table>";
 }
 
-include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
