@@ -6,26 +6,40 @@ if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
 $_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
 
-if (!$_SESSION["userID"]) {
-    echo "<h1>Oopsie! You should probably log in first.</h1>";
-    echo "<a href=" . '"/login/login.php"' . ">Go here!</a>";
+$_SESSION["studentkey"] = $_SESSION["studentkey"] ?? FALSE;
+
+if ($_SESSION["userID"]) {
+    echo $_SESSION["userID"];
+    $sql = "SELECT ID AS RoomID, RoomName
+            FROM Rooms
+            INNER JOIN Access ON Access.RoomID = ID
+            WHERE Access.PeopleID = ? AND Rooms.Active = 1"; 
+    $stmt = $link->prepare($sql);
+    $stmt -> bind_param("i", $_SESSION["userID"]);
+    $stmt -> execute();
+    $result = $stmt -> get_result(); 
+
+    if ($result->num_rows < 1) {
+        echo "<h1>aaaw man you got no rooms</h1>";
+        }
 }
-else {
-$sql = "SELECT ID AS RoomID, RoomName
-        FROM Rooms
-        INNER JOIN Access ON Access.RoomID = ID
-        WHERE Access.PeopleID = ? AND Rooms.Active = 1"; // Fixade SQL-fråga igen hehehehehehehehehehehe 
-$stmt = $link->prepare($sql);
-$stmt -> bind_param("i", $_SESSION["userID"]);
-$stmt -> execute();
-$result = $stmt -> get_result(); 
 
-if ($result->num_rows > 0) {
+if ($_SESSION["studentkey"]) {
+    $sql = "SELECT Rooms.ID as RoomID, Rooms.RoomName, AccessLevel.AccessLevel 
+    FROM StudentAccess 
+    JOIN Rooms ON StudentAccess.RoomID = Rooms.ID 
+    JOIN AccessLevel ON StudentAccess.AccessID = AccessLevel.ID 
+    WHERE StudentAccess.KeyID = ?";
 
-    }
-else { echo "<h1>aaaw man you got no rooms</h1>";
-          
-    }
+    # Prepare the statement.
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param("s", $_SESSION["studentKey"]);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows < 1) {
+        echo "<h1>aaaw man you got no rooms</h1>";
+        }
 }
 $pageTitle = "Rooms";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 

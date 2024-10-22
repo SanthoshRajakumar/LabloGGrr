@@ -38,6 +38,12 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
 
 <?php 
+if(isset($_SESSION['error'])){
+    $error = $_SESSION['error'];
+    echo "$error";
+    unset($_SESSION['error']);
+}
+
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

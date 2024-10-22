@@ -37,12 +37,12 @@ if (isset($_POST['studentkey']) && !empty($_POST['studentkey'])) {
             $_SESSION["studentKey"] = $studentkey;
 
             # Redirect to the next page.
-            header('Location: ../student_room.php');
+            header('Location: ../../room/room.php');
             exit();
         } else {
             $_SESSION["error"] = "The Student Key is invalid. Please try again.";
 
-            header('Location: ../index.php');
+            header('Location: ../../index.php');
             exit();
         }
 
