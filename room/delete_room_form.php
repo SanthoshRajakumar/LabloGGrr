@@ -2,22 +2,16 @@
 session_start(); 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
-# Kontrollera om användaren har adminroll
 if (!isset($_SESSION['roleID']) || $_SESSION['roleID'] != 1) {
     header("Location: ../room.php");
     exit();
 }
 
-# Hämta rum från databasen
 $sql = "SELECT ID, RoomName, Active FROM Rooms";
 $result = $link->query($sql);
-
-# Titel för sidan
 $pageTitle = "Manage Rooms";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
-
-<div class="sample-section">
   <h2>Manage Room Activity</h2>
 
   <table border="1">
@@ -58,7 +52,6 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     }
     ?>
   </table>
-</div>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
