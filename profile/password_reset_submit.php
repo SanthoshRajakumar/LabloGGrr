@@ -10,6 +10,7 @@ if (!isset($_SESSION["userID"])) {
 
 $userID = $_SESSION["userID"]; // Get user ID from session
 
+
 // Get the new password and confirmation password from the form
 $new_password = $_POST['new_password'];
 $confirm_password = $_POST['confirm_password'];

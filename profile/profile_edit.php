@@ -2,9 +2,14 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
+$namePattern = "/^[a-zA-Z'-]+$/";  // Only letters, apostrophes, and hyphens for names
+$emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Email format
+
+
 # Include styling
 $pageTitle = "Edit profile";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+
 
 // Check if the user is logged in by verifying the session
 if (!isset($_SESSION["userID"])) {
@@ -61,6 +66,27 @@ if ($result->num_rows > 0) {
 </html>
 
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Retrieve updated form values
+  $firstName = htmlspecialchars(trim($_POST['first_name']));
+  $lastName = htmlspecialchars(trim($_POST['last_name']));
+  $email = htmlspecialchars(trim($_POST['email']));
+// Validate first name
+if (!preg_match($namePattern, $firstName)) {
+  die("Invalid first name. Only letters, apostrophes, and hyphens are allowed.");
+}
+
+// Validate last name
+if (!preg_match($namePattern, $lastName)) {
+  die("Invalid last name. Only letters, apostrophes, and hyphens are allowed.");
+}
+
+// Validate email
+if (!preg_match($emailPattern, $email)) {
+  die("Invalid email format.");
+}
+}
+
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the database connection
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../../dopen.php";
-include "../../account/backend/functions.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/account/functions.php';
 $email = $_POST['email'];
 
 $sql = "SELECT ID, Salt FROM People WHERE email = ?";
@@ -30,5 +30,6 @@ if ($result->num_rows > 0) {
     $_SESSION['message'] = "Incorrect email, please try again!";
     header("Location: ../forgot_password.php");
 }
-include "../../dclose.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>

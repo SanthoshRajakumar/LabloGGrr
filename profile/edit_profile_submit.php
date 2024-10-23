@@ -11,28 +11,52 @@ if (!isset($_SESSION["userID"])) {
 // Get the userID from the session
 $userID = $_SESSION["userID"];
 
-// Check if the form was submitted
+$namePattern = "/^[a-zA-Z'-]+$/";  // Only letters, apostrophes, and hyphens for names
+$emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";  // Valid email format
+
+// Initialize an array to store error messages
+$errors = [];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the submitted form data
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
+    // Retrieve updated form values
+    $firstName = htmlspecialchars(trim($_POST['first_name']));
+    $lastName = htmlspecialchars(trim($_POST['last_name']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $username = htmlspecialchars(trim($_POST['username']));
 
-    // Prepare the SQL query to update the user's details
-    $sql = "UPDATE People SET FirstName = ?, LastName = ?, Email = ?, UserName = ? WHERE ID = ?";
-    $stmt = $link->prepare($sql);
-    $stmt->bind_param("ssssi", $firstName, $lastName, $email, $username, $userID);
+    // Validate first name
+    if (!preg_match($namePattern, $firstName)) {
+      $errors[] = "Invalid first name. Only letters, apostrophes, and hyphens are allowed.";
+  }
 
-    // Execute the query
-    if ($stmt->execute()) {
-        // If the update was successful, show a success message
-        $message = "Profile updated successfully!";
-    } else {
-        // If there was an error, show a failure message
-        $message = "Error updating profile. Please try again.";
-    }
+  // Validate last name
+  if (!preg_match($namePattern, $lastName)) {
+      $errors[] = "Invalid last name. Only letters, apostrophes, and hyphens are allowed.";
+  }
+
+  // Validate email
+  if (!preg_match($emailPattern, $email)) {
+      $errors[] = "Invalid email format.";
+  }
+
+      // If there are no validation errors, prepare the SQL query to update the user's details
+    if (empty($errors)) {
+      $sql = "UPDATE People SET FirstName = ?, LastName = ?, Email = ?, UserName = ? WHERE ID = ?";
+      $stmt = $link->prepare($sql);
+      $stmt->bind_param("ssssi", $firstName, $lastName, $email, $username, $userID);
+
+      // Execute the query
+      if ($stmt->execute()) {
+          $message = "Profile updated successfully!";
+      } else {
+          $message = "Error updating profile. Please try again.";
+      }
+  } else {
+      // If there are validation errors, concatenate them into a single message
+      $message = implode("<br>", $errors);
+  }
 }
+
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the database connection
 ?>
 
