@@ -2,8 +2,8 @@
 session_start(); 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
-if (!isset($_SESSION['roleID']) || $_SESSION['roleID'] != 1) {
-    header("Location: ../homepage.php");
+if (!isset($_SESSION['roleID'])) {
+    header("Location: /index.php");
     exit();
 }
 
@@ -18,14 +18,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     </tr>
     <tr>
       <td>
-        <form action="backend/logout.php" method="POST">
+        <form action="/logout/backend/logout.php" method="POST">
             <button type="submit" class="button2">Yes, log me out</button>
         </form>
       </td>
     </tr>
     <tr>
       <td>
-        <form action="../homepage.php" method="GET">
+        <form action="/homepage.php" method="GET">
             <button type="submit" class="button2">No, take me back</button>
         </form>
       </td>

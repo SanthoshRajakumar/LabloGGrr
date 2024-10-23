@@ -16,16 +16,25 @@ if ($_SESSION['roleID'] != 1) {
 # Styling
 $pageTitle = "Product Management";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
+
+if ($_SESSION['roleID'] != 1) {
+  header("Location: /homepage.php");
+
+  include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
+  exit();
+}
 ?>
+
+
 
 <div class="div1">
 <body>
-  <form action="" method="GET">
-  	<select>
+  
   		<?php
 
-      $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces, ProductLocation.Quantity, Product.ID
-        FROM Product";
+      $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces, Product.ID, ProductType.ProductType
+        FROM Product
+        INNER JOIN ProductType ON ProductType.ID = Product.ProductTypeID";
 
       $stmt = $link->prepare($sql);
 
@@ -34,33 +43,67 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
       $result = $stmt->get_result();
 
       if ($result && $result->num_rows > 0) {
+        echo "<table border='1'>";
+        echo "<thead><tr><th>Product Name</th><th>Volume (ml)</th><th>Mass (mg)</th><th>Pieces</th><th>ProductType</th><th>ID</th></tr></thead>";
+        echo "<tbody>";
         while ($row = $result->fetch_assoc()) 
         {
-            echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
-            echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
-            echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
-            echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
-            echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
-            echo "<td><form action='/inventory/backend/update_product_quantity.php' method='post'>
-            <input type='number' min='0' value='" . $row['Quantity'] . "' name='quantNew'>
-            <input type='submit' value='Update quantity'>
-            <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
-            <input type='hidden' value='" . $roomID . "' name='room_id'>
-            </form><form action='/inventory/backend/remove_product_from_room.php' method='post'>
-            <input type='hidden' value='" . $roomID . "' name='room_id'>
-            <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
-            <input type='submit' value='Delete'></form></td>";
+          echo "<tr>";
+          echo "<td>" . (isset($row['ProductName']) ? $row['ProductName'] : '') . "</td>";
+          echo "<td>" . (isset($row['Volume']) ? $row['Volume'] : '') . "</td>";
+          echo "<td>" . (isset($row['Mass']) ? $row['Mass'] : '') . "</td>";
+          echo "<td>" . (isset($row['Pieces']) ? $row['Pieces'] : '') . "</td>";
+          echo "<td>" . (isset($row['ProductType']) ? $row['ProductType'] : '') . "</td>";
+          echo "<td>" . (isset($row['ID']) ? $row['ID'] : '') . "</td>";
+          echo "</tr>";
         }
+        echo "</tbody></table><br><br>";
       }
 
   		?>
-  	</select>
-    <button type="submit" class="button button-large">List products by type</button>
-  </form>
+  	
+    <!--<button type="submit" class="button button-large">List products by type</button>-->
+  
   </div>
 
+  <?php
+    echo "<table border='1'>";
+    echo "<thead><tr><th>Product Name</th><th>Volume (ml)</th><th>Mass (mg)</th><th>Pieces</th><th>Product type</th></tr></thead>";
+    echo "<form action='/admin/product/backend/add_product_to_catalogue.php' method='post'>";
+    echo "<tbody>";
+
+    echo "<td><input type='text' name='productName'></td>";
+    echo "<td><input type='number' name='productVolume' min=0></td>";
+    echo "<td><input type='number' name='productMass' min=0></td>";
+    echo "<td><input type='number' name='productPieces' min=0></td>";
+
+    echo "<td><select name='prodType'>";
+
+    $sql = "SELECT ProductType.ProductType, ProductType.ID FROM ProductType";
+
+    $stmt = $link->prepare($sql);
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = $result->fetch_assoc();
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            echo "<option value=" . $row["ID"] . ">" . $row["ProductType"] . "</option>";
+        }
+    }
+    echo "</select></td>";
+
+    echo "<td><input type='submit' value='Enter product'></td>";
+
+    echo "</form>";
+    echo "</tbody></table><br><br>";
+
+  ?>
+
 <!-- Back Button -->
-<button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to homepage</button>
+<button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to admin suite</button>
 
 
 <?php 
