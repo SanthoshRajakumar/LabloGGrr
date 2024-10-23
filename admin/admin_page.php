@@ -31,6 +31,11 @@ echo '<form action="/admin/product/product_management.php" method="GET">
 
 echo '</div>';
 
+?>
+<!-- Back Button -->
+<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+<?php
+
 
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php'
