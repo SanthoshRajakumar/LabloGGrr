@@ -48,7 +48,7 @@ if (!$result) {
 }
 
 
-if ($access <= 2) {
+if ($access <= 2 || $_SESSION['roleID'] == 1) {
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
     echo "<tbody>";
