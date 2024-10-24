@@ -33,7 +33,7 @@ if ($result->num_rows > 0) {
                     </form>
                 </td>";
         }
-        echo "<td><form action='./backend/edit_access.php' method='post' style='display:inline;' class='delete-button-form'>
+        echo "<td><form action='./edit_access.php' method='post' style='display:inline;' class='delete-button-form'>
                 <input type='hidden' name='ID' value='{$ID}'>
                 <button type='submit'>Edit access</button>
             </form></td></tr>";
