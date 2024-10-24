@@ -10,6 +10,8 @@ if (mysqli_connect_error()) {
 
 if ($_SESSION['roleID'] != 1) {
 	header("Location: /homepage.php");
+
+  include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 	exit();
 }
 ?>
@@ -57,7 +59,7 @@ if ($_SESSION['roleID'] != 1) {
   <form action="./create_account.php" method="GET">
     <button type="submit" class="button button-large">Create user</button>
   </form>
-  <form action="./edit_access.php" method="GET">
+  <form action="./manage_users.php" method="GET">
     <button type="submit" class="button button-large">Edit room access</button>
   </form>
 

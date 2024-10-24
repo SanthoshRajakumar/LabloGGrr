@@ -33,15 +33,18 @@ if ($result->num_rows > 0) {
                     </form>
                 </td>";
         }
-        echo "<td><form action='./backend/edit_access.php' method='post' style='display:inline;' class='delete-button-form'>
+        echo "<td><form action='./edit_access.php' method='post' style='display:inline;' class='delete-button-form'>
                 <input type='hidden' name='ID' value='{$ID}'>
                 <button type='submit'>Edit access</button>
             </form></td></tr>";
     }
     echo '</table>';
 }
+?>
 
+<br><br><button class="button button-small" onclick="window.location.href='/admin/account/user_management.php'">Back to User management</button>
 
+<?php
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 
 

@@ -1,19 +1,12 @@
 <?php
-session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
-
+include $_SERVER['DOCUMENT_ROOT'] . '/room/backend/account.php';
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
-$_SESSION["userID"] = $_SESSION["userID"] ?? FALSE;
 
-if (!$_SESSION["userID"]) {
-    echo "<h1>Oopsie! You should probably log in first.</h1>";
-    echo "<a href=" . '"/login/login.php"' . ">Go here!</a>";
-}
-else {
 
     $isAdmin = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1;
-
+    
 
     if ($isAdmin) {
 
@@ -21,26 +14,26 @@ else {
                 FROM Rooms
                 INNER JOIN Access ON Access.RoomID = ID
                 WHERE Access.PeopleID = ?";  
-    } else {
+    } elseif (isset($_SESSION['userID'])) {
 
         $sql = "SELECT ID AS RoomID, RoomName
                 FROM Rooms
                 INNER JOIN Access ON Access.RoomID = ID
                 WHERE Access.PeopleID = ? AND Rooms.Active = 1";  
+    } elseif (isset($_SESSION['studentkey'])) {
+
+        $sql = "SELECT ID AS RoomID, RoomName
+                FROM Rooms
+                INNER JOIN StudentAccess ON StudentAccess.RoomID = ID
+                WHERE StudentAccess.KeyID = ? AND Rooms.Active = 1";  
     }
 
 
     $stmt = $link->prepare($sql);
-    $stmt->bind_param("i", $_SESSION["userID"]);
+    $stmt->bind_param("i",$row['ID'] );
     $stmt->execute();
     $result = $stmt->get_result(); 
 
-    if ($result->num_rows > 0) {
-
-    } else {
-        echo "<h1>aaaw man you got no rooms</h1>";
-    }
-}
 
 $pageTitle = "Rooms";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
@@ -66,19 +59,19 @@ if ($result && $result->num_rows > 0) {
     echo "<th>Press to view inventory</th></tr></thead>
             <tbody>";
 
-    while ($row = $result->fetch_assoc()) {
+    while ($rowz = $result->fetch_assoc()) {
         echo "<tr>
-                <td>" . $row['RoomName'] . "</td>";
+                <td>" . $rowz['RoomName'] . "</td>";
 
 
         if ($isAdmin) {
-            $status = $row['Active'] ? "Active" : "Inactive";
+            $status = $rowz['Active'] ? "Active" : "Inactive";
             echo "<td>" . $status . "</td>";
         }
 
         echo "<td>
                 <form action='/inventory/inventory.php' method='get'>
-                    <input type='hidden' name='room_id' value='" . $row['RoomID'] . "'>
+                    <input type='hidden' name='room_id' value='" . $rowz['RoomID'] . "'>
                     <input type='submit' class='button button-small' value='View Inventory'>
                 </form>
               </td>

@@ -21,5 +21,5 @@ $stmt->bind_param("i", $userID);
 $stmt->execute();
 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
-header("Location: ../test.php");
+header("Location: ../manage_users.php");
 ?>

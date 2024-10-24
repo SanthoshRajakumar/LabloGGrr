@@ -90,7 +90,7 @@ if ($_SESSION['roleID'] != 1) {
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            echo "<option value=" . $row["ID"] . ">" . $row["ProductType"] . "</option>";
+            echo "<option value='" . $row["ID"] . "'>" . $row["ProductType"] . "</option>";
         }
     }
     echo "</select></td>";
