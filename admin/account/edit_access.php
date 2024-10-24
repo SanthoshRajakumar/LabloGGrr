@@ -7,12 +7,12 @@ if ($_SESSION['roleID'] != 1) {
     exit();
 }
 
-$editUserID = $_GET['editUserID'] ?? $_SESSION['userID'];
+$editUserID = $_POST['ID'];/* ?? $_SESSION['userID']*/
 
 $_SESSION['editUserID'] = $editUserID;
 
 
-    echo '<form action="/admin/account/edit_access.php" method="get">';
+    /*echo '<form action="/admin/account/backend/update_edit_user.php" method="post">';
 
     echo '<select name="editUserID">';
 
@@ -34,7 +34,7 @@ $_SESSION['editUserID'] = $editUserID;
 
     echo '<button type="submit" class="button button-large">Choose user</button>';
 
-    echo '</form>';
+    echo '</form>';*/
 
     $sql = "SELECT People.UserName FROM People WHERE People.ID = ?";
     $stmt = $link->prepare($sql);
@@ -157,7 +157,7 @@ if ($result->num_rows > 0) {
 </style>
 
 <!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/admin/account/user_management.php'">Back to User management</button>
+<br><br><button class="button button-small" onclick="window.location.href='/admin/account/manage_users.php'">Back to User management</button>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';

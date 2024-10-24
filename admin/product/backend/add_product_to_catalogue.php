@@ -19,14 +19,36 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
 }
 
 $sql = "INSERT INTO Product (ProductName, Volume, Mass, Pieces, ProductTypeID) VALUES (?, ?, ?, ?, ?)";
+
+if ($_POST["productVolume"] < 1) {
+	$prodVol = NULL;
+}
+else {
+	$prodVol = $_POST["productVolume"];
+}
+
+if ($_POST["productMass"] < 1) {
+	$prodMass = NULL;
+}
+else {
+	$prodMass = $_POST["productMass"];
+}
+
+if ($_POST["productPieces"] < 1) {
+	$prodPiece = NULL;
+}
+else {
+	$prodPiece = $_POST["productPieces"];
+}
+
 $stmt = $link->prepare($sql);
 
-$stmt->bind_param("ssssi", $_POST["productName"], $_POST["productVolume"] ?? NULL, $_POST["productMass"] ?? NULL, $_POST["productPieces"] ?? NULL, $_POST["productType"]);
+$stmt->bind_param("siiii", $_POST["productName"], $prodVol, $prodMass, $prodPiece, $_POST["prodType"]);
 
 $result = $stmt->execute();
 
 if ($result) {
-    header('Location: /admin/product/backend/inventory.php');
+    header('Location: /admin/product/product_management.php');
     exit();
 }
 
