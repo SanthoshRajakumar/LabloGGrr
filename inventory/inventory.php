@@ -2,19 +2,26 @@
 <?php 
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
-
+include $_SERVER['DOCUMENT_ROOT'] . '/account.php';
 
 $pageTitle = "Inventory";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); } 
 
-
+if(isset($_SESSION['userID'])) {
 $sql = "SELECT Access.AccessID, Rooms.Active FROM Access 
         INNER JOIN Rooms ON Rooms.ID = Access.RoomID 
         WHERE PeopleID = ? AND RoomID = ?";
+         } elseif (isset($_SESSION['studentkey'])) {
+
+            $sql = "SELECT StudentAccess.AccessID, Rooms.Active FROM StudentAccess 
+            INNER JOIN Rooms ON Rooms.ID = StudentAccess.RoomID 
+            WHERE KeyID = ? AND RoomID = ?"; 
+
+         }
 $stmt = $link->prepare($sql);
-$stmt->bind_param("ii", $_SESSION["userID"], $_GET["room_id"]);
+$stmt->bind_param("ii", $row['ID'], $_GET["room_id"]);
 $stmt->execute();
 $result = $stmt->get_result();
 

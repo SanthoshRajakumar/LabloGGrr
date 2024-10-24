@@ -1,22 +1,14 @@
 <?php 
-session_start();
+
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 $pageTitle = "LabLoGGr";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/account.php';
+
 ?>
 
 <?php
-# Gets first name of active user.
-$sql = "SELECT People.FirstName FROM People WHERE People.ID = ?";
-$stmt = $link->prepare($sql);
-
-$stmt->bind_param("s", $_SESSION["userID"]); // Binds parameters
-
-$stmt->execute();
-$result = $stmt->get_result();
-
-$row = $result->fetch_assoc();
 
 
 echo '<h2>Welcome, ' . $row["FirstName"] . '!</h2>';

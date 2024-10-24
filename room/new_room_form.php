@@ -3,6 +3,7 @@ session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 $pageTitle = "New room";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . 'account.php';
 ?>
 
   <!-- Flytta formuläret inuti denna sektion -->

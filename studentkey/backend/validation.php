@@ -34,7 +34,7 @@ if (isset($_POST['studentkey']) && !empty($_POST['studentkey'])) {
         # Check if the studentkey exists.
         if ($key_exists > 0) {
             # Set the session variable for studentKey.
-            $_SESSION["studentKey"] = $studentkey;
+            $_SESSION["studentkey"] = $studentkey;
 
             # Redirect to the next page.
             header('Location: ../../room/room.php');
