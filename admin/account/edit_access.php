@@ -1,6 +1,10 @@
 <?php 
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
+$pageTitle = "Edit access";
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
+
+
 
 if ($_SESSION['roleID'] != 1) {
     header("Location: /homepage.php");
@@ -160,5 +164,6 @@ if ($result->num_rows > 0) {
 <br><br><button class="button button-small" onclick="window.location.href='/admin/account/manage_users.php'">Back to User management</button>
 
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
