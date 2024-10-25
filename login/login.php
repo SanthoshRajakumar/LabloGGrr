@@ -2,10 +2,6 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 session_start();
 
-$namePattern = "/^[a-zA-Z'-]+$/";  // Only letters, apostrophes, and hyphens for names
-$emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Email format
-$usernamePattern = "/^[a-zA-Z0-9_]{3,15}$/";  // Alphanumeric, underscores, 3-15 characters
-$passwordPattern = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[\W_]).{8,}$/";  // At least 8 chars, 1 letter, 1 number, 1 special char
 # Styling
 $pageTitle = "Login";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
@@ -23,10 +19,10 @@ if(isset($_SESSION['message'])){
 <div class="div_login">
 <?php echo ' <form action="/login/backend/login.php" method="POST">'; ?>
     <label for="username">Username</label>
-    <input type="text" placeholder="Enter username" name="username" required/><br />
+    <input type="text" placeholder="Enter username" name="username" id="username" required/><br />
             
     <label for="password">Password</label>
-    <input type="password" placeholder="Enter password" name="password" required /><br />
+    <input type="password" placeholder="Enter password" name="password" id="password" required/><br />
     <div class="form-footer">
       <a href="/login/forgot_password.php">Forgot your password?</a>
       <button type="submit" class="button button-large">Login</button>
@@ -41,3 +37,19 @@ if(isset($_SESSION['message'])){
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
+
+<script>
+    const usernameInput = document.getElementById('username');
+    //const lnameInput = document.getElementById('lname');
+
+    // Function to automatically format username input
+    function formatUsername(username){
+        const formattedUsername = username.replace(/[^a-zA-ZÀ-ÿ0-9\s-]/g, ''); // Remove numeric and special characters
+        return formattedUsername.slice(0, 8);
+    }
+
+    // Event listener for Firstname input
+    usernameInput.addEventListener('input', function() {
+        usernameInput.value = formatUsername(usernameInput.value); 
+    });
+</script>
