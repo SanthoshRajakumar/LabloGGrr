@@ -10,7 +10,7 @@ if (!isset($_SESSION['roleID'])) {
 $pageTitle = "Log Out";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
-  <h2>Confirm Logout</h2>
+  <h3>Confirm Logout</h3>
 
   <table border="1">
     <tr>

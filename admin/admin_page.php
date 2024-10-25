@@ -13,11 +13,11 @@ $pageTitle = "Admin";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 
 
-echo '<h2>Admin suite</h2>';
+echo '<h3>Admin suite</h3>';
 
 echo '<div class="div1">';
 
-echo '<form action="/admin/account/user_management.php" method="GET">
+echo '<form action="/admin/account/manage_users.php" method="GET">
     <button type="submit" class="button button-large">Manage users</button>
   </form>';
 
@@ -33,7 +33,7 @@ echo '</div>';
 
 ?>
 <!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+<br><br><button class="button button-large" onclick="window.location.href='/homepage.php'">Back</button>
 <?php
 
 

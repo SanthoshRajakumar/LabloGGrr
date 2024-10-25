@@ -12,7 +12,7 @@ $result = $link->query($sql);
 $pageTitle = "Manage Rooms";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
-  <h2>Manage Room Activity</h2>
+  <h3>Manage Room Activity</h3>
 
   <table border="1">
     <tr>
@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
                 echo "<td>
                         <form action='backend/toggle_room_status.php' method='POST'>
                             <input type='hidden' name='room_id' value='{$roomID}'>
-                            <button type='submit' class='button2'>Deactivate</button>
+                            <button type='submit' class='button button-small'>Deactivate</button>
                         </form>
                       </td>";
             } else {
@@ -52,6 +52,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     }
     ?>
   </table>
+<br><br><button class="button button-large" onclick="window.location.href='/room/room.php'">Back</button>
+
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';

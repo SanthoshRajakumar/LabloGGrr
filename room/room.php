@@ -89,17 +89,18 @@ if ($result && $result->num_rows > 0) {
 
 if ($isAdmin) {
 
-    echo '<form action="/room/new_room_form.php" method="GET">
+    echo '<div class="div1">
+        <form action="/room/toggle_room_form.php" method="GET">
+            <br><br><button type="submit" class="button button-large">Manage rooms</button>
+          </form>
+          <form action="/room/new_room_form.php" method="GET">
             <button type="submit" class="button button-large">Create New Room</button>
-          </form>';
-
-    echo '<form action="/room/toggle_room_form.php" method="GET">
-            <button type="submit" class="button button-large">Toggle Room</button>
-          </form>';
+          </form>
+          </div>';
 }
 
 if (!$isStudent){
-echo '<br><br><button class="button button-small" onclick="window.location.href=\'/homepage.php\'">Back to homepage</button>';
+echo '<br><br><button class="button button-large" onclick="window.location.href=\'/homepage.php\'">Back</button>';
 }
 
 if ($isStudent){

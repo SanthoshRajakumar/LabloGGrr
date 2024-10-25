@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
             echo "<td>Yes</td><td>
                     <form action='./backend/deactivate_account.php' method='post' style='display:inline;' class='delete-button-form'>
                         <input type='hidden' name='ID' value='{$ID}'>
-                        <button type='submit'>Deactivate</button>
+                        <button class='button button-small' type='submit'>Deactivate</button>
                     </form>
                 </td>";
         } else {
@@ -36,7 +36,7 @@ if ($result->num_rows > 0) {
         }
         echo "<td><form action='./edit_access.php' method='post' style='display:inline;' class='delete-button-form'>
                 <input type='hidden' name='ID' value='{$ID}'>
-                <button type='submit'>Edit access</button>
+                <button class='button button-small' type='submit'>Edit access</button>
             </form></td></tr>";
     }
     echo '</table>';
@@ -44,10 +44,10 @@ if ($result->num_rows > 0) {
 ?>
 
 <form action="./create_account.php" method="GET">
-    <button type="submit" class="button button-large">Create user</button>
+    <button type="submit" class="button button-large">Create new user</button>
 </form>
 
-<br><br><button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to admin suite</button>
+<br><br><button class="button button-large" onclick="window.location.href='/admin/admin_page.php'">Back</button>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
