@@ -15,7 +15,7 @@ $editUserID = $_POST['ID'] ?? $_SESSION['editUserID'];/* ?? $_SESSION['userID']*
 
 $_SESSION['editUserID'] = $editUserID;
 
-    $sql = "SELECT People.UserName FROM People WHERE People.ID = ?";
+    $sql = "SELECT FirstName, LastName FROM People WHERE People.ID = ?";
     $stmt = $link->prepare($sql);
 
     $stmt->bind_param("i", $editUserID);
@@ -25,7 +25,7 @@ $_SESSION['editUserID'] = $editUserID;
 
     $row = $result->fetch_assoc();
 
-    echo '<h2>Now editing ' . $row['UserName'] . '</h2>';
+    echo '<h3>Now editing ' . $row['FirstName'] .' ' . $row['LastName'] . '</h3>';
 
 $sql = "SELECT ID, RoomName FROM Rooms WHERE ID NOT IN(SELECT R.ID AS RoomID FROM Access A
         INNER JOIN Rooms R ON R.ID = A.RoomID
@@ -65,7 +65,7 @@ if ($result->num_rows > 0) {
                 <td>
                     <form action='/admin/account/backend/delete_access.php' method='post' style='display:inline;' class='delete-button-form'>
                         <input type='hidden' name='roomID' value='{$roomID}'>
-                        <button type='delete'>Delete</button>
+                        <button class='button button-small' type='delete'>Delete</button>
                     </form>
                 </td>
               </tr>";
@@ -78,7 +78,7 @@ if ($result->num_rows > 0) {
 
 
 ?>
-<button class="button button-small" onclick="showAddForm()">Add</button>
+<button class="button button-large" onclick="showAddForm()">Add access</button>
 
 <div id="addAccess" class="form-container">
     <h3>Edit access</h3>
@@ -104,7 +104,7 @@ if ($result->num_rows > 0) {
             }
         ?>
     </select>
-        <input type="submit" value="Submit">
+        <input class="button button-large" type="submit" value="Submit">
     </form>
 </div>
 
@@ -130,7 +130,7 @@ if ($result->num_rows > 0) {
 </style>
 
 <!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/admin/account/manage_users.php'">Back to User management</button>
+<br><br><br><button class="button button-large" onclick="window.location.href='/admin/account/manage_users.php'">Back to User management</button>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling

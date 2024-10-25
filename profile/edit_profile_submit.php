@@ -83,9 +83,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the databa
     <h2><?php echo htmlspecialchars($message); ?></h2>
 
     <!-- Button to go back to the homepage -->
-    <form action="/homepage.php" method="GET">
-        <button type="submit" class="button button-large">Go Back to Homepage</button>
-    </form>
+    <?php
+    if($userID === 1){
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
+    }
+    ?>
   </div>
 </div>
 

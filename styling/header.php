@@ -22,17 +22,22 @@
 </div>
 
 <div class="sample-section-wrap">
-  <div class="sample-section">
+  <div class="sample-section" id="target">
 
   <header>
 <?php
+
 if(isset($_SESSION['roleID'])){
     if ($_SESSION['roleID'] === 4){
     echo '<form action="/room/room.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>';
-    } else {
-    echo '<form action="/homepage.php" method="GET">
+    } elseif($_SESSION['roleID'] === 1) {
+    echo '<form action="/admin/admin_page.php" method="GET">
+      <button type="submit" class="button2">HOME</button>
+    </form>';
+  }else {
+    echo '<form action="/room/room.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>';
   }
@@ -51,4 +56,80 @@ if(isset($_SESSION['roleID'])){
     <form action="/site_info/contact.php" method="GET">
       <button type="submit" class="button2">CONTACT</button>
     </form>
+  <?php
+    if(isset($_SESSION['userID'])){
+      echo '<div class="dropdown">
+          <button class="button2">ACCOUNT
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a class="button2" href="/profile/profile_edit.php">Edit profile</a>
+      <a class="button2" href="/profile/reset_password.php">Reset password</a>
+      <a class="button2" href="/logout/logout_form.php">Logout</a>
+    </div>
+  </div>';
+    } elseif(isset($_SESSION['studentkey'])){
+      echo '<form action="/studentkey/backend/exit.php" method="GET">
+              <button type="submit" class="button2">LOGOUT</button>
+            </form>';
+    }
+    else {
+      echo '<div class="dropdown">
+          <button class="button2">LOGIN
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a class="button2" href="/index.php/#key">Student</a>
+      <a class="button2" href="/login/login.php">Teacher/TA</a>
+    </div>
+  </div>';
+    }
+  
+    if(isset($_SESSION['roleID'])){
+      echo '<script>
+    window.onload = function() {
+      const targetDiv = document.getElementById("target");
+      targetDiv.scrollIntoView({ behavior: "smooth" });
+    };
+  </script>';
+    }
+  ?>
+    
   </header>
+
+  <style>
+    /* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 16vw;
+  box-shadow: 0vw 0.1vw 1vw 0vw rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  padding: 1vw 1vw;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+  </style>
+

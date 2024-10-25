@@ -59,6 +59,17 @@ if ($result->num_rows > 0) {
     $_SESSION['reset_message'] = "User not found.";
 }
 
+?>
+<!-- Back Button -->
+<?php
+    if($userID === 1){
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
+    }
+    ?>
+<?php
+
 // Redirect to a result page
 header("Location: password_reset_result.php");
 exit();
@@ -66,4 +77,3 @@ exit();
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
-    

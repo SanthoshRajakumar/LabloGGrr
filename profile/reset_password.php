@@ -31,9 +31,21 @@ $userID = $_SESSION["userID"];
     <button type="submit" class="button button-large">Reset Password</button>
 </form>
 
+<<<<<<< HEAD
 <!-- Back Button -->
 <br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
 
+=======
+    <!-- Back Button -->
+    <?php
+    if($userID === 1){
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
+    }
+    ?>
+  </div>
+>>>>>>> 21b06c6cb770455e2d5651f3430cdfc1b310b3b9
 </div>
 </body>
 </html>

@@ -95,7 +95,7 @@ if ($_SESSION['roleID'] != 1) {
     }
     echo "</select></td>";
 
-    echo "<td><input type='submit' value='Enter product'></td>";
+    echo "<td><input class='button button-small' type='submit' value='Enter product'></td>";
 
     echo "</form>";
     echo "</tbody></table><br><br>";
@@ -103,7 +103,7 @@ if ($_SESSION['roleID'] != 1) {
   ?>
 
 <!-- Back Button -->
-<button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to admin suite</button>
+<button class="button button-large" onclick="window.location.href='/admin/admin_page.php'">Back</button>
 
 
 <?php 

@@ -131,9 +131,9 @@ VALUES
 INSERT INTO AccessLevel (AccessLevel)
 VALUES 
 ("Admin"),
-("Add"),
-("Edit"),
-("View");
+("Full access (Add, Delete, Edit, View)"),
+("Partial access (Edit, View)"),
+("Limited access (View)");
 
 INSERT INTO Access (PeopleID, RoomID, AccessID)
 VALUES
