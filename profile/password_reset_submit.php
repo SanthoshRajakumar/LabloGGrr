@@ -52,6 +52,11 @@ if ($result->num_rows > 0) {
     $_SESSION['reset_message'] = "User not found.";
 }
 
+?>
+<!-- Back Button -->
+<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+<?php
+
 // Redirect to a result page
 header("Location:password_reset_result.php");
 exit();

@@ -29,7 +29,7 @@ $row = $result->fetch_assoc();
 $access = $row['AccessID'] ?? FALSE;
 $roomActive = $row['Active'] ?? FALSE;
 
-
+# Redirects back to room.php if room is inactive and user does not have admin access for room.
 if ($access == FALSE || ($access > 1 && !$roomActive)) {
     header("Location: /room/room.php");
     exit();
@@ -37,14 +37,29 @@ if ($access == FALSE || ($access > 1 && !$roomActive)) {
 
 
 $roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
+
+# Find shelves for room.
+$sql = "SELECT Shelf.ID, Shelf.Name FROM Shelf WHERE Shelf.RoomID = ?";
+
+$stmt = $link->prepare($sql);
+$stmt->bind_param("i", $roomID);
+
+$stmt->execute();
+
+$shelfResult = $stmt->get_result();
+
+if ($shelfResult && $shelfResult->num_rows > 0) {
+        while ($shelfRow = $shelfResult->fetch_assoc()) {
+
+
 $sql = "SELECT Product.ProductName, Product.Volume, Product.Mass, Product.Pieces, ProductLocation.Quantity, Product.ID
         FROM Product
         INNER JOIN ProductLocation ON Product.ID = ProductLocation.ProductID 
         INNER JOIN Rooms ON ProductLocation.RoomID = Rooms.ID
-        WHERE ProductLocation.RoomID = ? AND (Rooms.Active = TRUE OR ? = 1)"; 
+        WHERE ProductLocation.RoomID = ? AND (Rooms.Active = TRUE OR ? = 1) AND ProductLocation.ShelfID = ?"; 
 
 $stmt = $link->prepare($sql);
-$stmt->bind_param("ii", $roomID, $access); 
+$stmt->bind_param("iii", $roomID, $access, $shelfRow['ID']);
 
 $stmt->execute();
 
@@ -56,6 +71,8 @@ if (!$result) {
 
 
 if ($access <= 2 || $_SESSION['roleID'] == 1) {
+    echo "<h2>" . $shelfRow['Name'] . "</h2>";
+
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
     echo "<tbody>";
@@ -73,9 +90,11 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
             <input type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
             <input type='hidden' value='" . $roomID . "' name='room_id'>
+            <input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>
             </form><form action='/inventory/backend/remove_product_from_room.php' method='post'>
             <input type='hidden' value='" . $roomID . "' name='room_id'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
+            <input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>
             <input type='submit' value='Delete'></form></td>";
             echo "</tr>";
         }
@@ -110,6 +129,7 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
     echo "</select></td>";
     echo "<td><input type='number' min=0 value=1 name='quantity'></td>";
     echo "<input type='hidden' value='" . $roomID . "' name='room_id'>";
+    echo "<input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>";
     echo "<td><input type='submit' value='Enter product'></td>";
     echo "</form></td>";
 
@@ -135,8 +155,10 @@ elseif ($access == 3) {
             echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
             echo "<td><form action='/inventory/backend/update_product_quantity.php' method='post'>
             <input type='number' min='0' max='" . $row['Quantity'] . "' value='" . $row['Quantity'] . "' name='quantNew'>
+            <input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>
             <input type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
+
             <input type='hidden' value='" . $roomID . "' name='room_id'></form></td>";
             echo "</tr>";
         }
@@ -164,6 +186,14 @@ echo "<tbody>";
     }
     echo "</tbody></table>";
 }
+
+}
+}
+
+?>
+<!-- Back Button -->
+<br><br><button class="button button-small" onclick="window.location.href='/room/room.php'">Back to rooms</button>
+<?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; 
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';

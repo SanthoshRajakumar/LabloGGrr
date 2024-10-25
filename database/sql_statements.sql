@@ -74,14 +74,23 @@ CREATE TABLE Product (
     FOREIGN KEY (ProductTypeID) REFERENCES ProductType(ID)
 );
 
+CREATE TABLE Shelf (
+    ID INT AUTO_INCREMENT UNIQUE,
+    RoomID INT,
+    Name VARCHAR(50),
+    FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
+    PRIMARY KEY (RoomID, Name)
+);
+
 CREATE TABLE ProductLocation (
     ProductID INT,
     RoomID INT,
     Quantity INT,
-    Shelf VARCHAR(50),
+    ShelfID INT,
+    FOREIGN KEY (ShelfID) REFERENCES Shelf(ID),
     FOREIGN KEY (ProductID) REFERENCES Product(ID),
     FOREIGN KEY (RoomID) REFERENCES Rooms(ID),
-    PRIMARY KEY (ProductID, RoomID)
+    PRIMARY KEY (ProductID, RoomID, ShelfID)
 );
 
 INSERT INTO Roles (RoleType)
@@ -104,6 +113,20 @@ VALUES
 ("Room2"),
 ("Room3"),
 ("Room4");
+
+INSERT INTO Shelf (RoomID, Name)
+VALUES
+(1, "Shelf 1"),
+(1, "Shelf 2"),
+(1, "Cabinet 1"),
+(2, "Shelf 1"),
+(2, "Cabinet 1"),
+(2, "Cabinet 2"),
+(3, "Refrigerator"),
+(3, "Cabinet 1"),
+(4, "Box in corner"),
+(4, "Shelf 1");
+
 
 INSERT INTO AccessLevel (AccessLevel)
 VALUES 
@@ -150,28 +173,28 @@ VALUES
 ("Titration Stand", 1, 5),
 ("Fire Extinguisher", 1, 5);
 
-INSERT INTO ProductLocation (ProductID, RoomID, Quantity, Shelf)
+INSERT INTO ProductLocation (ProductID, RoomID, Quantity, ShelfID)
 VALUES
-(1,1,10, "Shelf 1"),
-(2,2,6, "Shelf 2"),
-(3,1,2, "Drawer 1"),
-(4,2,3, "Drawer 2"),
-(5,1,4, "Shelf 3"),
-(6,2,5, "Shelf 4"),
-(7,1,2, "Shelf 5"),
-(8,2,1, "Drawer 3"),
-(9,1,1, "Drawer 4"),
-(10,2,2, "Drawer 5"),
-(1,3,10, "Drawer 6"),
-(2,4,6, "Drawer 7"),
-(3,3,2, "Shelf 6"),
-(4,4,3, "Shelf 7"),
-(5,3,4, "Drawer 4"),
-(6,4,5, "Shelf 3"),
-(7,3,2, "Shelf 3"),
-(8,4,1, "Drawer 3"),
-(9,3,1, "Drawer 3"),
-(10,4,2, "Drawer 3");
+(1,1,10,1),
+(2,2,6,4),
+(3,1,2,2),
+(4,2,3,5),
+(5,1,4,3),
+(6,2,5,6),
+(7,1,2,1),
+(8,2,1,5),
+(9,1,1,3),
+(10,2,2,6),
+(1,3,10,7),
+(2,4,6,9),
+(3,3,2,8),
+(4,4,3,10),
+(5,3,4,8),
+(6,4,5,9),
+(7,3,2,7),
+(8,4,1,10),
+(9,3,1,8),
+(10,4,2,9);
 
 INSERT INTO StudentKey (ID, CreatorID)
 VALUES

@@ -29,6 +29,10 @@ $userID = $_SESSION["userID"];
         <button type="submit" class="button button-large">Reset Password</button>
     </form>
 
+
+    <!-- Back Button -->
+    <br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+
   </div>
 </div>
 

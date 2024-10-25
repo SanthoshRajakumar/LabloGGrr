@@ -34,10 +34,10 @@ if ($access == FALSE || $access > 3) {
 }
 
 # Sets up query.
-$sql = "UPDATE ProductLocation SET ProductLocation.Quantity = ? WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ?";
+$sql = "UPDATE ProductLocation SET ProductLocation.Quantity = ? WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ? AND ProductLocation.ShelfID = ?";
 $stmt = $link->prepare($sql);
 
-$stmt->bind_param("sss", $_POST["quantNew"], $_POST["prodID"], $_POST["room_id"]);
+$stmt->bind_param("ssss", $_POST["quantNew"], $_POST["prodID"], $_POST["room_id"], $_POST["shelf_id"]);
 
 $result = $stmt->execute();
 

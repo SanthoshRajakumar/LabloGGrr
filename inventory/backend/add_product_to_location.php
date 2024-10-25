@@ -13,10 +13,10 @@ if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
     exit();
 }
 
-$sql = "INSERT INTO ProductLocation (ProductID, RoomID, Quantity) VALUES (?, ?, ?)";
+$sql = "INSERT INTO ProductLocation (ProductID, RoomID, Quantity, ShelfID) VALUES (?, ?, ?, ?)";
 $stmt = $link->prepare($sql);
 
-$stmt->bind_param("sss", $_POST["prodID"], $_POST["room_id"], $_POST["quantity"]);
+$stmt->bind_param("ssss", $_POST["prodID"], $_POST["room_id"], $_POST["quantity"], $_POST["shelf_id"]);
 
 $result = $stmt->execute();
 
