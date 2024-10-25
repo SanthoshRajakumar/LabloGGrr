@@ -52,10 +52,11 @@ if ($result->num_rows > 0) {
         <!-- Submit button to update profile -->
         <button type="submit" class="button button-large">Update Profile</button>
     </form>
+    <!-- Back Button -->
+    <br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
 
-  </div>
+    </div>
 </div>
-
 
 </body>
 </html>

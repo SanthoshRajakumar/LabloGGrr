@@ -33,10 +33,10 @@ if ($access == FALSE || $access > 3) {
 }
 
 # Sets up query.
-$sql = "DELETE FROM ProductLocation WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ?";
+$sql = "DELETE FROM ProductLocation WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ? AND ProductLocation.ShelfID = ?";
 $stmt = $link->prepare($sql);
 
-$stmt->bind_param("ss", $_POST["prodID"], $_POST["room_id"]);
+$stmt->bind_param("sss", $_POST["prodID"], $_POST["room_id"], $_POST["shelf_id"]);
 
 $result = $stmt->execute();
 

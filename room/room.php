@@ -92,6 +92,12 @@ if ($isAdmin) {
             <button type="submit" class="button button-large">Delete Room</button>
           </form>';
 }
+
+?>
+<!-- Back Button -->
+<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+
+<?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
