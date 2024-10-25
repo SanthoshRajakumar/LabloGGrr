@@ -99,7 +99,7 @@ if ($isAdmin) {
           </div>';
 }
 
-if (!$isStudent){
+if ($isAdmin){
 echo '<br><br><button class="button button-large" onclick="window.location.href=\'/homepage.php\'">Back</button>';
 }
 

@@ -30,16 +30,7 @@ echo '
 <body>
   <form action="/room/room.php" method="GET">
     <button type="submit" class="button button-large">Rooms</button>
-  </form>
-  <form action="/profile/profile_edit.php" method="GET">
-    <button type="submit" class="button button-large">Edit Profile</button>
-  </form>
-  <form action="/profile/reset_password.php" method="GET">
-    <button type="submit" class="button button-large">Reset Password</button>
-  </form>
-  <form action="/logout/logout_form.php" method="GET">
-  <button type="submit" class="button button-large">Logout</button>
-</form>';
+  </form>';
 
 
   # Only shows manage users if user has role admin.

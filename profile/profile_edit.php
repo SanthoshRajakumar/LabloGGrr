@@ -60,7 +60,7 @@ if ($result->num_rows > 0) {
         <button type="submit" class="button button-large">Update Profile</button>
     </form>
     <!-- Back Button -->
-    <br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+    <br><br><button class="button button-large" onclick="window.location.href='/homepage.php'">Back</button>
 
     </div>
 </div>

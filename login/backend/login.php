@@ -57,7 +57,11 @@ if ($result->num_rows > 0) {
                 //$_SESSION["username"] = $username; // Adds username to session.
                 $_SESSION["userID"] = $row["ID"]; // Adds user ID to session.
                 $_SESSION["roleID"] = $row["RoleID"]; // Adds active user role to session.
-                header("Location: /homepage.php");  
+                if($_SESSION['roleID'] == 1){
+                    header("Location: /homepage.php");  
+                } else {
+                    header("Location: /room/room.php");  
+                }
             } else {
                 $_SESSION["message"] = "The username or password is incorrect. Please try again!";
                 header("Location: /login/login.php");
