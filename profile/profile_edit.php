@@ -2,7 +2,7 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
-$namePattern = "/^[a-zA-Z'-]+$/";  // Only letters, apostrophes, and hyphens for names
+$namePattern = "/^[a-zA-Z'À-ÿ\s-]+$/";  // Only letters, apostrophes, and hyphens for names
 $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Email format
 
 
@@ -45,14 +45,16 @@ if ($result->num_rows > 0) {
 
     <!-- Profile Edit Form -->
     <form action="edit_profile_submit.php" method="POST">
-        <label for="first_name"><?php echo htmlspecialchars($user['FirstName']); ?></label>
-        <input type="text" name="first_name" placeholder="First Name" required><br>
+<?php
+    echo '<label for="first_name">First Name</label>
+          <input type="text" name="first_name" id="first_name" value='. $user['FirstName'] . ' required><br>
 
-        <label for="last_name"><?php echo htmlspecialchars($user['LastName']); ?></label>
-        <input type="text" name="last_name" placeholder="Last Name" required><br>
+          <label for="last_name">Last Name</label>
+          <input type="text" name="last_name" id="last_name" value='. $user['LastName'] . ' required><br>
 
-        <label for="email"><?php echo htmlspecialchars($user['Email']); ?></label>
-        <input type="email" name="email" placeholder="Email" required><br>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" value='. $user['Email'] . ' required><br>
+'?>
 
         <!-- Submit button to update profile -->
         <button type="submit" class="button button-large">Update Profile</button>
