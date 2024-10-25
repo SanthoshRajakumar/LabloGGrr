@@ -2,7 +2,7 @@
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';  // Include the database connection
 
-$namePattern = "/^[a-zA-Z'-]+$/";  // Only letters, apostrophes, and hyphens for names
+$namePattern = "/^[a-zA-ZÀ-ÿ' -]+$/";  // Only letters, apostrophes, and hyphens for names
 $emailPattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/"; // Email format
 
 
