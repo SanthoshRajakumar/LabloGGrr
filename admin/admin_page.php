@@ -39,3 +39,10 @@ echo '</div>';
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php'
 ?>
+
+<script>
+   window.onload = function() {
+      const targetDiv = document.getElementById("target");
+      targetDiv.scrollIntoView({ behavior: "smooth" }); // Scroll with smooth effect
+    };
+</script>

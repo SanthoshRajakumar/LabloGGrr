@@ -21,7 +21,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     </div>
 </div>
 <!-- Has to get an error message in when the key is wrong -->
-<div class="div_login">
+<div class="div_login" id="target">
     <h2>Enter student key here: </h2>
     <form action="/studentkey/backend/validation.php" method="POST">
         <input type="text" placeholder="Enter student key" name="studentkey" required/><br />
@@ -49,3 +49,11 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
 
+<script>
+  function scrollToTarget() {
+    // Get the target div by its ID
+    const targetDiv = document.getElementById("target");
+    // Scroll to the target div with smooth scrolling
+    targetDiv.scrollIntoView({ behavior: "smooth" });
+  }
+</script>

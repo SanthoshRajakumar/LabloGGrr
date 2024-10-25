@@ -22,7 +22,7 @@
 </div>
 
 <div class="sample-section-wrap">
-  <div class="sample-section">
+  <div class="sample-section" id="target">
 
   <header>
 <?php
@@ -68,6 +68,21 @@ if(isset($_SESSION['roleID'])){
       <a class="button2" href="/logout/logout_form.php">Logout</a>
     </div>
   </div>';
+    } elseif(isset($_SESSION['studentkey'])){
+      echo '<form action="/studentkey/backend/exit.php" method="GET">
+              <button type="submit" class="button2">LOGOUT</button>
+            </form>';
+    }
+    else {
+      echo '<div class="dropdown">
+          <button class="button2">LOGIN
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a class="button2" href="/index.php/#target">Student</a>
+      <a class="button2" href="/login/login.php">Teacher/TA</a>
+    </div>
+  </div>';
     }
   
   ?>
@@ -107,4 +122,9 @@ if(isset($_SESSION['roleID'])){
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+html {
+  scroll-behavior: smooth;
+}
   </style>
+

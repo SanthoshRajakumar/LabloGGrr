@@ -52,4 +52,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
     usernameInput.addEventListener('input', function() {
         usernameInput.value = formatUsername(usernameInput.value); 
     });
+  // When the window loads, scroll to the target div
+  window.onload = function() {
+      const targetDiv = document.getElementById("target");
+      targetDiv.scrollIntoView({ behavior: "smooth" }); // Scroll with smooth effect
+    };
 </script>
