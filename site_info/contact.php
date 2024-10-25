@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Contact us";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>

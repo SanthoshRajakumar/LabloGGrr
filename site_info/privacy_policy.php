@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Privacy Policy";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Terms & Conditions";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>

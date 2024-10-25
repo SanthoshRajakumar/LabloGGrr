@@ -1,16 +1,17 @@
 <?php
+session_start();
+if (!isset($_SESSION["studentkey"]) && !isset($_SESSION["userID"])) {
+    header('Location: /index.php');
+    exit();
+}
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/room/backend/account.php';
+//include $_SERVER['DOCUMENT_ROOT'] . '/room/backend/account.php';
 if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
-
-
-    $isAdmin = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1;
-    $isStudent = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 4;
+$isAdmin = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1;
+$isStudent = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 4;
     
-
     if ($isAdmin) {
-
         $sql = "SELECT ID AS RoomID, RoomName, Active 
                 FROM Rooms
                 INNER JOIN Access ON Access.RoomID = ID
@@ -96,6 +97,12 @@ if ($isAdmin) {
 
 if (!$isStudent){
 echo '<br><br><button class="button button-small" onclick="window.location.href=\'/homepage.php\'">Back to homepage</button>';
+}
+
+if ($isStudent){
+    unset($_SESSION['roleID']);
+    unset($_SESSION['studentkey']);
+    echo '<br><br><button class="button button-small" onclick="window.location.href=\'/index.php\'">Exit</button>';
 }
 
 ?>
