@@ -13,6 +13,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
 
 <h2>Sign in here</h2>
+<?php
+if(isset($_SESSION['message'])){
+  $message = $_SESSION['message'];
+  echo "$message";
+  unset($_SESSION['message']);
+}
+?>
 <div class="div_login">
 <?php echo ' <form action="/login/backend/login.php" method="POST">'; ?>
     <label for="username">Username</label>
@@ -26,27 +33,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     </div>
 </form>
 </div>
+<br><br><button class="button button-small" onclick="window.location.href='/index.php'">Back</button>
+
 
 <?php
-// Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  // Retrieve and sanitize input values to prevent XSS
-  $username = htmlspecialchars(trim($_POST['username']));
-  $password = htmlspecialchars(trim($_POST['password']));
-
-if (!preg_match($usernamePattern, $username)) {
-  die("Invalid username. Must be 3-15 characters long and contain only letters, numbers, or underscores.");
-}
- // Validate password
- if (!preg_match($passwordPattern, $password)) {
-  die("Invalid password. Must be at least 8 characters long, include at least one letter, one number, and one special character.");
-}
-}
-if(isset($_SESSION['message'])){
-    $message = $_SESSION['message'];
-    echo "$message";
-    unset($_SESSION['message']);
-}
 
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
