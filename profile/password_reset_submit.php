@@ -54,7 +54,13 @@ if ($result->num_rows > 0) {
 
 ?>
 <!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
+<?php
+    if($userID === 1){
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
+    }
+    ?>
 <?php
 
 // Redirect to a result page

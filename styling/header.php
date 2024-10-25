@@ -22,7 +22,7 @@
 </div>
 
 <div class="sample-section-wrap">
-  <div class="sample-section" id="target">
+  <div class="sample-section">
 
   <header>
 <?php
@@ -79,7 +79,7 @@ if(isset($_SESSION['roleID'])){
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a class="button2" href="/index.php/#target">Student</a>
+      <a class="button2" href="/index.php/#key">Student</a>
       <a class="button2" href="/login/login.php">Teacher/TA</a>
     </div>
   </div>';
@@ -114,9 +114,6 @@ if(isset($_SESSION['roleID'])){
   display: block;
   text-align: left;
 }
-
-/* Add a grey background color to dropdown links on hover */
-
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {

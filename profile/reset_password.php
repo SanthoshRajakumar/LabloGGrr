@@ -31,8 +31,13 @@ $userID = $_SESSION["userID"];
 
 
     <!-- Back Button -->
-    <br><br><button class="button button-large" onclick="window.location.href='/homepage.php'">Back</button>
-
+    <?php
+    if($userID === 1){
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
+    }
+    ?>
   </div>
 </div>
 
