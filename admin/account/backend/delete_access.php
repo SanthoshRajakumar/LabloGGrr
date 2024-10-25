@@ -1,6 +1,6 @@
 <?php
-include '../../dopen.php';
-include 'functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 session_start();
 
 $roomID = $_POST['roomID'];

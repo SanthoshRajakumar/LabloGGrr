@@ -102,10 +102,10 @@ VALUES
 
 INSERT INTO People (FirstName, LastName, Email, UserName, RoleID, Salt, HashCode)
 VALUES 
-("Sara", "Mosebach", "sara_1022@hotmail.com", "admin", 1, "IMS", "4bb4d75c49d41f7ea3522726c8db4d9d"), #passw: 1234
-("Gabriel", "Hedman Slottner", NULL, "gabbe", 2, "OST", "6ef10d23cb49358f279c1a686400d645"), #passw: monkey
-("Therese", "Björkman", "teppatopp@gmail.com", "teppatopp", 3, "SALT", "fd03cca92aa12665f0ae8c521bc9ea29"), #passw: memory
-("Elsa", "Rosenblad", NULL, "krams", 4, "AROMAT", "7bf38f80d23952c0e0ec1d0d72626461"); #passw: tdb
+("Sara", "Mosebach", "sara_1022@hotmail.com", "admin", 1, "147952a34c7b7e426bc450658d11c7be", "138c5f39ebd0123cbf412abc7e4a971c"), #passw: 1234
+("Gabriel", "Hedman Slottner", "gslottner@gmail.com", "gahe8576", 2, "9d48aa3b84a877928681c8b65411f4e6", "4c726be474dedb4c7f118a505624d7cf"), #passw: monkey
+("Therese", "Björkman", "teppatopp@gmail.com", "thbj8259", 2, "ca8d15eeb1fc413d9986741be44d99ea", "ad46542588fdd04f95645879d6beaecf"), #passw: memory
+("Santhosh", "Raja Kumar", "santhosh235200@gmail.com", "sara1634", 2, "44488b7e8afe2d500c9c74a95e53bbf5", "9605144d9c4ad33f30b8b6b6d47a4605"); #passw: lion
 
 INSERT INTO Rooms (RoomName)
 VALUES 
