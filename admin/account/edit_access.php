@@ -94,11 +94,14 @@ if ($result->num_rows > 0) {
     </select>
     Access Level: <select name="accessLevel">
         <?php
-        if ($accesslevel->num_rows > 0) {
-            while ($row = $accesslevel->fetch_assoc()) {
-                echo "<option value='" . $row["ID"] . "'>" . $row['AccessLevel'] . "</option>";
+            if ($accesslevel->num_rows > 0) {
+                while ($row = $accesslevel->fetch_assoc()) {
+                    // Exclude 'Admin' access level
+                    if ($row['AccessLevel'] !== 'Admin') {
+                        echo "<option value='" . $row["ID"] . "'>" . $row['AccessLevel'] . "</option>";
+                    }
+                }
             }
-        }
         ?>
     </select>
         <input type="submit" value="Submit">
