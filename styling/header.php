@@ -26,11 +26,6 @@
 
   <header>
 <?php
-  if(!empty($_SESSION)){
-    print_r($_SESSION);
-  } else {
-    echo "nothing";
-  }
 if(isset($_SESSION['roleID'])){
     if ($_SESSION['roleID'] === 4){
     echo '<form action="/room/room.php" method="GET">
