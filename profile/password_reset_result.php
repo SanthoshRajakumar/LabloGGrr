@@ -25,7 +25,7 @@ session_start();
     <h2><?php echo htmlspecialchars($_SESSION['reset_message']); ?></h2>
 
     <!-- Button to go back to homepage -->
-    <form action="\index.php" method="GET">
+    <form action="\homepage.php" method="GET">
         <button type="submit" class="button button-large">Go Back to Homepage</button>
     </form>
 
