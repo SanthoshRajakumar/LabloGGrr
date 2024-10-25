@@ -89,8 +89,8 @@ if ($isAdmin) {
             <button type="submit" class="button button-large">Create New Room</button>
           </form>';
 
-    echo '<form action="/room/delete_room_form.php" method="GET">
-            <button type="submit" class="button button-large">Delete Room</button>
+    echo '<form action="/room/toggle_room_form.php" method="GET">
+            <button type="submit" class="button button-large">Toggle Room</button>
           </form>';
 }
 
