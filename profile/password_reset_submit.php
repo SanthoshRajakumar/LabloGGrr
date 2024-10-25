@@ -8,40 +8,47 @@ if (!isset($_SESSION["userID"])) {
     exit();
 }
 
-$userID = $_SESSION["userID"]; // Get user ID from session
+$userID = $_SESSION["userID"];
 
-
-// Get the new password and confirmation password from the form
+// Get the current password, new password, and confirmation password from the form
+$current_password = $_POST['current_password'];
 $new_password = $_POST['new_password'];
 $confirm_password = $_POST['confirm_password'];
 
-// Checking if the passwords match
+// Checking if the new passwords match
 if ($new_password !== $confirm_password) {
-    $_SESSION['reset_message'] = "Passwords do not match!";
-    header("Location:reset_password.php");  // Redirect back to reset password form
+    $_SESSION['reset_message'] = "New passwords do not match!";
+    header("Location: reset_password.php");
     exit();
 }
 
-// Fetch the user's salt from the database using userID
-$sql = "SELECT Salt FROM People WHERE ID = ?";
+// Fetch the user's salt and current hash from the database using userID
+$sql = "SELECT Salt, HashCode FROM People WHERE ID = ?";
 $stmt = $link->prepare($sql);
 $stmt->bind_param("i", $userID);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Fetch the salt for the user
+    // Fetch the salt and current hash for the user
     $row = $result->fetch_assoc();
     $salt = $row['Salt'];
+    $current_hash = $row['HashCode'];
+
+    // Verify the current password
+    if ($current_hash !== md5($salt . $current_password . $salt)) {
+        $_SESSION['reset_message'] = "Current password is incorrect.";
+        header("Location: reset_password.php");
+        exit();
+    }
 
     // Hash the new password using the existing salt
-    $hash = md5($salt . $new_password . $salt);
-
+    $new_hash = md5($salt . $new_password . $salt);
 
     // Update the password in the database
     $sql = "UPDATE People SET HashCode = ? WHERE ID = ?";
     $stmt = $link->prepare($sql);
-    $stmt->bind_param("si", $hash, $userID);
+    $stmt->bind_param("si", $new_hash, $userID);
 
     if ($stmt->execute()) {
         $_SESSION['reset_message'] = "Password successfully updated.";
@@ -52,14 +59,11 @@ if ($result->num_rows > 0) {
     $_SESSION['reset_message'] = "User not found.";
 }
 
-?>
-<!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
-<?php
-
 // Redirect to a result page
-header("Location:password_reset_result.php");
+header("Location: password_reset_result.php");
 exit();
-include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling
-include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';  // Close the database connection
+
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
+    
