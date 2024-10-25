@@ -5,8 +5,6 @@ if (!isset($_SESSION["studentkey"]) && !isset($_SESSION["userID"])) {
     exit();
 }
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
-//include $_SERVER['DOCUMENT_ROOT'] . '/room/backend/account.php';
-//if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
 $isAdmin = isset($_SESSION['userID']) && isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1;
 $isStaff = isset($_SESSION['userID']) && isset($_SESSION['roleID']) && ($_SESSION['roleID'] === 2 || $_SESSION['roleID'] == 3);
@@ -87,21 +85,6 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align: center;'>0 results</p>";
 }
 
-if ($isAdmin) {
-
-    echo '<div class="div1">
-        <form action="/room/toggle_room_form.php" method="GET">
-            <br><br><button type="submit" class="button button-large">Manage rooms</button>
-          </form>
-          <form action="/room/new_room_form.php" method="GET">
-            <button type="submit" class="button button-large">Create New Room</button>
-          </form>
-          </div>';
-}
-
-if ($isAdmin){
-echo '<br><br><button class="button button-large" onclick="window.location.href=\'/homepage.php\'">Back</button>';
-}
 
 if ($isStudent){
     echo '<form action="/studentkey/backend/exit.php" method="GET">

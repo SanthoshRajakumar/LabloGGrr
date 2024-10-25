@@ -29,7 +29,7 @@ if(isset($_SESSION['message'])){
     </div>
 </form>
 </div>
-<br><br><button class="button button-small" onclick="window.location.href='/index.php'">Back</button>
+<br><br><button class="button button-large" onclick="window.location.href='/index.php'">Back</button>
 
 
 <?php

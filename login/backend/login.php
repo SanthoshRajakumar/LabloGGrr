@@ -58,7 +58,7 @@ if ($result->num_rows > 0) {
                 $_SESSION["userID"] = $row["ID"]; // Adds user ID to session.
                 $_SESSION["roleID"] = $row["RoleID"]; // Adds active user role to session.
                 if($_SESSION['roleID'] == 1){
-                    header("Location: /homepage.php");  
+                    header("Location: /admin/admin_page.php");  
                 } else {
                     header("Location: /room/room.php");  
                 }

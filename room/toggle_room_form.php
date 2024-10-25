@@ -12,7 +12,6 @@ $result = $link->query($sql);
 $pageTitle = "Manage Rooms";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
-  <h3>Manage Room Activity</h3>
 
   <table border="1">
     <tr>
@@ -52,7 +51,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     }
     ?>
   </table>
-<br><br><button class="button button-large" onclick="window.location.href='/room/room.php'">Back</button>
+<br><br><button class="button button-large" onclick="window.location.href='/room/new_room_form.php'">Create New Room</button>
+<br><br><button class="button button-large" onclick="window.location.href='/admin/admin_page.php'">Back</button>
 
 
 <?php

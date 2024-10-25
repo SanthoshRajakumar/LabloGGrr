@@ -32,8 +32,12 @@ if(isset($_SESSION['roleID'])){
     echo '<form action="/room/room.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>';
-    } else {
-    echo '<form action="/homepage.php" method="GET">
+    } elseif($_SESSION['roleID'] === 1) {
+    echo '<form action="/admin/admin_page.php" method="GET">
+      <button type="submit" class="button2">HOME</button>
+    </form>';
+  }else {
+    echo '<form action="/room/room.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>';
   }

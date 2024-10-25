@@ -1,8 +1,8 @@
 <?php
+session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 $pageTitle = "New room";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/account.php';
 ?>
 
   <!-- Flytta formuläret inuti denna sektion -->
@@ -11,8 +11,10 @@ include $_SERVER['DOCUMENT_ROOT'] . '/account.php';
     <input type="text" id="room_name" name="room_name" required>
     <button type="submit" class="button button-large">Submit</button>
   </form>
+  <br><br><button class="button button-large" onclick="window.location.href='/admin/admin_page.php'">Back</button>
 </div>
 </div>
+
 
 
 <?php 
