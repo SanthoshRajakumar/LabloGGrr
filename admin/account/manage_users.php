@@ -1,7 +1,7 @@
 <?php
-//Saras
+session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 
 $sql = "SELECT P.ID, P.Firstname, P.Lastname, P.Active, R.RoleType FROM People P
         INNER JOIN Roles R ON R.ID = P.RoleID
@@ -52,8 +52,6 @@ if ($result->num_rows > 0) {
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
-
-
 ?>
 
 
