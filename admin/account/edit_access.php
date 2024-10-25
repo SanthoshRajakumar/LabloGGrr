@@ -11,7 +11,7 @@ if ($_SESSION['roleID'] != 1) {
     exit();
 }
 
-$editUserID = $_POST['ID'];/* ?? $_SESSION['userID']*/
+$editUserID = $_POST['ID'] ?? $_SESSION['editUserID'];/* ?? $_SESSION['userID']*/
 
 $_SESSION['editUserID'] = $editUserID;
 
