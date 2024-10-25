@@ -24,7 +24,9 @@ echo '<!DOCTYPE html>
   <div class="sample-section">
 
   <header>
-  <form action="/index.php" method="GET">
+  <?php
+  (!$isStudent){
+  <form action="/homepage.php" method="GET">
       <button type="submit" class="button2">HOME</button>
     </form>
     <form action="/site_info/about.php" method="GET">

@@ -6,6 +6,7 @@ if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
 
     $isAdmin = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1;
+    $isStudent = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 4;
     
 
     if ($isAdmin) {
@@ -93,9 +94,11 @@ if ($isAdmin) {
           </form>';
 }
 
+if (!$isStudent){
+echo '<br><br><button class="button button-small" onclick="window.location.href=\'/homepage.php\'">Back to homepage</button>';
+}
+
 ?>
-<!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
