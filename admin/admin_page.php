@@ -17,7 +17,7 @@ echo '<h2>Admin suite</h2>';
 
 echo '<div class="div1">';
 
-echo '<form action="/admin/account/user_management.php" method="GET">
+echo '<form action="/admin/account/manage_users.php" method="GET">
     <button type="submit" class="button button-large">Manage users</button>
   </form>';
 
