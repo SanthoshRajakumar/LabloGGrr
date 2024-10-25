@@ -1,6 +1,7 @@
 <?php
 //Saras
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
 $sql = "SELECT P.ID, P.Firstname, P.Lastname, P.Active, R.RoleType FROM People P
         INNER JOIN Roles R ON R.ID = P.RoleID
@@ -8,7 +9,7 @@ $sql = "SELECT P.ID, P.Firstname, P.Lastname, P.Active, R.RoleType FROM People P
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
-    echo '<table><tr><th>Firstname</th><th>Lastname</th><th>Role</th><th>Active</th></tr>';
+    echo '<table><tr><th>Firstname</th><th>Lastname</th><th>Role</th><th>Active</th><th>Deactivate</th><th>Edit Access</th></tr>';
     while($row = $result->fetch_assoc()) {
         $ID = htmlspecialchars($row["ID"]);
         $firstname = htmlspecialchars($row["Firstname"]);
@@ -49,6 +50,7 @@ if ($result->num_rows > 0) {
 <br><br><button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to admin suite</button>
 
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 
 

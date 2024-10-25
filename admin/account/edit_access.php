@@ -15,31 +15,6 @@ $editUserID = $_POST['ID'] ?? $_SESSION['editUserID'];/* ?? $_SESSION['userID']*
 
 $_SESSION['editUserID'] = $editUserID;
 
-
-    /*echo '<form action="/admin/account/backend/update_edit_user.php" method="post">';
-
-    echo '<select name="editUserID">';
-
-    $sql = "SELECT People.ID, People.UserName FROM People";
-    $stmt = $link->prepare($sql);
-
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    $row = $result->fetch_assoc();
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            echo "<option value=" . $row["ID"] . ">" . $row["UserName"] . "</option>";
-        }
-    }
-
-    echo "</select>";
-
-    echo '<button type="submit" class="button button-large">Choose user</button>';
-
-    echo '</form>';*/
-
     $sql = "SELECT People.UserName FROM People WHERE People.ID = ?";
     $stmt = $link->prepare($sql);
 
@@ -51,15 +26,6 @@ $_SESSION['editUserID'] = $editUserID;
     $row = $result->fetch_assoc();
 
     echo '<h2>Now editing ' . $row['UserName'] . '</h2>';
-
-
-
-
-# Should probably be get request and accessible from user management later.
-/*$newUserID = $_SESSION['newUserID'];
-# Below 2 not used. Remove?
-$newUserName = $_SESSION['newUserName'];
-$newUserPassword = $_SESSION['newUserPassword'];*/
 
 $sql = "SELECT ID, RoomName FROM Rooms WHERE ID NOT IN(SELECT R.ID AS RoomID FROM Access A
         INNER JOIN Rooms R ON R.ID = A.RoomID
@@ -84,7 +50,7 @@ $stmt -> execute();
 $result = $stmt -> get_result();
 
 if ($result->num_rows > 0) {
-    echo '<table><tr><th>Room</th><th>Access Level</th></tr>';
+    echo '<table><tr><th>Room</th><th>Access Level</th><th>Delete room</th></tr>';
     
     while ($row = $result->fetch_assoc()) {
         $roomName = htmlspecialchars($row["RoomName"]);
@@ -112,7 +78,7 @@ if ($result->num_rows > 0) {
 
 
 ?>
-<button class="btn" onclick="showAddForm()">Add</button>
+<button class="button button-small" onclick="showAddForm()">Add</button>
 
 <div id="addAccess" class="form-container">
     <h3>Edit access</h3>
