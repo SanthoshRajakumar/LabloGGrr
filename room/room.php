@@ -6,36 +6,39 @@ if (!isset($_SESSION["studentkey"]) && !isset($_SESSION["userID"])) {
 }
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 //include $_SERVER['DOCUMENT_ROOT'] . '/room/backend/account.php';
-if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
+//if (!$link) { die("Connection failed: " . mysqli_connect_error()); }
 
-$isAdmin = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 1;
-$isStudent = isset($_SESSION['roleID']) && $_SESSION['roleID'] == 4;
-    
+$isAdmin = isset($_SESSION['userID']) && isset($_SESSION['roleID']) && $_SESSION['roleID'] === 1;
+$isStaff = isset($_SESSION['userID']) && isset($_SESSION['roleID']) && ($_SESSION['roleID'] === 2 || $_SESSION['roleID'] == 3);
+$isStudent = isset($_SESSION['studentkey']) && isset($_SESSION['roleID']) && $_SESSION['roleID'] === 4;
+
+if(!$isStudent){
     if ($isAdmin) {
         $sql = "SELECT ID AS RoomID, RoomName, Active 
                 FROM Rooms
                 INNER JOIN Access ON Access.RoomID = ID
-                WHERE Access.PeopleID = ?";  
-    } elseif (isset($_SESSION['userID'])) {
-
+                WHERE Access.PeopleID = ?";
+    } else{
         $sql = "SELECT ID AS RoomID, RoomName
                 FROM Rooms
                 INNER JOIN Access ON Access.RoomID = ID
-                WHERE Access.PeopleID = ? AND Rooms.Active = 1";  
-    } elseif (isset($_SESSION['studentkey'])) {
-
-        $sql = "SELECT ID AS RoomID, RoomName
-                FROM Rooms
-                INNER JOIN StudentAccess ON StudentAccess.RoomID = ID
-                WHERE StudentAccess.KeyID = ? AND Rooms.Active = 1";  
+                WHERE Access.PeopleID = ? AND Rooms.Active = 1";
     }
-
-
     $stmt = $link->prepare($sql);
-    $stmt->bind_param("i",$row['ID'] );
+    $stmt->bind_param("i", $_SESSION['userID'] );
     $stmt->execute();
     $result = $stmt->get_result(); 
+} else {
 
+    $sql = "SELECT ID AS RoomID, RoomName
+            FROM Rooms
+            INNER JOIN StudentAccess ON StudentAccess.RoomID = ID
+            WHERE StudentAccess.KeyID = ? AND Rooms.Active = 1";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param("i", $_SESSION['studentkey'] );
+    $stmt->execute();
+    $result = $stmt->get_result();   
+}
 
 $pageTitle = "Rooms";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
@@ -100,11 +103,10 @@ echo '<br><br><button class="button button-small" onclick="window.location.href=
 }
 
 if ($isStudent){
-    unset($_SESSION['roleID']);
-    unset($_SESSION['studentkey']);
-    echo '<br><br><button class="button button-small" onclick="window.location.href=\'/index.php\'">Exit</button>';
+    echo '<form action="/studentkey/backend/exit.php" method="GET">
+          <button type="submit" class="button button-large">Exit</button>
+          </form>';
 }
-
 ?>
 
 <?php
