@@ -42,7 +42,11 @@ if ($result->num_rows > 0) {
 }
 ?>
 
-<br><br><button class="button button-small" onclick="window.location.href='/admin/account/user_management.php'">Back to User management</button>
+<form action="./create_account.php" method="GET">
+    <button type="submit" class="button button-large">Create user</button>
+</form>
+
+<br><br><button class="button button-small" onclick="window.location.href='/admin/admin_page.php'">Back to admin suite</button>
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
