@@ -25,9 +25,13 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     </tr>
     <tr>
       <td>
-        <form action="/homepage.php" method="GET">
-            <button type="submit" class="button2">No, take me back</button>
-        </form>
+    <?php
+      if($_SESSION['roleID'] === 1){
+      echo '<button class="button2" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<button class="button2" onclick="window.location.href=\'/room/room.php\'">No, take me back</button>';
+    }
+    ?>
       </td>
     </tr>
   </table>
