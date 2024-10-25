@@ -8,6 +8,7 @@ if (!isset($_SESSION["userID"])) {
     exit();
 }
 
+# Include styling
 $pageTitle = "Reset Password";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
@@ -15,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 $userID = $_SESSION["userID"];
 
 ?>
-<h2>Reset Password</h2>
+  <h2>Reset Password</h2>
 <!-- Password Reset Form -->
 <form action="password_reset_submit.php" method="POST">
     <label for="current_password">Current Password:</label>
@@ -31,26 +32,23 @@ $userID = $_SESSION["userID"];
     <button type="submit" class="button button-large">Reset Password</button>
 </form>
 
-<<<<<<< HEAD
-<!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/homepage.php'">Back to homepage</button>
 
-=======
     <!-- Back Button -->
-    <?php
+<?php
     if($userID === 1){
       echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
     } else {
       echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
     }
     ?>
+
   </div>
->>>>>>> 21b06c6cb770455e2d5651f3430cdfc1b310b3b9
 </div>
+
 </body>
 </html>
 
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Include styling
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
