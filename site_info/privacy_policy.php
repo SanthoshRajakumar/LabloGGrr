@@ -23,3 +23,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 <?php 
   include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 ?>
+<script>
+  window.onload = function() {
+    const targetDiv = document.getElementById("target");
+    targetDiv.scrollIntoView({ behavior: "smooth" });
+  };
+</script>

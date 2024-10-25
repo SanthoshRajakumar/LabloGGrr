@@ -22,7 +22,7 @@
 </div>
 
 <div class="sample-section-wrap">
-  <div class="sample-section">
+  <div class="sample-section" id="target">
 
   <header>
 <?php
@@ -85,6 +85,14 @@ if(isset($_SESSION['roleID'])){
   </div>';
     }
   
+    if(isset($_SESSION['roleID'])){
+      echo '<script>
+    window.onload = function() {
+      const targetDiv = document.getElementById("target");
+      targetDiv.scrollIntoView({ behavior: "smooth" });
+    };
+  </script>';
+    }
   ?>
     
   </header>
