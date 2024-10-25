@@ -139,6 +139,8 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
 }
 
 elseif ($access == 3) {
+    echo "<h2>" . $shelfRow['Name'] . "</h2>";
+
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
     echo "<tbody>";
@@ -165,9 +167,11 @@ elseif ($access == 3) {
 }
 
 else {
-echo "<table border='1'>";
-echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th></tr></thead>";
-echo "<tbody>";
+    echo "<h2>" . $shelfRow['Name'] . "</h2>";
+    
+    echo "<table border='1'>";
+    echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th></tr></thead>";
+    echo "<tbody>";
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
