@@ -126,5 +126,7 @@ $showDetails = !empty($searchQuery);
 </html>
 
 <?php
+echo '<br><br><button class="button button-small" onclick="window.location.href=\'/room/room.php\'">Back</button>';
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
+?>
 
