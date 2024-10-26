@@ -66,7 +66,7 @@ if ($_SESSION['roleID'] != 1) {
 
   <?php
     echo "<table border='1'>";
-    echo "<thead><tr><th>Product Name</th><th>Volume (ml)</th><th>Mass (mg)</th><th>Pieces</th><th>Product type</th></tr></thead>";
+    echo "<thead><tr><th>Product Name</th><th>Volume (ml)</th><th>Mass (mg)</th><th>Pieces</th><th>Product type</th><th></th></tr></thead>";
     echo "<form action='/admin/product/backend/add_product_to_catalogue.php' method='post'>";
     echo "<tbody>";
 
