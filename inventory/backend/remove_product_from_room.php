@@ -8,12 +8,6 @@ if (mysqli_connect_error()) {
     die("Connection failed: " . mysqli_connect_error()); # script stops
 }
 
-# Redirects get requests.
-if (strtoupper($_SERVER["REQUEST_METHOD"]) == 'GET') {
-    header("Location: /room/room.php");
-    exit();
-}
-
 # Gets relevant access level.
 $sql = "SELECT Access.AccessID FROM Access WHERE PeopleID = ? AND RoomID = ?";
 $stmt = $link->prepare($sql);
@@ -25,12 +19,6 @@ $result = $stmt->get_result();
 
 $row = $result->fetch_assoc();
 $access = $row["AccessID"] ?? FALSE;
-
-# Redirects back to room.php on insufficient access.
-if ($access == FALSE || $access > 3) {
-    header("Location: /room/room.php");
-    exit();
-}
 
 # Sets up query.
 $sql = "DELETE FROM ProductLocation WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ? AND ProductLocation.ShelfID = ?";
