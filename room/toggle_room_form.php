@@ -7,7 +7,7 @@ if (!isset($_SESSION['roleID']) || $_SESSION['roleID'] != 1) {
     exit();
 }
 
-$sql = "SELECT Rooms.ID, Rooms.RoomName, Rooms.Active, COUNT(Access.PeopleID) AS NumberOfPeople 
+$sql = "SELECT Rooms.ID, Rooms.RoomName, Rooms.Active, COUNT(DISTINCT Access.PeopleID) AS NumberOfPeople 
 FROM Rooms
 LEFT JOIN Access ON Rooms.ID = Access.RoomID
 GROUP BY Rooms.ID, Rooms.RoomName, Rooms.Active";
@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 <table border="1">
   <tr>
     <th>Room Name</th>
-    <th>Amount of personnel with access</th>
+    <th>People with access</th>
     <th>Status</th>
     <th>Action</th>
   </tr>
