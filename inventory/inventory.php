@@ -28,11 +28,11 @@ $access = $row['AccessID'] ?? FALSE;
 $roomActive = $row['Active'] ?? FALSE;
 
 # Redirects back to room.php if room is inactive and user does not have admin access for room.
-if ($access == FALSE || ($access > 1 && !$roomActive)) {
-    header("Location: /room/room.php");
-    exit();
-}
-
+//if ($access == FALSE || ($access > 1 && !$roomActive)) {
+//    header("Location: /room/room.php");
+//    exit();
+//}
+//
 
 $roomID = isset($_GET['room_id']) ? $_GET['room_id'] : die("room_id saknas");
 
