@@ -3,6 +3,12 @@ session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 $pageTitle = "New room";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
+
+if (isset($_SESSION['message'])) {
+  echo "<p class='message'>" . htmlspecialchars($_SESSION['message']) . "</p>";
+  unset($_SESSION['message']); //eeeergh 
+}
+
 ?>
 
   <!-- Flytta formuläret inuti denna sektion -->
