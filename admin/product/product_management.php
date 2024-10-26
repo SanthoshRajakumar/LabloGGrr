@@ -61,8 +61,6 @@ if ($_SESSION['roleID'] != 1) {
       }
 
   		?>
-  	
-    <!--<button type="submit" class="button button-large">List products by type</button>-->
   
   </div>
 
@@ -85,8 +83,6 @@ if ($_SESSION['roleID'] != 1) {
 
     $stmt->execute();
     $result = $stmt->get_result();
-
-    $row = $result->fetch_assoc();
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {

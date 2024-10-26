@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
             echo "<td>No</td><td>
                     <form action='./backend/deactivate_account.php' method='post' style='display:inline;' class='delete-button-form'>
                         <input type='hidden' name='ID' value='{$ID}'>
-                        <button type='submit'>Activate</button>
+                        <button class='button button-small type='submit'>Activate</button>
                     </form>
                 </td>";
         }
