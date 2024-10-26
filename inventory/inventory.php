@@ -110,10 +110,10 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
     echo "<tr>";
     echo "<td><select name='prodID'>";
 
-    $sql = "SELECT Product.ID, Product.ProductName FROM Product WHERE Product.ID NOT IN (SELECT ProductLocation.ProductID FROM ProductLocation WHERE ProductLocation.RoomID = ?)";
+    $sql = "SELECT Product.ID, Product.ProductName FROM Product WHERE Product.ID NOT IN (SELECT ProductLocation.ProductID FROM ProductLocation WHERE ProductLocation.RoomID = ? AND ProductLocation.ShelfID = ?)";
     $stmt = $link->prepare($sql);
 
-    $stmt->bind_param("i", $roomID); 
+    $stmt->bind_param("ii", $roomID, $shelfRow['ID']); 
 
     $stmt->execute();
     $result = $stmt->get_result();
