@@ -12,6 +12,12 @@ if (!isset($_SESSION["userID"])) {
 $pageTitle = "Reset Password";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 
+// Display session message if it exists
+if (isset($_SESSION['reset_message'])) {
+  echo '<p style="color: red;">' . htmlspecialchars($_SESSION['reset_message']) . '</p>';
+  unset($_SESSION['reset_message']);  // Clear message after displaying
+}
+
 // Get the userID from the session
 $userID = $_SESSION["userID"];
 

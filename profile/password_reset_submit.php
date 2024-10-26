@@ -18,7 +18,7 @@ $confirm_password = $_POST['confirm_password'];
 // Checking if the new passwords match
 if ($new_password !== $confirm_password) {
     $_SESSION['reset_message'] = "New passwords do not match!";
-    header("Location: reset_password.php");
+    header("Location: password_reset_result.php");
     exit();
 }
 
@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
     // Verify the current password
     if ($current_hash !== md5($salt . $current_password . $salt)) {
         $_SESSION['reset_message'] = "Current password is incorrect.";
-        header("Location: reset_password.php");
+        header("Location: password_reset_result.php");
         exit();
     }
 
