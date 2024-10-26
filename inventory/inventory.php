@@ -13,13 +13,15 @@ if(isset($_SESSION['userID'])) {
     $sql = "SELECT Access.AccessID, Rooms.Active FROM Access 
             INNER JOIN Rooms ON Rooms.ID = Access.RoomID 
             WHERE PeopleID = ? AND RoomID = ?";
+    $ID = $_SESSION['userID'];
 } elseif (isset($_SESSION['studentkey'])) {
     $sql = "SELECT StudentAccess.AccessID, Rooms.Active FROM StudentAccess 
             INNER JOIN Rooms ON Rooms.ID = StudentAccess.RoomID 
             WHERE KeyID = ? AND RoomID = ?"; 
+    $ID = $_SESSION['studentkey'];
 }
 $stmt = $link->prepare($sql);
-$stmt->bind_param("ii", $row['ID'], $_GET["room_id"]);
+$stmt->bind_param("ii", $ID, $_GET["room_id"]);
 $stmt->execute();
 $result = $stmt->get_result();
 

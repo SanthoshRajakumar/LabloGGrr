@@ -26,13 +26,6 @@ $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $access = $row["AccessID"] ?? FALSE;
 
-
-# Redirects back to room.php on insufficient access.
-if ($access == FALSE || $access > 3) {
-    header("Location: /room/room.php");
-    exit();
-}
-
 # Sets up query.
 $sql = "UPDATE ProductLocation SET ProductLocation.Quantity = ? WHERE ProductLocation.ProductID = ? AND ProductLocation.RoomID = ? AND ProductLocation.ShelfID = ?";
 $stmt = $link->prepare($sql);
