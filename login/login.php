@@ -29,7 +29,7 @@ if(isset($_SESSION['message'])){
     </div>
 </form>
 </div>
-<br><br><button class="button button-small" onclick="window.location.href='/index.php'">Back</button>
+<br><br><button class="button button-large" onclick="window.location.href='/index.php'">Back</button>
 
 
 <?php
@@ -52,4 +52,9 @@ include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
     usernameInput.addEventListener('input', function() {
         usernameInput.value = formatUsername(usernameInput.value); 
     });
+  // When the window loads, scroll to the target div
+  window.onload = function() {
+      const targetDiv = document.getElementById("target");
+      targetDiv.scrollIntoView({ behavior: "smooth" }); // Scroll with smooth effect
+    };
 </script>

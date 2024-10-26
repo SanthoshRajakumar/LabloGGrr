@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Terms & Conditions";
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 ?>
@@ -55,3 +56,9 @@ The Service provides tools for users to visualize inventory, manage access, and 
 <?php 
   include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 ?>
+<script>
+  window.onload = function() {
+    const targetDiv = document.getElementById("target");
+    targetDiv.scrollIntoView({ behavior: "smooth" });
+  };
+</script>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
-include $_SERVER['DOCUMENT_ROOT'] . '/account/functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/admin/account/backend/functions.php';
 $email = $_POST['email'];
 
 $sql = "SELECT ID, Salt FROM People WHERE email = ?";
@@ -18,10 +18,11 @@ if ($result->num_rows > 0) {
     $password = generatePassword();
     $hash = md5($salt . $password . $salt);
 
-    $sql = "INSERT INTO People (HashCode) VALUES (?)";
+    $sql = "UPDATE People SET HashCode = ? WHERE ID = ?";
     $stmt = $link->prepare($sql);
-    $stmt->bind_param("s", $hashcode);
+    $stmt->bind_param("si", $hash, $ID); // Note: "si" is for string and integer
     $stmt->execute();
+
 
     sendEmail($email, "New password", "Your new password is $password", "Your new password is $password");
     $_SESSION['message'] = "A new password has been send to your email!";

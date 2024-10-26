@@ -23,7 +23,7 @@ if(isset($_SESSION['message'])){
 ?>
 
 <form action="./login.php">
-    <button type="submit" class="button button-large">Back</button>
+    <br><br><button type="submit" class="button button-large">Back</button>
 </form>
 
 <?php

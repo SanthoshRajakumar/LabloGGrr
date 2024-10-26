@@ -10,16 +10,14 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 if (!$link) { die("HELVETE: " . mysqli_connect_error()); } 
 
 if(isset($_SESSION['userID'])) {
-$sql = "SELECT Access.AccessID, Rooms.Active FROM Access 
-        INNER JOIN Rooms ON Rooms.ID = Access.RoomID 
-        WHERE PeopleID = ? AND RoomID = ?";
-         } elseif (isset($_SESSION['studentkey'])) {
-
-            $sql = "SELECT StudentAccess.AccessID, Rooms.Active FROM StudentAccess 
+    $sql = "SELECT Access.AccessID, Rooms.Active FROM Access 
+            INNER JOIN Rooms ON Rooms.ID = Access.RoomID 
+            WHERE PeopleID = ? AND RoomID = ?";
+} elseif (isset($_SESSION['studentkey'])) {
+    $sql = "SELECT StudentAccess.AccessID, Rooms.Active FROM StudentAccess 
             INNER JOIN Rooms ON Rooms.ID = StudentAccess.RoomID 
             WHERE KeyID = ? AND RoomID = ?"; 
-
-         }
+}
 $stmt = $link->prepare($sql);
 $stmt->bind_param("ii", $row['ID'], $_GET["room_id"]);
 $stmt->execute();
@@ -71,7 +69,7 @@ if (!$result) {
 
 
 if ($access <= 2 || $_SESSION['roleID'] == 1) {
-    echo "<h2>" . $shelfRow['Name'] . "</h2>";
+    echo "<h3>" . $shelfRow['Name'] . "</h3>";
 
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
@@ -87,7 +85,7 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
             echo "<td>" . (isset($row['Quantity']) ? $row['Quantity'] : '') . "</td>";
             echo "<td><form action='/inventory/backend/update_product_quantity.php' method='post'>
             <input type='number' min='0' value='" . $row['Quantity'] . "' name='quantNew'>
-            <input type='submit' value='Update quantity'>
+            <input class='button button-small' type='submit' value='Update quantity'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
             <input type='hidden' value='" . $roomID . "' name='room_id'>
             <input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>
@@ -95,7 +93,7 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
             <input type='hidden' value='" . $roomID . "' name='room_id'>
             <input type='hidden' value='" . $row['ID'] . "' name='prodID'>
             <input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>
-            <input type='submit' value='Delete'></form></td>";
+            <input class='button button-small' type='submit' value='Delete'></form></td>";
             echo "</tr>";
         }
     }
@@ -130,7 +128,7 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
     echo "<td><input type='number' min=0 value=1 name='quantity'></td>";
     echo "<input type='hidden' value='" . $roomID . "' name='room_id'>";
     echo "<input type='hidden' value='" . $shelfRow['ID'] . "' name='shelf_id'>";
-    echo "<td><input type='submit' value='Enter product'></td>";
+    echo "<td><input class='button button-small' type='submit' value='Enter product'></td>";
     echo "</form></td>";
 
     echo "</tr>";
@@ -141,6 +139,8 @@ if ($access <= 2 || $_SESSION['roleID'] == 1) {
 }
 
 elseif ($access == 3) {
+    echo "<h3>" . $shelfRow['Name'] . "</h3>";
+
     echo "<table border='1'>";
     echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th><th>Edit</th></tr></thead>";
     echo "<tbody>";
@@ -167,9 +167,11 @@ elseif ($access == 3) {
 }
 
 else {
-echo "<table border='1'>";
-echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th></tr></thead>";
-echo "<tbody>";
+    echo "<h3>" . $shelfRow['Name'] . "</h3>";
+    
+    echo "<table border='1'>";
+    echo "<thead><tr><th>Product Name</th><th>Volume</th><th>Mass</th><th>Pieces</th><th>Quantity</th></tr></thead>";
+    echo "<tbody>";
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -192,7 +194,7 @@ echo "<tbody>";
 
 ?>
 <!-- Back Button -->
-<br><br><button class="button button-small" onclick="window.location.href='/room/room.php'">Back to rooms</button>
+<br><br><button class="button button-large" onclick="window.location.href='/room/room.php'">Back</button>
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; 

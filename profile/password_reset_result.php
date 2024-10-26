@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$userID = $_SESSION["userID"];
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +27,13 @@ session_start();
     <h2><?php echo htmlspecialchars($_SESSION['reset_message']); ?></h2>
 
     <!-- Button to go back to homepage -->
-    <form action="\homepage.php" method="GET">
-        <button type="submit" class="button button-large">Go Back to Homepage</button>
-    </form>
+    <?php
+    if($userID === 1){
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/admin/admin_page.php\'">Back</button>';
+    } else {
+      echo '<br><br><button class="button button-large" onclick="window.location.href=\'/room/room.php\'">Back</button>';
+    }
+    ?>
 
   </div>
 </div>

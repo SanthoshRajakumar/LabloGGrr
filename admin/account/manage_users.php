@@ -1,6 +1,7 @@
 <?php
-//Saras
+session_start();
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php'; 
 
 $sql = "SELECT P.ID, P.Firstname, P.Lastname, P.Active, R.RoleType FROM People P
         INNER JOIN Roles R ON R.ID = P.RoleID
@@ -8,7 +9,7 @@ $sql = "SELECT P.ID, P.Firstname, P.Lastname, P.Active, R.RoleType FROM People P
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
-    echo '<table><tr><th>Firstname</th><th>Lastname</th><th>Role</th><th>Active</th></tr>';
+    echo '<table><tr><th>Firstname</th><th>Lastname</th><th>Role</th><th>Active</th><th>Deactivate</th><th>Edit Access</th></tr>';
     while($row = $result->fetch_assoc()) {
         $ID = htmlspecialchars($row["ID"]);
         $firstname = htmlspecialchars($row["Firstname"]);
@@ -22,32 +23,35 @@ if ($result->num_rows > 0) {
             echo "<td>Yes</td><td>
                     <form action='./backend/deactivate_account.php' method='post' style='display:inline;' class='delete-button-form'>
                         <input type='hidden' name='ID' value='{$ID}'>
-                        <button type='submit'>Deactivate</button>
+                        <button class='button button-small' type='submit'>Deactivate</button>
                     </form>
                 </td>";
         } else {
             echo "<td>No</td><td>
                     <form action='./backend/deactivate_account.php' method='post' style='display:inline;' class='delete-button-form'>
                         <input type='hidden' name='ID' value='{$ID}'>
-                        <button type='submit'>Activate</button>
+                        <button class='button button-small type='submit'>Activate</button>
                     </form>
                 </td>";
         }
         echo "<td><form action='./edit_access.php' method='post' style='display:inline;' class='delete-button-form'>
                 <input type='hidden' name='ID' value='{$ID}'>
-                <button type='submit'>Edit access</button>
+                <button class='button button-small' type='submit'>Edit access</button>
             </form></td></tr>";
     }
     echo '</table>';
 }
 ?>
 
-<br><br><button class="button button-small" onclick="window.location.href='/admin/account/user_management.php'">Back to User management</button>
+<form action="./create_account.php" method="GET">
+    <button type="submit" class="button button-large">Create new user</button>
+</form>
+
+<br><br><button class="button button-large" onclick="window.location.href='/admin/admin_page.php'">Back</button>
 
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
-
-
 ?>
 
 

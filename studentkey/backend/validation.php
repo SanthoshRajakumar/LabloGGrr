@@ -39,12 +39,10 @@ if (isset($_POST['studentkey']) && !empty($_POST['studentkey'])) {
 
             # Redirect to the next page.
             header('Location: ../../room/room.php');
-            exit();
         } else {
             $_SESSION["error"] = "The Student Key is invalid. Please try again.";
 
             header('Location: ../../index.php');
-            exit();
         }
 
         # Close the statement.
@@ -54,6 +52,6 @@ if (isset($_POST['studentkey']) && !empty($_POST['studentkey'])) {
 # Closing the statement.
 $stmt->close();
 
-include '../dclose.php'
+include '../dclose.php';
 
 ?>
