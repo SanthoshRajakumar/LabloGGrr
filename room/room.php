@@ -4,6 +4,9 @@ if (!isset($_SESSION["studentkey"]) && !isset($_SESSION["userID"])) {
     header('Location: /index.php');
     exit();
 }
+if (isset($_GET['room_id'])) {
+    echo 'Received room_id: ' . htmlspecialchars($_GET['room_id']);
+}
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 $isTeacher = isset($_SESSION['userID']) && isset($_SESSION['roleID']) && ($_SESSION['roleID'] === 2 || $_SESSION['roleID'] == 3);
