@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include '../../database/dopen.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dopen.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // hämta rumnamn 
@@ -44,5 +44,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Stäng anslutningen om inget rum lades till eller vid fel
-include '../../database/dclose.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
