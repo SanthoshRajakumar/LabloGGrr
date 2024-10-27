@@ -32,7 +32,8 @@ if ($_SESSION["roleID"] == 2) {
 
 	$stmt->execute();
 	
-	$sql = "SELECT Access.RoomID FROM Access
+	$sql = "SELECT Rooms.ID FROM Rooms
+		INNER JOIN Access ON Rooms.ID = Access.RoomID
 	  	WHERE Access.PeopleID = ?";
 
     	$stmt = $link->prepare($sql);
@@ -45,19 +46,19 @@ if ($_SESSION["roleID"] == 2) {
 
 	# Insert the key access
     while ($row = $result->fetch_assoc()) {
-    	
+	    if ($result && $result->num_rows > 0) {
+		    if (isset($_POST[$row['ID']]) && $_POST[$row['ID']] != NULL) {
+			    $sql2 = "INSERT INTO StudentAccess (RoomID, KeyID, AccessID) VALUES (?, ?, ?)";
 
+			    $stmt2 = $link->prepare($sql2);
 
-	    if (isset($_POST[$row['RoomID']])) {
-		    $sql2 = "INSERT INTO StudentAccess (RoomID, KeyID, AccessID) VALUES (?, ?, ?)";
+			    $access = 4;
+			    
+				$stmt2 -> bind_param("iii", $_POST[$row['ID']], $keyID, $access);
 
-		    $stmt2 = $link->prepare($sql2);
-
-			$stmt2 -> bind_param("iii", $_POST[$row['RoomID']], $keyID, 4);
-
-			$stmt2->execute();
+				$stmt2->execute();
+			}
 		}
-
     }
 
 }

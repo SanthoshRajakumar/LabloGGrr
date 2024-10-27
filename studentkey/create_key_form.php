@@ -28,7 +28,7 @@ if ($_SESSION["roleID"] == 2) {
         
         while ($row = $result->fetch_assoc()) 
         {
-          echo "<input type='checkbox' name='" . $row['RoomName'] . "' value=" . $row['ID'] . " id='" . $row['ID'] . "'>
+          echo "<input type='checkbox' name=" . $row['ID'] . " value=" . $row['ID'] . " id='" . $row['ID'] . "'>
           <label for='" . $row['ID'] . "'>" . $row['RoomName'] . "</label><br>";
         }
       }
