@@ -72,6 +72,13 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align: center;'>0 results</p>";
 }
 
+if ($_SESSION["roleID"] == 2) {
+
+    echo '<form action="/studentkey/manage_keys.php" method="GET">
+    <button type="submit" class="button button-large">Manage keys</button>
+    </form>';
+}
+
 
 if ($isStudent){
     echo '<form action="/studentkey/backend/exit.php" method="GET">
