@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     create new laboratories or storage rooms, and delete existing ones. Students, on the other hand, will only have access to laboratory inventory during designated courses. Staff members will be able to create “course keys”, linking specific labs to students, who will then be 
     able to view a filtered version of the inventory, displaying only the materials relevant to their coursework. 
   </p>
-<h2>WHO ARE WE?</h2>
+<h2>Who are we?</h2>
   <p>We are a team of six passionate students dedicated to transforming laboratory management in university settings. Our journey began with a simple observation: laboratory inefficiency often stems from the chaos of misplaced materials, lack of structured storage, and the struggles of students and 
     faculty navigating complex inventories. In large university labs, where numerous collaborators work side-by-side, optimizing inventory management can significantly boost productivity and streamline workflows.</p>
   <p>By providing a structured and user-friendly system, we aim to eliminate bottlenecks, enhance collaboration, and bring clarity to university laboratory environments. LabLoGGr isn’t just about software; it’s about making research and learning more efficient, one lab at a time.</p>
