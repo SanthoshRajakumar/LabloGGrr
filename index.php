@@ -9,15 +9,15 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
 <div class="div1">
     <div class="box" id="box1">
         <img src="/images/PastedGraphic-2.png" alt="Image 1">
-        <p>Lead students directly to what they need, so students can dive right into learning with the exact right equipment in hand.</p>
+        <p>Lead students directly to what they need.</p>
     </div>
     <div class="box">
         <img src="/images/PastedGraphic-3.png" alt="Image 2">
-        <p>Maximize hands-on learning with more time on labs and tasks. Our product ensures students spend their session time there it should.</p>
+        <p>Maximize hands-on learning with more time on labs and tasks.</p>
     </div>
     <div class="box">
         <img src="/images/PastedGraphic-4.png" alt="Image 3">
-        <p>Our system keeps materials organized and minimizes material management, so teachers can focus on educating. </p>
+        <p>Keep materials organized so teachers can focus on educating. </p>
     </div>
 </div>
 <!-- Has to get an error message in when the key is wrong -->
