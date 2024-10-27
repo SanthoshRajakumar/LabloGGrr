@@ -51,8 +51,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
     <input type="submit" class="button button-large" value="Create user"/>
 </form>
 </div>
-<button class="button button-large" onclick="window.location.href='/admin/account/manage_users.php'">Back</button>
 
+<br><br><button class="button button-large" onclick="window.location.href='/admin/account/manage_users.php'">Back</button>
 
 <script>
     const fnameInput = document.getElementById('fname');
@@ -80,6 +80,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/styling/header.php';
         lnameInput.value = formatName(lnameInput.value);
     });
 </script>
+
+
 
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php'; # Styling

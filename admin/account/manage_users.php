@@ -53,6 +53,3 @@ if ($result->num_rows > 0) {
 include $_SERVER['DOCUMENT_ROOT'] . '/styling/footer.php';
 include $_SERVER['DOCUMENT_ROOT'] . '/database/dclose.php';
 ?>
-
-
-
