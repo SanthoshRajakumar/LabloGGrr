@@ -25,12 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert->bind_param("s", $room_name);
             
             if ($stmt_insert->execute()) {
-                $_SESSION['message'] = "eeerrrrgh";
+                $_SESSION['message'] = "Room created!";
                 include '../../database/dclose.php';
                 header("Location: ../new_room_form.php");
                 exit(); 
             } else {
-                $_SESSION['message'] = "eeeeerrgh call support or something (therese)" . $stmt_insert->error;
+                $_SESSION['message'] = "eeeeerrgh call support (therese)" . $stmt_insert->error;
                 header("Location: ../new_room_form.php");
                 exit();
             }
